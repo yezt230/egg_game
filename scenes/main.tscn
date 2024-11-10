@@ -1,12 +1,29 @@
-[gd_scene load_steps=3 format=3 uid="uid://c2jmckdmcktuo"]
+[gd_scene load_steps=4 format=3 uid="uid://c2jmckdmcktuo"]
 
 [ext_resource type="PackedScene" uid="uid://cvrce6qnwe3es" path="res://scenes/player.tscn" id="1_2ilp2"]
-[ext_resource type="PackedScene" uid="uid://ywvxvjk76a3c" path="res://scenes/platforms.tscn" id="2_gqa34"]
+[ext_resource type="PackedScene" uid="uid://bo01pi8fcvjhy" path="res://scenes/individual_platform.tscn" id="2_phroa"]
+[ext_resource type="PackedScene" uid="uid://bs6pkaaaew764" path="res://scenes/enemy_1.tscn" id="3_dcbkp"]
 
 [node name="Main" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("1_2ilp2")]
 position = Vector2(369, 334)
 
-[node name="Platforms" parent="." instance=ExtResource("2_gqa34")]
-position = Vector2(400, 300)
+[node name="IndividualPlatform3" parent="." instance=ExtResource("2_phroa")]
+position = Vector2(700, 373)
+rotation = -0.436332
+
+[node name="IndividualPlatform4" parent="." instance=ExtResource("2_phroa")]
+position = Vector2(701, 243)
+rotation = -0.436332
+
+[node name="IndividualPlatform2" parent="." instance=ExtResource("2_phroa")]
+position = Vector2(110, 363)
+rotation = 0.43376
+
+[node name="IndividualPlatform" parent="." instance=ExtResource("2_phroa")]
+position = Vector2(111, 233)
+rotation = 0.43376
+
+[node name="Enemy1" parent="." instance=ExtResource("3_dcbkp")]
+position = Vector2(-12, 98)

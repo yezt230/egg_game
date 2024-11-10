@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://bs6pkaaaew764"]
+
+[ext_resource type="Texture2D" uid="uid://5o5g8enggldm" path="res://assets/bunny1_jump.png" id="1_rsnnq"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3luyp"]
+radius = 19.0
+
+[node name="Enemy1" type="CharacterBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("1_rsnnq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_3luyp")
