@@ -6,6 +6,7 @@
 size = Vector2(396, 24)
 
 [node name="IndividualPlatform" type="CharacterBody2D"]
+collision_mask = 0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_jqj1j")
