@@ -12,3 +12,8 @@ func _physics_process(delta):
 	#else:
 		#velocity.y += GRAVITY * delta
 	move_and_slide()
+
+
+func _on_lifespan_timer_timeout():
+	#pass # Replace with function body.
+	queue_free()
