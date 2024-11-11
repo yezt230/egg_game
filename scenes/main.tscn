@@ -13,19 +13,19 @@ EnemyScene = ExtResource("3_dcbkp")
 position = Vector2(369, 334)
 
 [node name="IndividualPlatform3" parent="." instance=ExtResource("2_phroa")]
-position = Vector2(700, 373)
+position = Vector2(708, 373)
 rotation = -0.436332
 
 [node name="IndividualPlatform4" parent="." instance=ExtResource("2_phroa")]
-position = Vector2(701, 243)
+position = Vector2(709, 243)
 rotation = -0.436332
 
 [node name="IndividualPlatform2" parent="." instance=ExtResource("2_phroa")]
-position = Vector2(110, 363)
+position = Vector2(40, 363)
 rotation = 0.43376
 
 [node name="IndividualPlatform" parent="." instance=ExtResource("2_phroa")]
-position = Vector2(111, 233)
+position = Vector2(41, 233)
 rotation = 0.43376
 
 [node name="Enemy1" parent="." instance=ExtResource("3_dcbkp")]
