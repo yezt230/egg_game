@@ -9,4 +9,4 @@ func _on_enemy_spawn_timer_timeout():
 	
 	enemy_instance.global_position = Vector2(randi() % 600, 19)
 	add_child(enemy_instance)
-	print(enemy_instance.position)
+	#print(enemy_instance.position)

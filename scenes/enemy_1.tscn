@@ -47,6 +47,7 @@ _data = {
 
 [node name="Enemy1" type="CharacterBody2D"]
 collision_layer = 0
+collision_mask = 3
 floor_max_angle = 0.261799
 script = ExtResource("1_2bm8w")
 
