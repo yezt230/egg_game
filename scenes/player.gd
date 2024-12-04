@@ -10,15 +10,28 @@ extends CharacterBody2D
 @onready var facing_left = false
 @onready var standing_up = true
 @onready var idling = true
-@onready var sprite_scale = 0.5
+@onready var sprite_scale = 0.8
+@onready var not_animated = false
 
 func _ready():
 	player_animations.play("idle")
 
+#Probably a better way to do this that using a new signal inside the player
+#code to check when a new enemy spawns
+	get_tree().connect("node_added",  Callable(self, "_on_node_added"))
+	for enemy in get_tree().get_nodes_in_group("Enemies"):
+		connect_enemy_signal(enemy)
+
+
+func _on_node_added(new_node):
+	# Check if the added node is in the Enemies group
+	if new_node.is_in_group("Enemies"):
+		connect_enemy_signal(new_node)
+
 
 #More optimal way to assign multiple values at once?
 #TODO: top-level collision is misaligned until player presses a lower button
-func _process(delta):	
+func _process(delta):
 	if Input.is_action_just_pressed("up"):
 		var input_values = input_movement(300, true)
 		collision.global_position.y = input_values[0]
@@ -43,7 +56,7 @@ func _process(delta):
 		
 	
 func update_animations():
-	if not idling:
+	if not idling and not not_animated:
 		if facing_left and standing_up:
 			player_animations.play("up_poised")
 			player_sprite.scale.x = sprite_scale
@@ -56,8 +69,12 @@ func update_animations():
 		elif not facing_left and not standing_up:
 			player_animations.play("down_poised")
 			player_sprite.scale.x = -sprite_scale
-	else:
+	elif idling and not not_animated:
 		player_animations.play("idle")
+	else:
+		player_animations.play("swallow_up")
+	#else:
+		#player_animations.play("idle")
 
 
 func input_movement(coord, state_boolean):
@@ -69,3 +86,21 @@ func input_movement(coord, state_boolean):
 
 func _on_idle_timer_timeout():
 	idling = true
+
+
+func connect_enemy_signal(enemy):
+	print("enem")
+	enemy.connect("enemy_eaten", Callable(self, "_on_enemy_eaten"))
+
+
+func _on_enemy_eaten():
+	print("thing")
+	idling = false
+	collision.disabled = true
+	not_animated = true
+	idle_timer.start()
+
+
+func _on_animation_player_animation_finished(anim_name):
+	collision.disabled = false
+	not_animated = false

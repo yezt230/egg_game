@@ -45,7 +45,7 @@ _data = {
 "full_circle_rotation": SubResource("Animation_hhvrx")
 }
 
-[node name="Enemy1" type="CharacterBody2D"]
+[node name="Enemy1" type="CharacterBody2D" groups=["Enemies"]]
 collision_layer = 0
 collision_mask = 3
 floor_max_angle = 0.261799
