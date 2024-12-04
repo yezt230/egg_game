@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://cvrce6qnwe3es"]
+[gd_scene load_steps=10 format=3 uid="uid://cvrce6qnwe3es"]
 
 [ext_resource type="Script" path="res://scenes/player.gd" id="1_t8jxh"]
 [ext_resource type="Texture2D" uid="uid://cmqfn6f1rh02n" path="res://assets/bear_states.png" id="1_uxno8"]
@@ -51,6 +51,9 @@ tracks/0/keys = {
 "values": [0]
 }
 
+[sub_resource type="Animation" id="Animation_qgepb"]
+resource_name = "swallow_up"
+
 [sub_resource type="Animation" id="Animation_icylx"]
 resource_name = "up_poised"
 tracks/0/type = "value"
@@ -71,6 +74,7 @@ _data = {
 "RESET": SubResource("Animation_olnky"),
 "down_poised": SubResource("Animation_iup55"),
 "idle": SubResource("Animation_nc587"),
+"swallow_up": SubResource("Animation_qgepb"),
 "up_poised": SubResource("Animation_icylx")
 }
 

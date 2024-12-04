@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://dxlwen6d3mtyq"]
+
+[ext_resource type="Texture2D" uid="uid://b63uliwuxxiu0" path="res://assets/woodland_placeholder.webp" id="1_mvai4"]
+[ext_resource type="Script" path="res://scenes/bg.gd" id="2_17veb"]
+
+[node name="BG" type="Sprite2D"]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_mvai4")
+script = ExtResource("2_17veb")
