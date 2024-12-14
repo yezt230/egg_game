@@ -12,6 +12,8 @@ extends CharacterBody2D
 @onready var idling = true
 @onready var sprite_scale = 0.8
 @onready var not_animated = false
+@onready var burp_counter = 0
+@onready var burping = false
 
 func _ready():
 	player_animations.play("idle")
@@ -49,6 +51,9 @@ func _process(delta):
 		collision.global_position.x = input_values[0]
 		facing_left = input_values[1]
 	
+	if burp_counter == 2:
+		burping = true
+	
 	if idling:
 		collision.disabled = true
 		
@@ -73,6 +78,10 @@ func update_animations():
 		player_animations.play("idle")
 	else:
 		player_animations.play("swallow_up")
+		
+	if burping:
+		player_animations.play("stifled_burp")
+		burping = false
 	#else:
 		#player_animations.play("idle")
 
@@ -89,12 +98,10 @@ func _on_idle_timer_timeout():
 
 
 func connect_enemy_signal(enemy):
-	print("enem")
 	enemy.connect("enemy_eaten", Callable(self, "_on_enemy_eaten"))
 
 
 func _on_enemy_eaten():
-	print("thing")
 	idling = false
 	collision.disabled = true
 	not_animated = true
@@ -104,4 +111,9 @@ func _on_enemy_eaten():
 func _on_animation_player_animation_finished(anim_name):
 	if anim_name == "swallow_up":
 		collision.disabled = false
+		burp_counter += 1
+		print("burp counter" + str(burp_counter))
 		not_animated = false
+	
+	if anim_name == "stifled_burp":
+		burp_counter = 0
