@@ -13,6 +13,9 @@ extends CharacterBody2D
 @onready var burp_counter = 0
 @onready var burping = false
 
+enum States {idle, poised_up, poised_down, swallowing_up, stifled}
+@onready var state: States = States.idle
+
 func _ready():
 	player_animations.play("idle")
 
@@ -36,10 +39,12 @@ func _process(delta):
 		var input_values = input_movement(300, true)
 		collision.global_position.y = input_values[0]
 		standing_up = input_values[1]
+		state = States.poised_up
 	elif Input.is_action_just_pressed("down"):	
 		var input_values = input_movement(450, false)
 		collision.global_position.y = input_values[0]
 		standing_up = input_values[1]
+		state = States.poised_down
 	if Input.is_action_just_pressed("left"):
 		var input_values = input_movement(250, true)
 		collision.global_position.x = input_values[0]
@@ -56,7 +61,6 @@ func _process(delta):
 		collision.disabled = true
 		
 	update_animations()
-		
 	
 func update_animations():
 	if not idling and not not_animated:
@@ -92,7 +96,8 @@ func input_movement(coord, state_boolean):
 
 
 func _on_idle_timer_timeout():
-	idling = true
+	#idling = true
+	state = States.idle
 
 
 func connect_enemy_signal(enemy):
