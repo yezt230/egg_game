@@ -1,10 +1,9 @@
-[gd_scene load_steps=14 format=3 uid="uid://cvrce6qnwe3es"]
+[gd_scene load_steps=13 format=3 uid="uid://cvrce6qnwe3es"]
 
 [ext_resource type="Script" path="res://scenes/player.gd" id="1_t8jxh"]
 [ext_resource type="Texture2D" uid="uid://c1reixwhon8ml" path="res://assets/bear_animations/bear_sprite_fin2.png" id="2_dod2n"]
 [ext_resource type="Script" path="res://scenes/animation_player.gd" id="3_ysu14"]
 [ext_resource type="Script" path="res://scenes/state_machine.gd" id="4_vdwcs"]
-[ext_resource type="Script" path="res://scenes/idle.gd" id="5_xs1cy"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2dlim"]
 radius = 20.0
@@ -146,9 +145,6 @@ one_shot = true
 
 [node name="StateMachine" type="Node" parent="."]
 script = ExtResource("4_vdwcs")
-
-[node name="Idle" type="Node" parent="StateMachine"]
-script = ExtResource("5_xs1cy")
 
 [connection signal="animation_finished" from="Sprite2D/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="ready" from="Sprite2D/AnimationPlayer" to="." method="_on_animation_player_ready"]
