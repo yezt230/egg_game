@@ -1,5 +1,6 @@
 class_name Player extends CharacterBody2D
 
+@onready var state_machine = $StateMachine
 @onready var player_sprite = $Sprite2D
 @onready var player_animations = $Sprite2D/AnimationPlayer
 @onready var collision = $CollisionShape2D
@@ -14,11 +15,14 @@ class_name Player extends CharacterBody2D
 @onready var burping = false
 @onready var state_label = $StateLabel
 
-enum States {idle, poised_up, poised_down, swallowing_up, stifled}
-@onready var state: States = States.idle
+
+#enum States {idle, poised_up, poised_down, swallowing_up, stifled}
+
 
 func _ready():
 	player_animations.play("idle")
+	state_machine.init(self)
+	#print(state_machine)
 
 #Probably a better way to do this that using a new signal inside the player
 #code to check when a new enemy spawns
@@ -40,12 +44,12 @@ func _process(delta):
 		var input_values = input_movement(300, true)
 		collision.global_position.y = input_values[0]
 		standing_up = input_values[1]
-		state = States.poised_up
+		#state = States.poised_up
 	elif Input.is_action_just_pressed("down"):	
 		var input_values = input_movement(450, false)
 		collision.global_position.y = input_values[0]
 		standing_up = input_values[1]
-		state = States.poised_down
+		#state = States.poised_down
 	if Input.is_action_just_pressed("left"):
 		var input_values = input_movement(250, true)
 		collision.global_position.x = input_values[0]
@@ -100,7 +104,8 @@ func input_movement(coord, state_boolean):
 
 func _on_idle_timer_timeout():
 	#idling = true
-	state = States.idle
+	#state = States.idle
+	pass
 
 
 func connect_enemy_signal(enemy):
@@ -123,3 +128,7 @@ func _on_animation_player_animation_finished(anim_name):
 	
 	if anim_name == "stifled_burp":
 		burp_counter = 0
+
+
+func _unhandled_input(event: InputEvent) -> void:
+	state_machine.process_input(event)

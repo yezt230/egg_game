@@ -1,38 +1,49 @@
-class_name StateMachine extends Node
+extends Node
 
-@export var initial_state: State = null
+@export var starting_state: State
 
-@onready var state: State = (func get_initial_state() -> State:
-	return initial_state if initial_state != null else get_child(0)
-	).call()
+var current_state: State
 
-func _ready() -> void:
-	for state_node: State in find_children("*", "State"):
-		#state_node.finished.connect(_transition_to_next_state)
-		pass
-		
-	await owner.ready
-	state._enter_state("")
+# Initialize the state machine by giving each child state a reference to the
+# parent object it belongs to and enter the default starting_state.
+func init(parent: Player) -> void:
+	for child in get_children():
+		if child is State:
+			child.parent = parent
+			print("parent: ", child.name)
+		else:
+			print("warning: non child in sm: ", child.name)
 	
+	if starting_state:
+		change_state(starting_state)
+		print("Starting state set to: ", starting_state.name)
+	else:
+		push_error("Error: starting_state is not assigned!")
 	
-func _transition_to_next_state(target_state_path: String, data: Dictionary = {}) -> void:
-	if not has_node(target_state_path):
-		printerr(owner.name + ": Trying to transition to state " + target_state_path + " but it does not exist.")
-		return
-		
-	var previous_state_path := state.name
-	state._exit_state()
-	state = get_node(target_state_path)
-	state._enter_state(previous_state_path, data)
+	# Initialize to the default state
+	change_state(starting_state)
+
+# Change to the new state by first calling any exit logic on the current state.
+func change_state(new_state: State) -> void:
+	if current_state:
+		current_state.exit()
+
+	current_state = new_state
+	current_state.enter()
 	
-	
-func _unhandled_input(event: InputEvent) -> void:
-	state.handle_input(event)
-	
-	
-func _process(delta: float) -> void:
-	state._update_state(delta)
-	
-	
-func _physics_process(delta: float) -> void:
-	state._physics_update(delta)
+# Pass through functions for the Player to call,
+# handling state changes as needed.
+func process_physics(delta: float) -> void:
+	var new_state = current_state.process_physics(delta)
+	if new_state:
+		change_state(new_state)
+
+func process_input(event: InputEvent) -> void:
+	var new_state = current_state.process_input(event)
+	if new_state:
+		change_state(new_state)
+
+func process_frame(delta: float) -> void:
+	var new_state = current_state.process_frame(delta)
+	if new_state:
+		change_state(new_state)
