@@ -12,7 +12,7 @@ func _ready() -> void:
 		pass 
 		
 	await owner.ready
-	state.enter("")
+	state._enter_state("")
 	
 	
 func _transition_to_next_state(target_state_path: String, data: Dictionary = {}) -> void:
@@ -21,9 +21,9 @@ func _transition_to_next_state(target_state_path: String, data: Dictionary = {})
 		return
 		
 	var previous_state_path := state.name
-	state.exit()
+	state._exit_state()
 	state = get_node(target_state_path)
-	state.enter(previous_state_path, data)
+	state._enter_state(previous_state_path, data)
 	
 	
 func _unhandled_input(event: InputEvent) -> void:
@@ -31,11 +31,11 @@ func _unhandled_input(event: InputEvent) -> void:
 	
 	
 func _process(delta: float) -> void:
-	state.update(delta)
+	state._update_state(delta)
 	
 	
 func _physics_process(delta: float) -> void:
-	state.physics_update(delta)
+	state._physics_update(delta)
 
 #
 #var current_state: State
