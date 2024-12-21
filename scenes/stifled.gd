@@ -2,7 +2,7 @@ extends PlayerState
 
 func enter(previous_state_path: String, data := {}) -> void:
 	#pass
-	print('idle')
+	print('stifled')
 
 func physics_update(_delta: float) -> void:
-	print('idle update')
+	print('stifled update')

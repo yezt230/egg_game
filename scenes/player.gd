@@ -12,6 +12,7 @@ class_name Player extends CharacterBody2D
 @onready var not_animated = false
 @onready var burp_counter = 0
 @onready var burping = false
+@onready var state_label = $StateLabel
 
 enum States {idle, poised_up, poised_down, swallowing_up, stifled}
 @onready var state: States = States.idle
@@ -61,6 +62,8 @@ func _process(delta):
 		collision.disabled = true
 		
 	update_animations()
+	
+	#print(state)
 	
 func update_animations():
 	if not idling and not not_animated:
@@ -115,7 +118,7 @@ func _on_animation_player_animation_finished(anim_name):
 	if anim_name == "swallow_up":
 		collision.disabled = false
 		burp_counter += 1
-		print("burp counter" + str(burp_counter))
+		#print("burp counter" + str(burp_counter))
 		not_animated = false
 	
 	if anim_name == "stifled_burp":
