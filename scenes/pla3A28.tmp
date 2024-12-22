@@ -1,13 +1,11 @@
-[gd_scene load_steps=17 format=3 uid="uid://cvrce6qnwe3es"]
+[gd_scene load_steps=15 format=3 uid="uid://cvrce6qnwe3es"]
 
 [ext_resource type="Script" path="res://scenes/player.gd" id="1_t8jxh"]
 [ext_resource type="Texture2D" uid="uid://c1reixwhon8ml" path="res://assets/bear_animations/bear_sprite_fin2.png" id="2_dod2n"]
 [ext_resource type="Script" path="res://scenes/animation_player.gd" id="3_ysu14"]
 [ext_resource type="PackedScene" uid="uid://d3ihool0kv7lt" path="res://scenes/state_machine.tscn" id="4_8bwfl"]
 [ext_resource type="Script" path="res://scenes/idle.gd" id="6_d0aum"]
-[ext_resource type="Script" path="res://scenes/poised_down.gd" id="7_12wen"]
 [ext_resource type="Script" path="res://scenes/poised_up.gd" id="7_yw2x7"]
-[ext_resource type="Script" path="res://scenes/stifled.gd" id="8_iy5rn"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2dlim"]
 radius = 20.0
@@ -143,32 +141,24 @@ libraries = {
 autoplay = "stifled_burp"
 script = ExtResource("3_ysu14")
 
+[node name="IdleTimer" type="Timer" parent="."]
+wait_time = 8.0
+one_shot = true
+
 [node name="StateMachine" parent="." node_paths=PackedStringArray("starting_state") instance=ExtResource("4_8bwfl")]
 starting_state = NodePath("Idle")
 
-[node name="Idle" type="Node" parent="StateMachine" node_paths=PackedStringArray("poised_up_state", "poised_down_state", "stifled_state")]
+[node name="Idle" type="Node" parent="StateMachine"]
 script = ExtResource("6_d0aum")
-poised_up_state = NodePath("../PoisedUp")
-poised_down_state = NodePath("../PoisedDown")
-stifled_state = NodePath("../Stifled")
+animation_name = null
+move_speed = null
 
-[node name="PoisedUp" type="Node" parent="StateMachine" node_paths=PackedStringArray("idle_state", "poised_down_state", "stifled_state")]
+[node name="PoisedUp" type="Node" parent="StateMachine"]
 script = ExtResource("7_yw2x7")
-idle_state = NodePath("../Idle")
-poised_down_state = NodePath("../PoisedDown")
-stifled_state = NodePath("../Stifled")
+animation_name = null
+move_speed = null
 
-[node name="PoisedDown" type="Node" parent="StateMachine" node_paths=PackedStringArray("idle_state", "poised_up_state", "stifled_state")]
-script = ExtResource("7_12wen")
-idle_state = NodePath("../Idle")
-poised_up_state = NodePath("../PoisedUp")
-stifled_state = NodePath("../Stifled")
-
-[node name="Stifled" type="Node" parent="StateMachine" node_paths=PackedStringArray("idle_state", "poised_up_state", "poised_down_state")]
-script = ExtResource("8_iy5rn")
-idle_state = NodePath("../Idle")
-poised_up_state = NodePath("../PoisedUp")
-poised_down_state = NodePath("../PoisedDown")
+[node name="PoisedDown" type="Node" parent="StateMachine"]
 
 [node name="StateLabel" type="Label" parent="."]
 offset_left = -180.0
@@ -181,9 +171,6 @@ theme_override_constants/outline_size = 1
 theme_override_font_sizes/font_size = 23
 text = "The Velveteen Touch of a Dandy Fop
 "
-
-[node name="IdleTimer" type="Timer" parent="."]
-one_shot = true
 
 [connection signal="animation_finished" from="Sprite2D/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="ready" from="Sprite2D/AnimationPlayer" to="." method="_on_animation_player_ready"]

@@ -8,17 +8,11 @@ var current_state: State
 # parent object it belongs to and enter the default starting_state.
 func init(parent: Player) -> void:
 	for child in get_children():
-		if child is State:
-			child.parent = parent
-			print("parent: ", child.name)
-		else:
-			print("warning: non child in sm: ", child.name)
-	
+		#if child is State:
+		child.parent = parent
+		
 	if starting_state:
 		change_state(starting_state)
-		print("Starting state set to: ", starting_state.name)
-	else:
-		push_error("Error: starting_state is not assigned!")
 	
 	# Initialize to the default state
 	change_state(starting_state)
@@ -47,3 +41,7 @@ func process_frame(delta: float) -> void:
 	var new_state = current_state.process_frame(delta)
 	if new_state:
 		change_state(new_state)
+
+
+func get_current_state() -> String:
+	return current_state.name if current_state else "None"

@@ -1,6 +1,7 @@
 extends State
 
 @export var idle_state: State
+@export var poised_down_state: State
 @export var stifled_state: State
 
 func enter() -> void:
@@ -8,15 +9,10 @@ func enter() -> void:
 
 func process_input(event: InputEvent) -> State:
 	if Input.is_action_just_pressed('down'):
-		print('executed')
-	else:
-		print('not executed')
+		parent.player_animations.play('down_poised')
+		return poised_down_state
 	return null
+#
 
-func process_physics(delta: float) -> State:
-	#parent.velocity.y += gravity * delta
-	#parent.move_and_slide()
-	#
-	#if !parent.is_on_floor():
-		#return fall_state
-	return null
+func _on_idle_timer_timeout():
+	return idle_state
