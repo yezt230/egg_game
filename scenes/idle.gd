@@ -15,10 +15,6 @@ func process_input(event: InputEvent) -> State:
 	elif Input.is_action_just_pressed('down'):
 		return poised_down_state
 	return null
-	
-
-func process_physics(delta: float) -> State:
-	return null
 
 
 func on_enemy_eaten():
