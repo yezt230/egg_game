@@ -31,17 +31,32 @@ func process_physics(delta: float) -> void:
 	var new_state = current_state.process_physics(delta)
 	if new_state:
 		change_state(new_state)
+		
 
 func process_input(event: InputEvent) -> void:
 	var new_state = current_state.process_input(event)
 	if new_state:
 		change_state(new_state)
+		
 
 func process_frame(delta: float) -> void:
 	var new_state = current_state.process_frame(delta)
 	if new_state:
 		change_state(new_state)
 
+
+func on_enemy_eaten():
+	var new_state = current_state.on_enemy_eaten()
+	if new_state:
+		change_state(new_state)
+
+
+func process_animation() -> void:
+	var new_state = current_state.process_animation()
+	if new_state:
+		print("st")
+		change_state(new_state)
+		
 
 func get_current_state() -> String:
 	return current_state.name if current_state else "None"

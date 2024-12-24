@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://cvrce6qnwe3es"]
+[gd_scene load_steps=17 format=3 uid="uid://cvrce6qnwe3es"]
 
 [ext_resource type="Script" path="res://scenes/player.gd" id="1_t8jxh"]
 [ext_resource type="Texture2D" uid="uid://c1reixwhon8ml" path="res://assets/bear_animations/bear_sprite_fin2.png" id="2_dod2n"]
@@ -8,7 +8,6 @@
 [ext_resource type="Script" path="res://scenes/poised_down.gd" id="7_12wen"]
 [ext_resource type="Script" path="res://scenes/poised_up.gd" id="7_yw2x7"]
 [ext_resource type="Script" path="res://scenes/stifled.gd" id="8_iy5rn"]
-[ext_resource type="Script" path="res://scenes/swallow_up.gd" id="9_m6tvp"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2dlim"]
 radius = 20.0
@@ -153,11 +152,10 @@ poised_up_state = NodePath("../PoisedUp")
 poised_down_state = NodePath("../PoisedDown")
 stifled_state = NodePath("../Stifled")
 
-[node name="PoisedUp" type="Node" parent="StateMachine" node_paths=PackedStringArray("idle_state", "poised_down_state", "swallow_up_state", "stifled_state")]
+[node name="PoisedUp" type="Node" parent="StateMachine" node_paths=PackedStringArray("idle_state", "poised_down_state", "stifled_state")]
 script = ExtResource("7_yw2x7")
 idle_state = NodePath("../Idle")
 poised_down_state = NodePath("../PoisedDown")
-swallow_up_state = NodePath("../SwallowUp")
 stifled_state = NodePath("../Stifled")
 
 [node name="PoisedDown" type="Node" parent="StateMachine" node_paths=PackedStringArray("idle_state", "poised_up_state", "stifled_state")]
@@ -171,10 +169,6 @@ script = ExtResource("8_iy5rn")
 idle_state = NodePath("../Idle")
 poised_up_state = NodePath("../PoisedUp")
 poised_down_state = NodePath("../PoisedDown")
-
-[node name="SwallowUp" type="Node" parent="StateMachine" node_paths=PackedStringArray("poised_up_state")]
-script = ExtResource("9_m6tvp")
-poised_up_state = NodePath("../PoisedUp")
 
 [node name="StateLabel" type="Label" parent="."]
 offset_left = -180.0
@@ -193,6 +187,5 @@ wait_time = 8.0
 one_shot = true
 
 [connection signal="animation_finished" from="Sprite2D/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
-[connection signal="animation_finished" from="Sprite2D/AnimationPlayer" to="StateMachine/SwallowUp" method="_on_animation_player_animation_finished"]
 [connection signal="ready" from="Sprite2D/AnimationPlayer" to="." method="_on_animation_player_ready"]
 [connection signal="timeout" from="IdleTimer" to="." method="_on_idle_timer_timeout"]

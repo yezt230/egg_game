@@ -39,7 +39,7 @@ func _process(delta):
 	
 
 func input_movement(coord, state_boolean):
-		collision.disabled = false
+		#collision.disabled = false
 		idling = false
 		return [coord, state_boolean]
 
@@ -49,17 +49,17 @@ func connect_enemy_signal(enemy):
 
 
 func _on_enemy_eaten():
-	idling = false
-	collision.disabled = true
-	not_animated = true
+	#idling = false
+	##collision.disabled = true
+	#not_animated = true
+	state_machine.on_enemy_eaten()
 
+#func _on_animation_player_animation_finished(anim_name):
+	#if anim_name == "swallow_up":
+		##collision.disabled = false
+		#burp_counter += 1
+		#not_animated = false
 
-func _on_animation_player_animation_finished(anim_name):
-	if anim_name == "swallow_up":
-		collision.disabled = false
-		burp_counter += 1
-		not_animated = false
-
-
+#collision.global_position.y = 300
 func _unhandled_input(event: InputEvent) -> void:
 	state_machine.process_input(event)

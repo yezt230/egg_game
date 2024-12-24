@@ -17,6 +17,11 @@ func process_input(event: InputEvent) -> State:
 		parent.player_animations.play('down_poised')
 		return poised_down_state
 	return null
+	
 
 func process_physics(delta: float) -> State:
 	return null
+
+
+func on_enemy_eaten():
+	pass
