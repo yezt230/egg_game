@@ -49,13 +49,6 @@ func on_enemy_eaten():
 	var new_state = current_state.on_enemy_eaten()
 	if new_state:
 		change_state(new_state)
-
-
-func process_animation() -> void:
-	var new_state = current_state.process_animation()
-	if new_state:
-		print("st")
-		change_state(new_state)
 		
 
 func get_current_state() -> String:

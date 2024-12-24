@@ -19,6 +19,8 @@ func enter() -> void:
 	collision.global_position.y = 340
 	idle_timer.start()
 	idle_timer.connect("timeout", Callable(self, "_on_idle_timer_timeout"))
+	
+	parent.player_animations.play('up_poised')
 
 
 func exit() -> void:
@@ -27,7 +29,7 @@ func exit() -> void:
 	
 func process_input(event: InputEvent) -> State:
 	if Input.is_action_just_pressed('down'):
-		parent.player_animations.play('down_poised')
+		
 		return poised_down_state
 	if Input.is_action_just_pressed('left'):
 		collision.global_position.x = 260
@@ -43,8 +45,5 @@ func _on_idle_timer_timeout():
 
 
 func on_enemy_eaten():
+	print("eaten in poised up")
 	return swallow_up_state
-
-
-func _on_animation_player_animation_finished(anim_name):
-	print("thingy")

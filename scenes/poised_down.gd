@@ -19,6 +19,8 @@ func enter() -> void:
 	#if not parent.idle_timer.is_connected("timeout", Callable(self, "_on_idle_timer_timeout")):
 	idle_timer.start()
 	idle_timer.connect("timeout", Callable(self, "_on_idle_timer_timeout"))
+	
+	parent.player_animations.play('down_poised')
 
 
 func exit() -> void:
@@ -27,7 +29,6 @@ func exit() -> void:
 
 func process_input(event: InputEvent) -> State:
 	if Input.is_action_just_pressed('up'):
-		parent.player_animations.play('up_poised')
 		#idle_timer.restart()
 		return poised_up_state
 	if Input.is_action_just_pressed('left'):
