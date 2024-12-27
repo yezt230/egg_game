@@ -7,12 +7,13 @@ class_name Player extends CharacterBody2D
 @onready var state_label = $StateLabel
 @onready var state_machine = $StateMachine
 
-@onready var sprite_scale = 0.8
+@onready var sprite_scale = 0.45
 @onready var burp_counter = 0
 
 func _ready():
 	state_machine.init(self)
-
+	player_sprite.scale.x = sprite_scale
+	player_sprite.scale.y = sprite_scale
 #Probably a better way to do this that using a new signal inside the player
 #code to check when a new enemy spawns
 	get_tree().connect("node_added",  Callable(self, "_on_node_added"))

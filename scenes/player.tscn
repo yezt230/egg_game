@@ -1,7 +1,7 @@
-[gd_scene load_steps=18 format=3 uid="uid://cvrce6qnwe3es"]
+[gd_scene load_steps=19 format=3 uid="uid://cvrce6qnwe3es"]
 
 [ext_resource type="Script" path="res://scenes/player.gd" id="1_t8jxh"]
-[ext_resource type="Texture2D" uid="uid://c1reixwhon8ml" path="res://assets/bear_animations/bear_sprite_fin2.png" id="2_dod2n"]
+[ext_resource type="Texture2D" uid="uid://dj6pkgpgissah" path="res://assets/bear_animations/bear_sprite_fin.png" id="2_dod2n"]
 [ext_resource type="Script" path="res://scenes/animation_player.gd" id="3_ysu14"]
 [ext_resource type="PackedScene" uid="uid://d3ihool0kv7lt" path="res://scenes/state_machine.tscn" id="4_8bwfl"]
 [ext_resource type="Script" path="res://scenes/idle.gd" id="6_d0aum"]
@@ -28,6 +28,10 @@ tracks/0/keys = {
 "values": [0]
 }
 
+[sub_resource type="Animation" id="Animation_0b5yd"]
+resource_name = "burp_new"
+step = 0.1
+
 [sub_resource type="Animation" id="Animation_iup55"]
 resource_name = "down_poised"
 length = 0.1
@@ -42,7 +46,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [8]
+"values": [10]
 }
 
 [sub_resource type="Animation" id="Animation_nc587"]
@@ -62,7 +66,6 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_ol6pt"]
 resource_name = "stifled_burp"
-length = 0.6
 step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -71,10 +74,10 @@ tracks/0/path = NodePath(".:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 1,
-"values": [16, 17, 18]
+"values": [20, 21, 22, 23, 24]
 }
 
 [sub_resource type="Animation" id="Animation_qgepb"]
@@ -91,7 +94,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
-"values": [12, 13, 14, 15]
+"values": [15, 16, 17, 18]
 }
 
 [sub_resource type="Animation" id="Animation_icylx"]
@@ -108,12 +111,13 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [4]
+"values": [5]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_kjl7m"]
 _data = {
 "RESET": SubResource("Animation_olnky"),
+"burp_new": SubResource("Animation_0b5yd"),
 "down_poised": SubResource("Animation_iup55"),
 "idle": SubResource("Animation_nc587"),
 "stifled_burp": SubResource("Animation_ol6pt"),
@@ -134,7 +138,7 @@ shape = SubResource("CircleShape2D_2dlim")
 position = Vector2(-7, -2)
 scale = Vector2(0.8, 0.8)
 texture = ExtResource("2_dod2n")
-hframes = 4
+hframes = 5
 vframes = 5
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite2D"]
