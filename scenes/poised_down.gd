@@ -2,6 +2,7 @@ extends State
 
 @export var idle_state: State
 @export var poised_up_state: State
+@export var swallow_down_state: State
 @export var stifled_state: State
 
 var idle_timer
@@ -47,3 +48,4 @@ func _on_idle_timer_timeout():
 
 func on_enemy_eaten():
 	print("eaten in poised down")
+	return swallow_down_state

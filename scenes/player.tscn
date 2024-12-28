@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://cvrce6qnwe3es"]
+[gd_scene load_steps=21 format=3 uid="uid://cvrce6qnwe3es"]
 
 [ext_resource type="Script" path="res://scenes/player.gd" id="1_t8jxh"]
 [ext_resource type="Texture2D" uid="uid://dj6pkgpgissah" path="res://assets/bear_animations/bear_sprite_fin.png" id="2_dod2n"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" path="res://scenes/poised_up.gd" id="7_yw2x7"]
 [ext_resource type="Script" path="res://scenes/stifled.gd" id="8_iy5rn"]
 [ext_resource type="Script" path="res://scenes/swallow_up.gd" id="9_m6tvp"]
+[ext_resource type="Script" path="res://scenes/swallow_down.gd" id="10_ntv6y"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2dlim"]
 radius = 20.0
@@ -114,6 +115,23 @@ tracks/0/keys = {
 "values": [5]
 }
 
+[sub_resource type="Animation" id="Animation_62aqb"]
+resource_name = "swallow_down"
+length = 0.6
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [25, 26, 27]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_kjl7m"]
 _data = {
 "RESET": SubResource("Animation_olnky"),
@@ -121,6 +139,7 @@ _data = {
 "down_poised": SubResource("Animation_iup55"),
 "idle": SubResource("Animation_nc587"),
 "stifled_burp": SubResource("Animation_ol6pt"),
+"swallow_down": SubResource("Animation_62aqb"),
 "swallow_up": SubResource("Animation_qgepb"),
 "up_poised": SubResource("Animation_icylx")
 }
@@ -139,7 +158,7 @@ position = Vector2(-7, -2)
 scale = Vector2(0.8, 0.8)
 texture = ExtResource("2_dod2n")
 hframes = 5
-vframes = 5
+vframes = 6
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite2D"]
 libraries = {
@@ -164,10 +183,11 @@ poised_down_state = NodePath("../PoisedDown")
 swallow_up_state = NodePath("../SwallowUp")
 stifled_state = NodePath("../Stifled")
 
-[node name="PoisedDown" type="Node" parent="StateMachine" node_paths=PackedStringArray("idle_state", "poised_up_state", "stifled_state")]
+[node name="PoisedDown" type="Node" parent="StateMachine" node_paths=PackedStringArray("idle_state", "poised_up_state", "swallow_down_state", "stifled_state")]
 script = ExtResource("7_12wen")
 idle_state = NodePath("../Idle")
 poised_up_state = NodePath("../PoisedUp")
+swallow_down_state = NodePath("../SwallowDown")
 stifled_state = NodePath("../Stifled")
 
 [node name="Stifled" type="Node" parent="StateMachine" node_paths=PackedStringArray("poised_up_state", "poised_down_state")]
@@ -179,6 +199,10 @@ poised_down_state = NodePath("../PoisedDown")
 script = ExtResource("9_m6tvp")
 poised_up_state = NodePath("../PoisedUp")
 stifled_state = NodePath("../Stifled")
+
+[node name="SwallowDown" type="Node" parent="StateMachine" node_paths=PackedStringArray("poised_down_state")]
+script = ExtResource("10_ntv6y")
+poised_down_state = NodePath("../PoisedDown")
 
 [node name="StateLabel" type="Label" parent="."]
 offset_left = -180.0

@@ -28,8 +28,7 @@ func exit() -> void:
 	
 	
 func process_input(event: InputEvent) -> State:
-	if Input.is_action_just_pressed('down'):
-		
+	if Input.is_action_just_pressed('down'):		
 		return poised_down_state
 	if Input.is_action_just_pressed('left'):
 		collision.global_position.x = 260
