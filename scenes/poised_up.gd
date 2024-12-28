@@ -44,5 +44,4 @@ func _on_idle_timer_timeout():
 
 
 func on_enemy_eaten():
-	print("eaten in poised up")
 	return swallow_up_state

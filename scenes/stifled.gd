@@ -9,7 +9,6 @@ func enter() -> void:
 
 
 func on_enemy_eaten():
-	#parent.player_animations.play('swallow_up')
 	pass
 
 

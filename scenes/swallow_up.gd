@@ -11,12 +11,17 @@ extends State
 func enter() -> void:
 	super()
 	burp_counter += 1
-	print(burp_counter)
+	if not parent.player_animations.is_connected("animation_finished", Callable(self, "_on_animation_player_animation_finished")):
+		parent.player_animations.connect("animation_finished", Callable(self, "_on_animation_player_animation_finished"))
 	parent.player_animations.play('swallow_up')
 
 
+func exit() -> void:
+	if parent.player_animations.is_connected("animation_finished", Callable(self, "_on_animation_player_animation_finished")):
+		parent.player_animations.disconnect("animation_finished", Callable(self, "_on_animation_player_animation_finished"))
+
+
 func on_enemy_eaten():
-	#parent.player_animations.play('swallow_up')
 	pass
 
 
@@ -25,4 +30,5 @@ func _on_animation_player_animation_finished(anim_name):
 		burp_counter = 0
 		parent.state_machine.change_state(stifled_state)
 	else:
-		parent.state_machine.change_state(poised_up_state)
+		if anim_name == 'swallow_up':
+			parent.state_machine.change_state(poised_up_state)
