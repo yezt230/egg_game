@@ -26,7 +26,7 @@ func on_enemy_eaten():
 
 
 func _on_animation_player_animation_finished(anim_name):	
-	if burp_counter >= 10:
+	if burp_counter >= 2:
 		burp_counter = 0
 		parent.state_machine.change_state(stifled_state)
 	else:
