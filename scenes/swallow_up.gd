@@ -7,6 +7,7 @@ extends State
 #will have to move to a parent (Player) or something to make it increase
 #in the swallow_down state as well
 @onready var burp_counter = 0
+@onready var burp_limit = 5
 
 func enter() -> void:
 	super()
@@ -26,7 +27,7 @@ func on_enemy_eaten():
 
 
 func _on_animation_player_animation_finished(anim_name):	
-	if burp_counter >= 2:
+	if burp_counter >= burp_limit:
 		burp_counter = 0
 		parent.state_machine.change_state(stifled_state)
 	else:

@@ -1,47 +1,63 @@
-[gd_scene load_steps=7 format=3 uid="uid://bs6pkaaaew764"]
+[gd_scene load_steps=8 format=3 uid="uid://bs6pkaaaew764"]
 
 [ext_resource type="Script" path="res://scenes/enemy_1.gd" id="1_2bm8w"]
-[ext_resource type="Texture2D" uid="uid://5o5g8enggldm" path="res://assets/bunny1_jump.png" id="1_rsnnq"]
+[ext_resource type="Texture2D" uid="uid://foprstyfqgyx" path="res://assets/bunny.png" id="2_fmvvd"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3luyp"]
 radius = 19.0
 
 [sub_resource type="Animation" id="Animation_fi88y"]
-length = 0.001
+loop_mode = 1
+step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".:rotation")
-tracks/0/interp = 1
+tracks/0/path = NodePath("Sprite2D:skew")
+tracks/0/interp = 4
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.25, 0.7, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [0.0]
+"values": [0.0, -0.261799, 0.261799, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:scale")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0.4, 0.4), Vector2(0.4, 0.5), Vector2(0.4, 0.4)]
 }
 
 [sub_resource type="Animation" id="Animation_hhvrx"]
 resource_name = "full_circle_rotation"
-length = 2.0
 loop_mode = 1
-step = 0.0333
+step = 0.1
+
+[sub_resource type="Animation" id="Animation_ljc87"]
+resource_name = "bounce"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".:rotation")
+tracks/0/path = NodePath("Sprite2D:skew")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1.998),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(4.14106),
 "update": 0,
-"values": [0.0, 6.28319]
+"values": [1.23569]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_pwj2n"]
 _data = {
 "RESET": SubResource("Animation_fi88y"),
+"bounce": SubResource("Animation_ljc87"),
 "full_circle_rotation": SubResource("Animation_hhvrx")
 }
 
@@ -52,8 +68,9 @@ floor_max_angle = 0.261799
 script = ExtResource("1_2bm8w")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.25, 0.25)
-texture = ExtResource("1_rsnnq")
+position = Vector2(-33, -31)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("2_fmvvd")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_3luyp")
@@ -67,6 +84,6 @@ autostart = true
 libraries = {
 "": SubResource("AnimationLibrary_pwj2n")
 }
-autoplay = "full_circle_rotation"
+autoplay = "RESET"
 
 [connection signal="timeout" from="LifespanTimer" to="." method="_on_lifespan_timer_timeout"]
