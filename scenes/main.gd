@@ -5,9 +5,11 @@ extends Node2D
 
 func _on_enemy_spawn_timer_timeout():
 	var enemy_instance = EnemyScene.instantiate()
-	var enemy_instance_animation = enemy_instance.get_node('AnimationPlayer')
+	var enemy_instance_animation = enemy_instance.get_node('AnimationPlayer') as AnimationPlayer
 	var enemy_instance_sprite = enemy_instance.get_node('Sprite2D') as Sprite2D
-	var animal = randi() % 2
+	var animal = randi() % 3
+	
+	enemy_instance_animation.play("sliding")
 	
 	var h_position = 0
 	var v_position = 0
@@ -24,19 +26,13 @@ func _on_enemy_spawn_timer_timeout():
 		v_position = 30
 	else:
 		v_position = 300	
-	enemy_instance_sprite.frame = 2
-	enemy_instance_sprite.set_frame(2)
+		
 	if animal == 0:
-		#enemy_instance_animation.play("raccoon_sliding")
 		enemy_instance_sprite.frame = 0
-		print("enemy frame " + str(enemy_instance_sprite.get_frame()))
-		print("1")		
 	elif animal == 1:
 		enemy_instance_sprite.frame = 1
-		print("enemy frame " + str(enemy_instance_sprite.get_frame()))
-		#enemy_instance_animation.play("rabbit_sliding")
-		print("2")
-	print('animal = ' + str(animal))
+	elif animal == 2:
+		enemy_instance_sprite.frame = 2
 	enemy_instance.global_position = Vector2(h_position , v_position)
 	add_child(enemy_instance)
 	enemy_instance.scale.x = enemy_scale

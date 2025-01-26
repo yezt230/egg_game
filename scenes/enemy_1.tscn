@@ -1,152 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://bs6pkaaaew764"]
+[gd_scene load_steps=6 format=3 uid="uid://bs6pkaaaew764"]
 
 [ext_resource type="Script" path="res://scenes/enemy_1.gd" id="1_2bm8w"]
 [ext_resource type="Texture2D" uid="uid://cvthfyf61gglj" path="res://assets/prey_spritesheet.png" id="2_qn2s0"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3luyp"]
 radius = 19.0
-
-[sub_resource type="Animation" id="Animation_fi88y"]
-loop_mode = 1
-step = 0.05
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:skew")
-tracks/0/interp = 4
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.25, 0.7, 1),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [0.0, -0.261799, 0.261799, 0.0]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D:scale")
-tracks/1/interp = 2
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.5, 1),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector2(0.4, 0.4), Vector2(0.4, 0.5), Vector2(0.4, 0.4)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Sprite2D:frame")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-
-[sub_resource type="Animation" id="Animation_ljc87"]
-resource_name = "bounce"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:skew")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(4.14106),
-"update": 0,
-"values": [1.23569]
-}
-
-[sub_resource type="Animation" id="Animation_hhvrx"]
-resource_name = "full_circle_rotation"
-loop_mode = 1
-step = 0.1
-
-[sub_resource type="Animation" id="Animation_82702"]
-resource_name = "rabbit_sliding"
-loop_mode = 1
-step = 0.05
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1.05),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [0, 0]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D:skew")
-tracks/1/interp = 4
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.25, 0.7, 1),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [0.0, -0.261799, 0.261799, 0.0]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Sprite2D:scale")
-tracks/2/interp = 2
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.5, 1),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector2(0.4, 0.4), Vector2(0.4, 0.5), Vector2(0.4, 0.4)]
-}
-
-[sub_resource type="Animation" id="Animation_plhp7"]
-resource_name = "raccoon_sliding"
-loop_mode = 1
-step = 0.05
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0.8),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [1]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D:skew")
-tracks/1/interp = 4
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.25, 0.7, 1),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [0.0, -0.261799, -0.261799, 0.0]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Sprite2D:scale")
-tracks/2/interp = 2
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.5, 1),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector2(0.4, 0.4), Vector2(0.4, 0.5), Vector2(0.4, 0.4)]
-}
 
 [sub_resource type="Animation" id="Animation_6rin5"]
 resource_name = "sliding"
@@ -179,11 +37,6 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_pwj2n"]
 _data = {
-"RESET": SubResource("Animation_fi88y"),
-"bounce": SubResource("Animation_ljc87"),
-"full_circle_rotation": SubResource("Animation_hhvrx"),
-"rabbit_sliding": SubResource("Animation_82702"),
-"raccoon_sliding": SubResource("Animation_plhp7"),
 "sliding": SubResource("Animation_6rin5")
 }
 
@@ -194,7 +47,7 @@ floor_max_angle = 0.261799
 script = ExtResource("1_2bm8w")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(-3.8147e-06, -3.69549e-06)
+position = Vector2(-3.8147e-06, -16)
 scale = Vector2(0.4, 0.4)
 texture = ExtResource("2_qn2s0")
 hframes = 3
@@ -212,6 +65,6 @@ autostart = true
 libraries = {
 "": SubResource("AnimationLibrary_pwj2n")
 }
-autoplay = "RESET"
+autoplay = "sliding"
 
 [connection signal="timeout" from="LifespanTimer" to="." method="_on_lifespan_timer_timeout"]
