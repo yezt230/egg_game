@@ -2,9 +2,15 @@ extends CharacterBody2D
 
 signal enemy_eaten
 
+@onready var enemy_animations = $AnimationPlayer
+
 const GRAVITY = 25000
 const MOVE_SPEED = 10000
 const FLOOR_NORMAL = Vector2.UP
+
+func _ready():
+	pass
+
 
 func _physics_process(delta):	
 	velocity.y = GRAVITY * delta
