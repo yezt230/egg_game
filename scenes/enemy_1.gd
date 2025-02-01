@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
 signal enemy_eaten
+signal enemy_escaped
 
 @onready var enemy_animations = $AnimationPlayer
 
@@ -20,6 +21,10 @@ func _physics_process(delta):
 		if collision.get_collider().name == "Player":
 			emit_signal("enemy_eaten")
 			queue_free()
+			
+	if self.global_position.y > 500:
+		emit_signal("enemy_escaped")
+		queue_free()
 	
 
 func _on_lifespan_timer_timeout():

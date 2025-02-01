@@ -1,7 +1,8 @@
 extends Node2D
 
 @export var EnemyScene: PackedScene
-
+@onready var HealthManager = $HealthManager
+@onready var Score = $Score
 
 func _on_enemy_spawn_timer_timeout():
 	var enemy_instance = EnemyScene.instantiate()
@@ -36,4 +37,9 @@ func _on_enemy_spawn_timer_timeout():
 	enemy_instance.global_position = Vector2(h_position , v_position)
 	add_child(enemy_instance)
 	enemy_instance.scale.x = enemy_scale
-	enemy_instance.connect("enemy_eaten", Callable($Score, "increment_score"))
+	enemy_instance.connect("enemy_eaten", Callable(Score, "increment_score"))
+
+	#Healh manager connection is here for now, but it'd be more
+	#ideal to move this to its own scene and figure out how to
+	#connect the signal there
+	enemy_instance.connect("enemy_escaped", Callable(HealthManager, "_on_enemy_escaped"))

@@ -1,7 +1,8 @@
 extends CharacterBody2D
 
 func _ready():
-	print("ready")
+	pass
 
-func delete_bar():
-	print("delete_bar")
+
+func lost_health():
+	queue_free()
