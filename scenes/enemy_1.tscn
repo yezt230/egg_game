@@ -47,7 +47,7 @@ floor_max_angle = 0.261799
 script = ExtResource("1_2bm8w")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(-3.8147e-06, -16)
+position = Vector2(-12, -26)
 scale = Vector2(0.4, 0.4)
 texture = ExtResource("2_qn2s0")
 hframes = 3

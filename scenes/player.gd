@@ -14,7 +14,7 @@ func _ready():
 	state_machine.init(self)
 	player_sprite.scale.x = sprite_scale
 	player_sprite.scale.y = sprite_scale
-#Probably a better way to do this that using a new signal inside the player
+#Probably a better way to do this than using a new signal inside the player
 #code to check when a new enemy spawns
 	get_tree().connect("node_added",  Callable(self, "_on_node_added"))
 	for enemy in get_tree().get_nodes_in_group("Enemies"):
@@ -22,7 +22,6 @@ func _ready():
 
 
 func _on_node_added(new_node):
-	# Check if the added node is in the Enemies group
 	if new_node.is_in_group("Enemies"):
 		connect_enemy_signal(new_node)
 

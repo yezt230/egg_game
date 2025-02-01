@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://cvut458nkx00v"]
+
+[ext_resource type="Script" path="res://scenes/health.gd" id="1_fkvab"]
+[ext_resource type="Texture2D" uid="uid://ocnq3smar2fg" path="res://assets/single_bar.png" id="1_thfl1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t0llx"]
+size = Vector2(10, 24)
+
+[node name="Health" type="CharacterBody2D"]
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("1_fkvab")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_thfl1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_t0llx")
