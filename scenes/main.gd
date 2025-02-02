@@ -52,3 +52,4 @@ func _on_enemy_spawn_timer_timeout():
 func on_no_health():
 	var end_screen_instance = end_screen_scene.instantiate()
 	add_child(end_screen_instance)
+	end_screen_instance.set_defeat(Score.count_text.text)
