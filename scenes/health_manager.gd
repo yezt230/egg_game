@@ -5,7 +5,7 @@ signal no_health
 @export var HealthBar: PackedScene
 #starting health for the healthbar, change this to
 #actual number for gameplay
-const starting_health = 1
+const starting_health = 3
 var current_health = starting_health
 var healthbar_array = []
 
@@ -18,8 +18,10 @@ func _ready():
 
 		
 func _on_enemy_escaped():
-	if current_health > 0:
-		current_health -= 1
-		healthbar_array[current_health].lost_health()
+	if current_health > 0:	
+		pass
+		#uncomment these to exit debugging
+		#current_health -= 1
+		#healthbar_array[current_health].lost_health()
 	else:
 		no_health.emit()
