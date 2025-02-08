@@ -11,6 +11,7 @@ const MOVE_SPEED = 10000
 const FLOOR_NORMAL = Vector2.UP
 
 func _ready():
+	determine_spot()
 	enemy_animations.play("sliding")
 	var animal = randi() % 3
 	if animal == 0:
@@ -40,10 +41,34 @@ func _physics_process(delta):
 		emit_signal("enemy_escaped")
 		enemy_animations.play("rabbit_run")
 		velocity.y = falling_speed/4
-		velocity.x = falling_speed/4
+		if self.global_position.x < 400:
+			velocity.x = falling_speed/4
+		else:
+			velocity.x = (falling_speed/4) * -1
 	else:
 		velocity.y = falling_speed
 	
 
 func _on_lifespan_timer_timeout():
 	queue_free()
+
+
+func determine_spot():	
+	var h_position = 0
+	var v_position = 0
+	var h_rand = randi() % 2
+	var v_rand = randi() % 2
+	var enemy_scale = 1
+	if h_rand == 0:
+		h_position = 30
+	else:
+		h_position = 770
+		enemy_scale = -1
+		
+	if v_rand == 0:
+		v_position = 30
+	else:
+		v_position = 300
+		
+	self.global_position = Vector2(h_position , v_position)
+	self.scale.x = enemy_scale
