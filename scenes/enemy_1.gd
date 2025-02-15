@@ -9,9 +9,11 @@ signal enemy_escaped
 const GRAVITY = 25000
 const MOVE_SPEED = 10000
 const FLOOR_NORMAL = Vector2.UP
+var has_been_eaten = false
 
 func _ready():
 	determine_spot()
+	
 	enemy_animations.play("sliding")
 	var animal = randi() % 3
 	if animal == 0:
@@ -22,14 +24,16 @@ func _ready():
 		enemy_sprite.frame = 2
 
 
-func _physics_process(delta):
+func _physics_process(delta):		
 	var falling_speed = GRAVITY * delta
 	move_and_slide()
 	for i in get_slide_collision_count():
 		var collision = get_slide_collision(i)
-		if collision.get_collider().name == "Player":
+		if collision.get_collider().name == "Player" and not has_been_eaten:
+			has_been_eaten = true
 			emit_signal("enemy_eaten")
 			queue_free()
+			
 			
 	if self.global_position.y > 500:		
 		emit_signal("enemy_escaped")
