@@ -15,17 +15,11 @@ func _ready():
 	enemy_animations.play("sliding")
 	var animal = randi() % 3
 	if animal == 0:
-		#enemy_instance_sprite.frame = 0
 		enemy_sprite.frame = 0
-		print("animal" + str(animal))
 	elif animal == 1:
-		#enemy_instance_sprite.frame = 1
 		enemy_sprite.frame = 1
-		print("animal" + str(animal))
 	elif animal == 2:
-		#enemy_instance_sprite.frame = 2
 		enemy_sprite.frame = 2
-		print("animal" + str(animal))
 
 
 func _physics_process(delta):
@@ -41,6 +35,8 @@ func _physics_process(delta):
 		emit_signal("enemy_escaped")
 		enemy_animations.play("rabbit_run")
 		velocity.y = falling_speed/4
+		#@TODO: get better way of determining run direction, for
+		#now they pause horizontally after hitting the halfway point
 		if self.global_position.x < 400:
 			velocity.x = falling_speed/4
 		else:

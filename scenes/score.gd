@@ -11,6 +11,7 @@ func _ready():
 
 
 func increment_score():
+	print("increment_score()")
 	enemy_count += 1
 	update_score()
 
