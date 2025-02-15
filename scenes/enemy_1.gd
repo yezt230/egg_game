@@ -9,20 +9,31 @@ signal enemy_escaped
 const GRAVITY = 25000
 const MOVE_SPEED = 10000
 const FLOOR_NORMAL = Vector2.UP
+var animals = {
+	"rabbit": 0,
+	"raccoon": 1,
+	"beaver": 2
+}
+var animal_type = 0
 var has_been_eaten = false
+var has_escaped = false
 
 func _ready():
 	determine_spot()
 	
 	enemy_animations.play("sliding")
 	var animal = randi() % 3
-	if animal == 0:
-		enemy_sprite.frame = 0
-	elif animal == 1:
-		enemy_sprite.frame = 1
-	elif animal == 2:
-		enemy_sprite.frame = 2
-
+	match animal:
+		0:
+			enemy_sprite.frame = animals["rabbit"]
+			animal_type = 0
+		1:
+			enemy_sprite.frame = animals["raccoon"]
+			animal_type = 1
+		2:
+			enemy_sprite.frame = animals["beaver"]
+			animal_type = 2
+			
 
 func _physics_process(delta):		
 	var falling_speed = GRAVITY * delta
@@ -32,12 +43,19 @@ func _physics_process(delta):
 		if collision.get_collider().name == "Player" and not has_been_eaten:
 			has_been_eaten = true
 			emit_signal("enemy_eaten")
-			queue_free()
-			
+			queue_free()			
 			
 	if self.global_position.y > 500:		
-		emit_signal("enemy_escaped")
-		enemy_animations.play("rabbit_run")
+		if not has_escaped:
+			emit_signal("enemy_escaped")
+			has_escaped = true		
+		match animal_type:
+			0:
+				enemy_animations.play("rabbit_run")
+			1:
+				enemy_animations.play("raccoon_run")
+			2:
+				enemy_animations.play("rabbit_run")
 		velocity.y = falling_speed/4
 		#@TODO: get better way of determining run direction, for
 		#now they pause horizontally after hitting the halfway point
@@ -72,3 +90,7 @@ func determine_spot():
 		
 	self.global_position = Vector2(h_position , v_position)
 	self.scale.x = enemy_scale
+
+
+func set_animal():
+	pass
