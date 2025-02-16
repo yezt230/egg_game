@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bs6pkaaaew764"]
+[gd_scene load_steps=10 format=3 uid="uid://bs6pkaaaew764"]
 
 [ext_resource type="Script" path="res://scenes/enemy_1.gd" id="1_2bm8w"]
 [ext_resource type="Texture2D" uid="uid://cvthfyf61gglj" path="res://assets/prey_spritesheet.png" id="2_qn2s0"]
@@ -39,6 +39,24 @@ tracks/0/keys = {
 "values": [3, 4, 5]
 }
 
+[sub_resource type="Animation" id="Animation_6t1bg"]
+resource_name = "raccoon_run"
+length = 0.6
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [6, 7, 8]
+}
+
 [sub_resource type="Animation" id="Animation_6rin5"]
 resource_name = "sliding"
 loop_mode = 1
@@ -68,9 +86,9 @@ tracks/1/keys = {
 "values": [Vector2(0.4, 0.4), Vector2(0.4, 0.5), Vector2(0.4, 0.4)]
 }
 
-[sub_resource type="Animation" id="Animation_6t1bg"]
-resource_name = "raccoon_run"
-length = 0.6
+[sub_resource type="Animation" id="Animation_v2a12"]
+resource_name = "beaver_run"
+length = 0.8
 loop_mode = 1
 step = 0.1
 tracks/0/type = "value"
@@ -80,15 +98,16 @@ tracks/0/path = NodePath("Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
-"values": [6, 7, 8]
+"values": [9, 10, 11, 10]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_pwj2n"]
 _data = {
 "RESET": SubResource("Animation_78dky"),
+"beaver_run": SubResource("Animation_v2a12"),
 "rabbit_run": SubResource("Animation_r38mt"),
 "raccoon_run": SubResource("Animation_6t1bg"),
 "sliding": SubResource("Animation_6rin5")
@@ -105,7 +124,7 @@ position = Vector2(-12, -26)
 scale = Vector2(0.4, 0.4)
 texture = ExtResource("2_qn2s0")
 hframes = 3
-vframes = 3
+vframes = 4
 region_rect = Rect2(0, 0, 351.5, 355)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

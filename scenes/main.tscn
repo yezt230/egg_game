@@ -29,21 +29,21 @@ position = Vector2(376, 367)
 
 [node name="Platforms" type="Node2D" parent="."]
 
-[node name="IndividualPlatform3" parent="Platforms" instance=ExtResource("2_phroa")]
-position = Vector2(708, 373)
-rotation = -0.436332
-
-[node name="IndividualPlatform4" parent="Platforms" instance=ExtResource("2_phroa")]
-position = Vector2(709, 243)
-rotation = -0.436332
-
-[node name="IndividualPlatform2" parent="Platforms" instance=ExtResource("2_phroa")]
-position = Vector2(40, 363)
+[node name="TopLeftPlatform" parent="Platforms" instance=ExtResource("2_phroa")]
+position = Vector2(41, 236)
 rotation = 0.43376
 
-[node name="IndividualPlatform" parent="Platforms" instance=ExtResource("2_phroa")]
-position = Vector2(41, 233)
+[node name="TopRightPlatform" parent="Platforms" instance=ExtResource("2_phroa")]
+position = Vector2(709, 246)
+rotation = -0.436332
+
+[node name="BottomLeftPlatform" parent="Platforms" instance=ExtResource("2_phroa")]
+position = Vector2(40, 424)
 rotation = 0.43376
+
+[node name="BottomRightPlatform" parent="Platforms" instance=ExtResource("2_phroa")]
+position = Vector2(708, 434)
+rotation = -0.436332
 
 [node name="EnemySpawnTimer" type="Timer" parent="."]
 wait_time = 1.5

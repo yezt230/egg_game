@@ -55,7 +55,7 @@ func _physics_process(delta):
 			1:
 				enemy_animations.play("raccoon_run")
 			2:
-				enemy_animations.play("rabbit_run")
+				enemy_animations.play("beaver_run")
 		velocity.y = falling_speed/4
 		#@TODO: get better way of determining run direction, for
 		#now they pause horizontally after hitting the halfway point
@@ -78,9 +78,9 @@ func determine_spot():
 	var v_rand = randi() % 2
 	var enemy_scale = 1
 	if h_rand == 0:
-		h_position = 30
+		h_position = -50
 	else:
-		h_position = 770
+		h_position = 850
 		enemy_scale = -1
 		
 	if v_rand == 0:
