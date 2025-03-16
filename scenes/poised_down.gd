@@ -28,7 +28,7 @@ func exit() -> void:
 	idle_timer.stop()
 	
 
-func process_input(event: InputEvent) -> State:
+func process_input(_event: InputEvent) -> State:
 	if Input.is_action_just_pressed('up'):
 		#idle_timer.restart()
 		return poised_up_state

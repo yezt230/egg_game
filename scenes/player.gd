@@ -28,7 +28,7 @@ func _on_node_added(new_node):
 
 #More optimal way to assign multiple values at once?
 #TODO: top-level collision is misaligned until player presses a lower button
-func _process(delta):
+func _process(_delta):
 	var current_state_name = state_machine.get_current_state()
 	state_label.text = current_state_name
 	

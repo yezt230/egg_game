@@ -9,7 +9,7 @@ func enter() -> void:
 	parent.player_animations.play('idle')
 	
 
-func process_input(event: InputEvent) -> State:
+func process_input(_event: InputEvent) -> State:
 	if Input.is_action_just_pressed('up'):
 		return poised_up_state
 	elif Input.is_action_just_pressed('down'):

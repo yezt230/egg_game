@@ -39,4 +39,4 @@ func on_enemy_eaten():
 		
 
 func get_current_state() -> String:
-	return current_state.name if current_state else "None"
+	return str(current_state.name) if current_state else "None"

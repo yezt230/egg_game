@@ -7,8 +7,8 @@ signal enemy_escaped
 @onready var enemy_animations = $AnimationPlayer
 
 const GRAVITY = 25000
-const MOVE_SPEED = 10000
 const FLOOR_NORMAL = Vector2.UP
+
 var animals = {
 	"rabbit": 0,
 	"raccoon": 1,

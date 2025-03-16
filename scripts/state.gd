@@ -16,5 +16,5 @@ func exit() -> void:
 	pass
 
 
-func process_input(event: InputEvent) -> State:
+func process_input(_event: InputEvent) -> State:
 	return null
