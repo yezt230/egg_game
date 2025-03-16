@@ -19,7 +19,7 @@ func enter() -> void:
 	collision.global_position.y = 470
 	#if not parent.idle_timer.is_connected("timeout", Callable(self, "_on_idle_timer_timeout")):
 	idle_timer.start()
-	idle_timer.connect("timeout", Callable(self, "_on_idle_timer_timeout"))
+	#idle_timer.connect("timeout", Callable(self, "_on_idle_timer_timeout"))
 	
 	parent.player_animations.play('down_poised')
 

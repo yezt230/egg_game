@@ -17,9 +17,13 @@ var animals = {
 var animal_type = 0
 var has_been_eaten = false
 var has_escaped = false
+var move_speed = 0
+var regex = RegEx.new()
 
 func _ready():
 	determine_spot()
+	
+	regex.compile(".*Platform.*")
 	
 	enemy_animations.play("sliding")
 	var animal = randi() % 3
@@ -36,14 +40,22 @@ func _ready():
 			
 
 func _physics_process(delta):		
+	#falling_speed is really the overall movement speed
 	var falling_speed = GRAVITY * delta
+	#print(falling_speed)
 	move_and_slide()
 	for i in get_slide_collision_count():
 		var collision = get_slide_collision(i)
-		if collision.get_collider().name == "Player" and not has_been_eaten:
+		var collider_name = collision.get_collider().name
+		if collider_name == "Player" and not has_been_eaten:
 			has_been_eaten = true
 			emit_signal("enemy_eaten")
-			queue_free()			
+			queue_free()
+			
+		if regex.search(collider_name):
+			falling_speed = move_speed * delta
+		else:
+			falling_speed = GRAVITY * delta
 			
 	if self.global_position.y > 500:		
 		if not has_escaped:
@@ -94,3 +106,9 @@ func determine_spot():
 
 func set_animal():
 	pass
+
+
+func set_speed_increase(speed_increase):
+	#return speed_increase
+	move_speed = GRAVITY + speed_increase
+	

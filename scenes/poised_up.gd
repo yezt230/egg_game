@@ -18,6 +18,7 @@ func enter() -> void:
 	sprite_scale = parent.sprite_scale
 	collision.global_position.y = 340
 	idle_timer.start()
+	idle_timer.connect("timeout", Callable(self, "_on_idle_timer_timeout"))
 	
 	parent.player_animations.play('up_poised')
 
