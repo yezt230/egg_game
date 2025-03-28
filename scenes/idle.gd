@@ -13,6 +13,7 @@ func enter() -> void:
 	player_sprite = parent.player_sprite
 	sprite_scale = parent.sprite_scale
 	collision = parent.collision
+	collision.global_position = Vector2(260, 25)
 	parent.player_animations.play('idle')
 	
 
