@@ -10,6 +10,13 @@ class_name Player extends CharacterBody2D
 @onready var sprite_scale = 0.45
 @onready var burp_counter = 0
 
+var collision_coords = {
+	top = 300,
+	bottom = 470,
+	left = 490,
+	right = 260
+}
+
 func _ready():
 	state_machine.init(self)
 	player_sprite.scale.x = sprite_scale

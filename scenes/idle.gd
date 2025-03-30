@@ -7,13 +7,15 @@ extends State
 var	player_sprite
 var	sprite_scale
 var collision
+var collision_coords
 
 func enter() -> void:
 	super()
 	player_sprite = parent.player_sprite
 	sprite_scale = parent.sprite_scale
 	collision = parent.collision
-	collision.global_position = Vector2(260, 25)
+	collision_coords = parent.collision_coords
+	collision.global_position = Vector2(collision_coords.right, 25)
 	parent.player_animations.play('idle')
 	
 
@@ -23,11 +25,11 @@ func process_input(_event: InputEvent) -> State:
 	elif Input.is_action_just_pressed('down'):
 		return poised_down_state
 	elif Input.is_action_just_pressed('left'):
-		collision.global_position.x = 260
+		collision.global_position.x = collision_coords.right
 		player_sprite.scale.x = sprite_scale * 1
 		return poised_up_state
 	elif Input.is_action_just_pressed('right'):
-		collision.global_position.x = 490
+		collision.global_position.x = collision_coords.left
 		player_sprite.scale.x = sprite_scale * -1
 		return poised_up_state
 	return null

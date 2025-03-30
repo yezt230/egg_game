@@ -6,7 +6,9 @@ extends Node
 
 var spawn_time = 0
 var speed_increase = 0
+var max_speed = 30000
 var speed_increase_increment = 10000
+var speed_increase_amt = 2
 var speed_increase_tick = 0
 
 func _ready():
@@ -36,8 +38,9 @@ func _on_timer_timeout():
 
 func _on_enemy_eaten():
 	speed_increase_tick += 1
-	if speed_increase_tick >= 3:
-		speed_increase += speed_increase_increment
-		speed_increase_tick = 0
+	if speed_increase_tick >= speed_increase_amt:
+		if speed_increase < max_speed:
+			speed_increase += speed_increase_increment
+			speed_increase_tick = 0
 		print("speed_increase: " + str(speed_increase))
 		print("speed_increase_increment: " + str(speed_increase_increment))
