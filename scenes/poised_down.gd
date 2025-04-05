@@ -43,10 +43,8 @@ func process_input(_event: InputEvent) -> State:
 		player_sprite.scale.x = sprite_scale * -1
 	elif Input.is_action_just_pressed('diagonal'):
 		if collision.global_position.x == collision_coords.right:
-			print("collision was left")
 			collision.global_position.x = collision_coords.left
 		elif collision.global_position.x == collision_coords.left:
-			print("collision was right")
 			collision.global_position.x = collision_coords.right
 		player_sprite.scale.x = player_sprite.scale.x * -1
 		return poised_up_state

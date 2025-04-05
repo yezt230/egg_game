@@ -3,6 +3,8 @@ extends Node
 @export var enemy_scene: PackedScene
 
 @onready var timer = $Timer
+@onready var HealthManager = get_parent().get_node("HealthManager")
+@onready var Score = get_parent().get_node("Score")
 
 var spawn_time = 0
 var speed_increase = 0
@@ -29,12 +31,12 @@ func _on_timer_timeout():
 		
 	add_child(enemy_instance)
 	#var main_scene = get_tree().get_first_node_in_group("main")
-	#enemy_instance.connect("enemy_eaten", Callable(Score, "increment_score"))
+	enemy_instance.connect("enemy_eaten", Callable(Score, "increment_score"))
 
 	#Healh manager connection is here for now, but it'd be more
 	#ideal to move this to its own scene and figure out how to
 	#connect the signal there
-	#enemy_instance.connect("enemy_escaped", Callable(HealthManager, "_on_enemy_escaped"))
+	enemy_instance.connect("enemy_escaped", Callable(HealthManager, "_on_enemy_escaped"))
 
 func _on_enemy_eaten():
 	speed_increase_tick += 1
@@ -42,5 +44,3 @@ func _on_enemy_eaten():
 		if speed_increase < max_speed:
 			speed_increase += speed_increase_increment
 			speed_increase_tick = 0
-		print("speed_increase: " + str(speed_increase))
-		print("speed_increase_increment: " + str(speed_increase_increment))
