@@ -4,6 +4,7 @@ extends Node
 
 @onready var timer = $Timer
 @onready var HealthManager = get_parent().get_node("HealthManager")
+@onready var Score = get_parent().get_node("Score")
 
 var spawn_time = 0
 var speed_increase = 0
@@ -30,7 +31,7 @@ func _on_timer_timeout():
 		
 	add_child(enemy_instance)
 	#var main_scene = get_tree().get_first_node_in_group("main")
-	#enemy_instance.connect("enemy_eaten", Callable(Score, "increment_score"))
+	enemy_instance.connect("enemy_eaten", Callable(Score, "increment_score"))
 
 	#Healh manager connection is here for now, but it'd be more
 	#ideal to move this to its own scene and figure out how to
