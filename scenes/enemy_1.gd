@@ -56,7 +56,7 @@ func _physics_process(delta):
 		else:
 			falling_speed = GRAVITY * delta
 			
-	if self.global_position.y > 525:		
+	if self.global_position.y > 550:		
 		if not has_escaped:
 			emit_signal("enemy_escaped")
 			has_escaped = true		

@@ -30,20 +30,16 @@ func process_input(_event: InputEvent) -> State:
 		#idle_timer.restart()
 		return poised_up_state
 	if Input.is_action_just_pressed('left'):
-		print("left")
 		collision.global_position.x = collision_coords.right
 		#idle_timer.restart()
 		player_sprite.scale.x = sprite_scale * 1
 	elif Input.is_action_just_pressed('right'):
-		print("right")
 		collision.global_position.x = collision_coords.left
 		player_sprite.scale.x = sprite_scale * -1
 	elif Input.is_action_just_pressed('diagonal'):
 		if collision.global_position.x == collision_coords.right:
-			print("collision was left")
 			collision.global_position.x = collision_coords.left
 		elif collision.global_position.x == collision_coords.left:
-			print("collision was right")
 			collision.global_position.x = collision_coords.right
 		player_sprite.scale.x = player_sprite.scale.x * -1
 		return poised_up_state
