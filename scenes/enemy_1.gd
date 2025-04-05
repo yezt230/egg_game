@@ -42,7 +42,6 @@ func _ready():
 func _physics_process(delta):		
 	#falling_speed is really the overall movement speed
 	var falling_speed = GRAVITY * delta
-	#print(falling_speed)
 	move_and_slide()
 	for i in get_slide_collision_count():
 		var collision = get_slide_collision(i)
@@ -57,7 +56,7 @@ func _physics_process(delta):
 		else:
 			falling_speed = GRAVITY * delta
 			
-	if self.global_position.y > 500:		
+	if self.global_position.y > 525:		
 		if not has_escaped:
 			emit_signal("enemy_escaped")
 			has_escaped = true		
