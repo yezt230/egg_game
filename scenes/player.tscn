@@ -195,14 +195,16 @@ script = ExtResource("8_iy5rn")
 poised_up_state = NodePath("../PoisedUp")
 poised_down_state = NodePath("../PoisedDown")
 
-[node name="SwallowUp" type="Node" parent="StateMachine" node_paths=PackedStringArray("poised_up_state", "stifled_state")]
+[node name="SwallowUp" type="Node" parent="StateMachine" node_paths=PackedStringArray("poised_up_state", "poised_down_state", "stifled_state")]
 script = ExtResource("9_m6tvp")
 poised_up_state = NodePath("../PoisedUp")
+poised_down_state = NodePath("../PoisedDown")
 stifled_state = NodePath("../Stifled")
 
-[node name="SwallowDown" type="Node" parent="StateMachine" node_paths=PackedStringArray("poised_down_state")]
+[node name="SwallowDown" type="Node" parent="StateMachine" node_paths=PackedStringArray("poised_down_state", "poised_up_state")]
 script = ExtResource("10_ntv6y")
 poised_down_state = NodePath("../PoisedDown")
+poised_up_state = NodePath("../PoisedUp")
 
 [node name="StateLabel" type="Label" parent="."]
 offset_left = -180.0
