@@ -18,11 +18,13 @@ func _ready():
 
 		
 func _on_enemy_escaped():
-	if current_health > 0:	
-		return
+	if current_health > 0:		
 		#DEBUG: uncomment these to enable losing health
-		#upon missing an enemy and exit debugging
-		#current_health -= 1
-		#healthbar_array[current_health].lost_health()
+		#upon missing an enemy and exit debugging,
+		#then comment out "return"
+		
+		#return
+		current_health -= 1
+		healthbar_array[current_health].lost_health()
 	else:
 		no_health.emit()
