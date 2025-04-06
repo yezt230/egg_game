@@ -16,6 +16,7 @@ var collision_coords = {
 	left = 490,
 	right = 260
 }
+var current_swallow_progress: float = 0.0
 
 func _ready():
 	state_machine.init(self)
