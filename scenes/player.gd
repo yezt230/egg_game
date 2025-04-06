@@ -14,7 +14,9 @@ var collision_coords = {
 	top = 300,
 	bottom = 470,
 	left = 490,
-	right = 260
+	right = 260,
+	idle_x = 400,
+	idle_y = 25
 }
 var current_swallow_progress: float = 0.0
 

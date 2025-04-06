@@ -22,6 +22,7 @@ func enter() -> void:
 	player_sprite = parent.player_sprite
 	sprite_scale = parent.sprite_scale
 	collision_coords = parent.collision_coords
+	collision.global_position.y = collision_coords.top
 	
 	if not parent.player_animations.is_connected("animation_finished", Callable(self, "_on_animation_player_animation_finished")):
 		parent.player_animations.connect("animation_finished", Callable(self, "_on_animation_player_animation_finished"))
