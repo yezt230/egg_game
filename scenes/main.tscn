@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://c2jmckdmcktuo"]
+[gd_scene load_steps=12 format=3 uid="uid://c2jmckdmcktuo"]
 
 [ext_resource type="PackedScene" uid="uid://cvrce6qnwe3es" path="res://scenes/player.tscn" id="1_2ilp2"]
 [ext_resource type="Script" path="res://scenes/main.gd" id="1_uaobc"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://c5yc82eaysjnu" path="res://scenes/score.tscn" id="5_4pema"]
 [ext_resource type="Texture2D" uid="uid://cqhmntvajk46s" path="res://assets/bg2.png" id="5_q7hw8"]
 [ext_resource type="PackedScene" uid="uid://4ejv4j4clxhv" path="res://scenes/enemy_manager.tscn" id="9_2q4br"]
+[ext_resource type="Texture2D" uid="uid://surpwxl4lsdk" path="res://assets/branches.png" id="10_ijsqy"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_uaobc")
@@ -35,20 +36,28 @@ position = Vector2(376, 367)
 [node name="Platforms" type="Node2D" parent="."]
 
 [node name="TopLeftPlatform" parent="Platforms" instance=ExtResource("2_phroa")]
+visible = false
 position = Vector2(41, 236)
 rotation = 0.43376
 
 [node name="TopRightPlatform" parent="Platforms" instance=ExtResource("2_phroa")]
+visible = false
 position = Vector2(709, 246)
 rotation = -0.436332
 
 [node name="BottomLeftPlatform" parent="Platforms" instance=ExtResource("2_phroa")]
+visible = false
 position = Vector2(40, 424)
 rotation = 0.43376
 
 [node name="BottomRightPlatform" parent="Platforms" instance=ExtResource("2_phroa")]
+visible = false
 position = Vector2(708, 434)
 rotation = -0.436332
+
+[node name="Branches" type="Sprite2D" parent="Platforms"]
+position = Vector2(400, 303)
+texture = ExtResource("10_ijsqy")
 
 [node name="EnemyManager" parent="." instance=ExtResource("9_2q4br")]
 
