@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://c2jmckdmcktuo"]
+[gd_scene load_steps=11 format=3 uid="uid://c2jmckdmcktuo"]
 
 [ext_resource type="PackedScene" uid="uid://cvrce6qnwe3es" path="res://scenes/player.tscn" id="1_2ilp2"]
 [ext_resource type="Script" path="res://scenes/main.gd" id="1_uaobc"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://giyfet1x83i0" path="res://scenes/end_screen.tscn" id="3_ot4j3"]
 [ext_resource type="PackedScene" uid="uid://bjeitj84pp7yu" path="res://scenes/health_manager.tscn" id="3_wyg4o"]
 [ext_resource type="PackedScene" uid="uid://c5yc82eaysjnu" path="res://scenes/score.tscn" id="5_4pema"]
+[ext_resource type="Texture2D" uid="uid://cqhmntvajk46s" path="res://assets/bg2.png" id="5_q7hw8"]
 [ext_resource type="PackedScene" uid="uid://4ejv4j4clxhv" path="res://scenes/enemy_manager.tscn" id="9_2q4br"]
 
 [node name="Main" type="Node2D"]
@@ -16,8 +17,11 @@ EnemyScene = ExtResource("3_dcbkp")
 end_screen_scene = ExtResource("3_ot4j3")
 
 [node name="BG" parent="." instance=ExtResource("3_g6e4k")]
-position = Vector2(376, 282)
-scale = Vector2(0.7, 0.7)
+modulate = Color(1, 1, 1, 0.75)
+position = Vector2(400, 301)
+scale = Vector2(1, 1)
+texture = ExtResource("5_q7hw8")
+script = null
 
 [node name="HealthManager" parent="." instance=ExtResource("3_wyg4o")]
 unique_name_in_owner = true
