@@ -6,6 +6,8 @@ signal no_health
 #starting health for the healthbar, change this to
 #actual number for gameplay
 const starting_health = 3
+const DEBUG = true
+
 var current_health = starting_health
 var healthbar_array = []
 
@@ -23,8 +25,10 @@ func _on_enemy_escaped():
 		#upon missing an enemy and exit debugging,
 		#then comment out "return"
 		
-		#return
-		current_health -= 1
-		healthbar_array[current_health].lost_health()
+		if DEBUG:			
+			return
+		else:
+			current_health -= 1
+			healthbar_array[current_health].lost_health()
 	else:
 		no_health.emit()

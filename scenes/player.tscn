@@ -155,7 +155,6 @@ shape = SubResource("CircleShape2D_2dlim")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(-7, -2)
-scale = Vector2(0.8, 0.8)
 texture = ExtResource("2_dod2n")
 hframes = 5
 vframes = 6

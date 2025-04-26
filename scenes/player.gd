@@ -7,7 +7,7 @@ class_name Player extends CharacterBody2D
 @onready var state_label = $StateLabel
 @onready var state_machine = $StateMachine
 
-@onready var sprite_scale = 0.45
+@onready var sprite_scale = 1.0
 @onready var burp_counter = 0
 
 var collision_coords = {

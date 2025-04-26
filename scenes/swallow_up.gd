@@ -8,7 +8,7 @@ extends State
 #will have to move to a parent (Player) or something to make it increase
 #in the swallow_down state as well
 @onready var burp_counter = 0
-@onready var burp_limit = 5
+@onready var burp_limit = 3
 
 var collision
 var player_sprite
