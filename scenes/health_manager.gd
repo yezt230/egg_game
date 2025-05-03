@@ -6,7 +6,7 @@ signal no_health
 #starting health for the healthbar, change this to
 #actual number for gameplay
 const starting_health = 3
-const DEBUG = true
+const DEBUG = false
 
 var current_health = starting_health
 var healthbar_array = []
