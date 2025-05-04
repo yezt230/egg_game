@@ -1,0 +1,7 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://bpeo5ur86lfxi"]
+
+[ext_resource type="FontFile" uid="uid://cyxs0qfpkjhlp" path="res://assets/CelticTime.ttf" id="1_t3isy"]
+
+[resource]
+default_font = ExtResource("1_t3isy")
+default_font_size = 16

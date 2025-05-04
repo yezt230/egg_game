@@ -5,8 +5,8 @@ signal no_health
 @export var HealthBar: PackedScene
 #starting health for the healthbar, change this to
 #actual number for gameplay
-const starting_health = 3
-const DEBUG = true
+const starting_health = 1
+const DEBUG = false
 
 var current_health = starting_health
 var healthbar_array = []
@@ -21,9 +21,9 @@ func _ready():
 		
 func _on_enemy_escaped():
 	if current_health > 0:		
-		#DEBUG: uncomment these to enable losing health
-		#upon missing an enemy and exit debugging,
-		#then comment out "return"
+		#DEBUG: switch the const DEBUG from false to true
+		#to toggle debugging. Missing enemies will not 
+		#lose health on debug mode
 		
 		if DEBUG:			
 			return

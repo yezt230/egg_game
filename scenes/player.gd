@@ -12,9 +12,9 @@ class_name Player extends CharacterBody2D
 
 var collision_coords = {
 	top = 300,
-	bottom = 470,
-	left = 490,
-	right = 260,
+	bottom = 490,
+	left = 500,
+	right = 250,
 	idle_x = 400,
 	idle_y = 25
 }
