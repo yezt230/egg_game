@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://cvrce6qnwe3es"]
+[gd_scene load_steps=22 format=3 uid="uid://cvrce6qnwe3es"]
 
 [ext_resource type="Script" path="res://scenes/player.gd" id="1_t8jxh"]
 [ext_resource type="Texture2D" uid="uid://dj6pkgpgissah" path="res://assets/bear_animations/bear_sprite_fin.png" id="2_dod2n"]
@@ -28,6 +28,30 @@ tracks/0/keys = {
 "update": 1,
 "values": [0]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:scale:y")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1.0]
+}
 
 [sub_resource type="Animation" id="Animation_0b5yd"]
 resource_name = "burp_new"
@@ -35,7 +59,7 @@ step = 0.1
 
 [sub_resource type="Animation" id="Animation_iup55"]
 resource_name = "down_poised"
-length = 0.1
+length = 2.0
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -44,10 +68,22 @@ tracks/0/path = NodePath(".:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 1.96667),
+"transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [10]
+"values": [10, 10]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale:y")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [1.0, 0.92, 1.0]
 }
 
 [sub_resource type="Animation" id="Animation_nc587"]
@@ -63,6 +99,36 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_hdxha"]
+resource_name = "idle_bounce"
+length = 2.0
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale:y")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [1.0, 0.92, 1.0]
 }
 
 [sub_resource type="Animation" id="Animation_ol6pt"]
@@ -117,7 +183,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_icylx"]
 resource_name = "up_poised"
-length = 0.1
+length = 2.0
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -126,10 +192,22 @@ tracks/0/path = NodePath(".:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [5]
+"values": [5, 5]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale:y")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [1.0, 0.920277, 1.0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_kjl7m"]
@@ -138,6 +216,7 @@ _data = {
 "burp_new": SubResource("Animation_0b5yd"),
 "down_poised": SubResource("Animation_iup55"),
 "idle": SubResource("Animation_nc587"),
+"idle_bounce": SubResource("Animation_hdxha"),
 "stifled_burp": SubResource("Animation_ol6pt"),
 "swallow_down": SubResource("Animation_62aqb"),
 "swallow_up": SubResource("Animation_qgepb"),
@@ -154,8 +233,9 @@ position = Vector2(-133, -268)
 shape = SubResource("CircleShape2D_2dlim")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(-7, -2)
+position = Vector2(-1, 156.853)
 texture = ExtResource("2_dod2n")
+offset = Vector2(-20, -153)
 hframes = 5
 vframes = 6
 
@@ -163,7 +243,7 @@ vframes = 6
 libraries = {
 "": SubResource("AnimationLibrary_kjl7m")
 }
-autoplay = "stifled_burp"
+autoplay = "idle_bounce"
 script = ExtResource("3_ysu14")
 
 [node name="StateMachine" parent="." node_paths=PackedStringArray("starting_state") instance=ExtResource("4_8bwfl")]
@@ -218,7 +298,7 @@ text = "The Velveteen Touch of a Dandy Fop
 "
 
 [node name="IdleTimer" type="Timer" parent="."]
-wait_time = 3.0
+wait_time = 8.0
 one_shot = true
 
 [connection signal="animation_finished" from="Sprite2D/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

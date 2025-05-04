@@ -16,7 +16,7 @@ func enter() -> void:
 	collision = parent.collision
 	collision_coords = parent.collision_coords
 	collision.global_position = Vector2(collision_coords.right, collision_coords.idle_y)
-	parent.player_animations.play('idle')
+	parent.player_animations.play('idle_bounce')
 	
 
 func process_input(_event: InputEvent) -> State:
