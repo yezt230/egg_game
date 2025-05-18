@@ -10,6 +10,12 @@ class_name Player extends CharacterBody2D
 @onready var sprite_scale = 1.0
 @onready var burp_counter = 0
 
+# reserved_state is only used for recording up/down
+# state for reverted to after belching
+# 0 = standing, 1 = crouching
+
+var reserved_state: int = 0
+
 var collision_coords = {
 	top = 300,
 	bottom = 490,

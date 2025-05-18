@@ -5,8 +5,8 @@ signal no_health
 @export var HealthBar: PackedScene
 #starting health for the healthbar, change this to
 #actual number for gameplay
-const starting_health = 1
-const DEBUG = true
+const starting_health = 3
+const DEBUG = false
 
 var current_health = starting_health
 var healthbar_array = []

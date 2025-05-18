@@ -5,6 +5,7 @@ signal enemy_escaped
 
 @onready var enemy_sprite = $Sprite2D
 @onready var enemy_animations = $AnimationPlayer
+@onready var belch_initiator: bool = false
 
 const GRAVITY = 25000
 const FLOOR_NORMAL = Vector2.UP
