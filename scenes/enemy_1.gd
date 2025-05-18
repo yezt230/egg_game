@@ -24,6 +24,12 @@ var regex = RegEx.new()
 func _ready():
 	determine_spot()
 	
+#	Probably going to replace this, make
+#	it dependent on the score later on
+	var belch_probability = randi() % 3
+	if belch_probability == 2:
+		belch_initiator = true
+	
 	regex.compile(".*Platform.*")
 	
 	enemy_animations.play("sliding")

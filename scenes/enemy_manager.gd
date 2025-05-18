@@ -2,7 +2,8 @@ extends Node
 
 @export var enemy_scene: PackedScene
 
-@onready var timer = $Timer
+@onready var timer = $SpawnTimer
+@onready var delay_timer = $SpawnDelayTimer
 @onready var HealthManager = get_parent().get_node("HealthManager")
 @onready var Score = get_parent().get_node("Score")
 
@@ -34,7 +35,10 @@ func _on_timer_timeout():
 
 	var belch_initiator = enemy_instance.belch_initiator
 	print(str(belch_initiator))
-	
+	if belch_initiator:
+		timer.stop()
+		delay_timer.start()
+
 	
 	#var main_scene = get_tree().get_first_node_in_group("main")
 	enemy_instance.connect("enemy_eaten", Callable(Score, "increment_score"))
@@ -50,3 +54,9 @@ func _on_enemy_eaten():
 		if speed_increase < max_speed:
 			speed_increase += speed_increase_increment
 			speed_increase_tick = 0
+
+
+func _on_spawn_delay_timer_timeout():
+	timer.start()
+	delay_timer.stop()
+	print("delay timer ended")
