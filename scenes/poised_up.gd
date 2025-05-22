@@ -20,7 +20,7 @@ func enter() -> void:
 	collision_coords = parent.collision_coords
 	collision.global_position.y = collision_coords.top
 	idle_timer.start()
-	idle_timer.connect("timeout", Callable(self, "_on_idle_timer_timeout"))
+	#idle_timer.connect("timeout", Callable(self, "_on_idle_timer_timeout"))
 	
 	parent.player_animations.play('up_poised')
 

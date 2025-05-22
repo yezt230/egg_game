@@ -1,6 +1,8 @@
 extends CharacterBody2D
 
+@warning_ignore("unused_signal")
 signal enemy_eaten
+@warning_ignore("unused_signal")
 signal enemy_escaped
 
 @onready var enemy_sprite = $Sprite2D
@@ -50,8 +52,9 @@ func _physics_process(delta):
 	#falling_speed is really the overall movement speed
 	var falling_speed = GRAVITY * delta
 	move_and_slide()
-	for i in get_slide_collision_count():
+	for i in range(get_slide_collision_count()):
 		var collision = get_slide_collision(i)
+
 		var collider_name = collision.get_collider().name
 		if collider_name == "Player" and not has_been_eaten:
 			has_been_eaten = true

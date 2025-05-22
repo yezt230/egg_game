@@ -16,10 +16,10 @@ var speed_increase_tick = 0
 var spawn_pause_trigger: int = 0
 
 func _ready():
-	var enemy = enemy_scene.instantiate() as Node2D
+	var _enemy = enemy_scene.instantiate() as Node2D
 	
 	spawn_time = timer.wait_time
-	timer.timeout.connect(_on_timer_timeout)
+	#timer.timeout.connect(_on_timer_timeout)
 
 
 func _on_timer_timeout():
@@ -54,6 +54,9 @@ func _on_enemy_eaten():
 		if speed_increase < max_speed:
 			speed_increase += speed_increase_increment
 			speed_increase_tick = 0
+	
+	#if is_belch_initiator:
+		#print('eated')
 
 
 func _on_spawn_delay_timer_timeout():
