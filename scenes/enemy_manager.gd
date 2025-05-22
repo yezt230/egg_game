@@ -34,7 +34,7 @@ func _on_timer_timeout():
 	add_child(enemy_instance)
 
 	var belch_initiator = enemy_instance.belch_initiator
-	print(str(belch_initiator))
+	#print(str(belch_initiator))
 	if belch_initiator:
 		timer.stop()
 		delay_timer.start()
@@ -62,4 +62,4 @@ func _on_enemy_eaten():
 func _on_spawn_delay_timer_timeout():
 	timer.start()
 	delay_timer.stop()
-	print("delay timer ended")
+	#print("delay timer ended")
