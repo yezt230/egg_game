@@ -18,10 +18,10 @@ class_name Player extends CharacterBody2D
 var reserved_state: int = 0
 
 var collision_coords = {
-	top = 300,
+	top = 330,
 	bottom = 490,
-	left = 500,
-	right = 250,
+	left = 510,
+	right = 240,
 	idle_x = 400,
 	idle_y = 25
 }

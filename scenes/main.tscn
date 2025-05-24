@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://c2jmckdmcktuo"]
+[gd_scene load_steps=15 format=3 uid="uid://c2jmckdmcktuo"]
 
 [ext_resource type="PackedScene" uid="uid://cvrce6qnwe3es" path="res://scenes/player.tscn" id="1_2ilp2"]
 [ext_resource type="Script" path="res://scenes/main.gd" id="1_uaobc"]
@@ -10,8 +10,10 @@
 [ext_resource type="PackedScene" uid="uid://c5yc82eaysjnu" path="res://scenes/score.tscn" id="5_4pema"]
 [ext_resource type="Texture2D" uid="uid://cqhmntvajk46s" path="res://assets/bg2.png" id="5_q7hw8"]
 [ext_resource type="PackedScene" uid="uid://4ejv4j4clxhv" path="res://scenes/enemy_manager.tscn" id="9_2q4br"]
-[ext_resource type="Texture2D" uid="uid://fhyeg2x0dyl7" path="res://assets/branches_right.png" id="10_qtdrm"]
-[ext_resource type="Texture2D" uid="uid://cby3n1u1rk6yd" path="res://assets/branches_left.png" id="11_kgssj"]
+[ext_resource type="Texture2D" uid="uid://c4fe7krb5eii0" path="res://assets/branch_top_left.png" id="13_sr16d"]
+[ext_resource type="Texture2D" uid="uid://y7ud3ej4r0ir" path="res://assets/branch_top_right.png" id="14_k1phw"]
+[ext_resource type="Texture2D" uid="uid://wlg7rkr6tyjk" path="res://assets/branch_bottom_left.png" id="15_7xcqo"]
+[ext_resource type="Texture2D" uid="uid://brvtvke4up1x" path="res://assets/branch_bottom_right.png" id="16_j0cin"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_uaobc")
@@ -33,39 +35,47 @@ unique_name_in_owner = true
 unique_name_in_owner = true
 position = Vector2(376, 367)
 
-[node name="Platforms" type="Node2D" parent="."]
-
-[node name="TopLeftPlatform" parent="Platforms" instance=ExtResource("2_phroa")]
-visible = false
-position = Vector2(25, 236)
-rotation = 0.43376
-
-[node name="TopRightPlatformk" parent="Platforms" instance=ExtResource("2_phroa")]
-visible = false
-position = Vector2(726, 247)
-rotation = -0.436332
-
-[node name="BottomLeftPlatform" parent="Platforms" instance=ExtResource("2_phroa")]
-visible = false
-position = Vector2(24, 424)
-rotation = 0.43376
-
-[node name="BottomRightPlatform" parent="Platforms" instance=ExtResource("2_phroa")]
-visible = false
-position = Vector2(725, 435)
-rotation = -0.436332
-
-[node name="BranchesRight" type="Sprite2D" parent="Platforms"]
-position = Vector2(670, 354)
-texture = ExtResource("10_qtdrm")
-
-[node name="BranchesLeft" type="Sprite2D" parent="Platforms"]
-position = Vector2(95, 351)
-texture = ExtResource("11_kgssj")
-
 [node name="EnemyManager" parent="." instance=ExtResource("9_2q4br")]
 
 [node name="EnemySpawnTimer" type="Timer" parent="."]
 wait_time = 1.5
+
+[node name="Platforms" type="Node2D" parent="."]
+
+[node name="TopLeftPlatform" parent="Platforms" instance=ExtResource("2_phroa")]
+visible = false
+position = Vector2(25, 261)
+rotation = 0.43376
+
+[node name="TopRightPlatform" parent="Platforms" instance=ExtResource("2_phroa")]
+visible = false
+position = Vector2(726, 272)
+rotation = -0.436332
+
+[node name="BottomLeftPlatform" parent="Platforms" instance=ExtResource("2_phroa")]
+visible = false
+position = Vector2(24, 426)
+rotation = 0.43376
+
+[node name="BottomRightPlatform" parent="Platforms" instance=ExtResource("2_phroa")]
+visible = false
+position = Vector2(725, 437)
+rotation = -0.436332
+
+[node name="BranchTopLeft" type="Sprite2D" parent="Platforms"]
+position = Vector2(105, 288)
+texture = ExtResource("13_sr16d")
+
+[node name="BranchTopRight" type="Sprite2D" parent="Platforms"]
+position = Vector2(672, 286)
+texture = ExtResource("14_k1phw")
+
+[node name="BranchBottomLeft" type="Sprite2D" parent="Platforms"]
+position = Vector2(100, 440)
+texture = ExtResource("15_7xcqo")
+
+[node name="BranchBottomRight" type="Sprite2D" parent="Platforms"]
+position = Vector2(671, 447)
+texture = ExtResource("16_j0cin")
 
 [connection signal="timeout" from="EnemySpawnTimer" to="." method="_on_enemy_spawn_timer_timeout"]

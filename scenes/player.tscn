@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://cvrce6qnwe3es"]
+[gd_scene load_steps=23 format=3 uid="uid://cvrce6qnwe3es"]
 
 [ext_resource type="Script" path="res://scenes/player.gd" id="1_t8jxh"]
 [ext_resource type="Texture2D" uid="uid://dj6pkgpgissah" path="res://assets/bear_animations/bear_sprite_fin.png" id="2_dod2n"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" path="res://scenes/stifled.gd" id="8_iy5rn"]
 [ext_resource type="Script" path="res://scenes/swallow_up.gd" id="9_m6tvp"]
 [ext_resource type="Script" path="res://scenes/swallow_down.gd" id="10_ntv6y"]
+[ext_resource type="Theme" uid="uid://bpeo5ur86lfxi" path="res://theme/theme.tres" id="11_j07w2"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2dlim"]
 radius = 20.0
@@ -290,10 +291,11 @@ offset_left = -180.0
 offset_top = -193.0
 offset_right = 222.0
 offset_bottom = -161.0
+theme = ExtResource("11_j07w2")
 theme_override_colors/font_color = Color(0.682353, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 1
-theme_override_font_sizes/font_size = 23
+theme_override_font_sizes/font_size = 48
 text = "The Velveteen Touch of a Dandy Fop
 "
 
