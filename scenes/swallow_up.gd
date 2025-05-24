@@ -8,7 +8,7 @@ extends State
 #will have to move to a parent (Player) or something to make it increase
 #in the swallow_down state as well
 @onready var burp_counter = 0
-@onready var burp_limit = 5
+#@onready var burp_limit = 5
 
 var collision
 var player_sprite
@@ -19,7 +19,7 @@ var burp_queued
 
 func enter() -> void:
 	super()
-	burp_counter += 1
+	#burp_counter += 1
 	collision = parent.collision
 	player_sprite = parent.player_sprite
 	sprite_scale = parent.sprite_scale
@@ -73,9 +73,9 @@ func _on_animation_player_animation_finished(anim_name):
 	if burp_queued:
 		parent.burp_queued = false
 		parent.state_machine.change_state(stifled_state)
-	elif burp_counter >= burp_limit:
-		burp_counter = 0
-		parent.state_machine.change_state(stifled_state)
+	#elif burp_counter >= burp_limit:
+		#burp_counter = 0
+		#parent.state_machine.change_state(stifled_state)
 	else:
 		if anim_name == 'swallow_up':
 			parent.state_machine.change_state(poised_up_state)
