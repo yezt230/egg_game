@@ -4,6 +4,7 @@ extends Node
 
 @onready var timer = $SpawnTimer
 @onready var delay_timer = $SpawnDelayTimer
+@onready var player = $"../Player"
 @onready var HealthManager = get_parent().get_node("HealthManager")
 @onready var Score = get_parent().get_node("Score")
 
@@ -62,4 +63,3 @@ func _on_enemy_eaten():
 func _on_spawn_delay_timer_timeout():
 	timer.start()
 	delay_timer.stop()
-	#print("delay timer ended")

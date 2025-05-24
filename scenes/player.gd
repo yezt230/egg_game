@@ -9,6 +9,7 @@ class_name Player extends CharacterBody2D
 
 @onready var sprite_scale = 1.0
 @onready var burp_counter = 0
+@onready var burp_queued = false
 
 # reserved_state is only used for recording up/down
 # state for reverted to after belching
@@ -30,8 +31,8 @@ func _ready():
 	state_machine.init(self)
 	player_sprite.scale.x = sprite_scale
 	player_sprite.scale.y = sprite_scale
-#Probably a better way to do this than using a new signal inside the player
-#code to check when a new enemy spawns
+	# Probably a better way to do this than using a new signal inside the player
+	# code to check when a new enemy spawns
 	get_tree().connect("node_added",  Callable(self, "_on_node_added"))
 	for enemy in get_tree().get_nodes_in_group("Enemies"):
 		connect_enemy_signal(enemy)
@@ -56,10 +57,14 @@ func input_movement(coord, state_boolean):
 
 
 func connect_enemy_signal(enemy):
-	enemy.connect("enemy_eaten", Callable(self, "_on_enemy_eaten"))
+	enemy.connect("enemy_eaten", Callable(self, "_on_enemy_eaten").bind(enemy))
 
 
-func _on_enemy_eaten():
+func _on_enemy_eaten(enemy):
+	if enemy.belch_initiator:
+		burp_queued = true
+	else:
+		burp_queued = false
 	state_machine.on_enemy_eaten()
 
 

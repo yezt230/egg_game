@@ -17,9 +17,6 @@ func enter() -> void:
 	collision_coords = parent.collision_coords
 	reserved_state = parent.reserved_state
 	collision.global_position.y = collision_coords.bottom
-	
-	print("start swallow up")
-	
 	if not parent.player_animations.is_connected("animation_finished", Callable(self, "_on_animation_player_animation_finished")):
 		parent.player_animations.connect("animation_finished", Callable(self, "_on_animation_player_animation_finished"))
 	parent.player_animations.play('swallow_down')
@@ -64,5 +61,5 @@ func on_enemy_eaten():
 	parent.player_animations.play('swallow_down')
 	
 
-func _on_animation_player_animation_finished(_anim_name):	
+func _on_animation_player_animation_finished(_anim_name):
 	parent.state_machine.change_state(poised_down_state)
