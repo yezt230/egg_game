@@ -63,3 +63,7 @@ func _on_enemy_eaten():
 func _on_spawn_delay_timer_timeout():
 	timer.start()
 	delay_timer.stop()
+
+
+func _on_start_spawn_timer_timeout():
+	timer.start()
