@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://giyfet1x83i0"]
+[gd_scene load_steps=3 format=3 uid="uid://giyfet1x83i0"]
 
 [ext_resource type="Script" path="res://scenes/end_screen.gd" id="1_bpix5"]
+[ext_resource type="Theme" uid="uid://bpeo5ur86lfxi" path="res://theme/theme.tres" id="2_hlef6"]
 
 [node name="EndScreen" type="CanvasLayer"]
 process_mode = 3
@@ -40,7 +41,7 @@ text = "Your score:"
 [node name="RestartButton" type="Button" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-theme_override_font_sizes/font_size = 24
+theme = ExtResource("2_hlef6")
 text = "Restart
 "
 

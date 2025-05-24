@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://dr02ai40hl4bm"]
+[gd_scene load_steps=3 format=3 uid="uid://dr02ai40hl4bm"]
 
 [ext_resource type="Script" path="res://scenes/start_screen.gd" id="1_ol6y2"]
+[ext_resource type="Theme" uid="uid://bpeo5ur86lfxi" path="res://theme/theme.tres" id="2_oavl7"]
 
 [node name="StartScreen" type="CanvasLayer"]
 script = ExtResource("1_ol6y2")
@@ -24,11 +25,29 @@ theme_override_constants/margin_bottom = 8
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer"]
 layout_mode = 2
 
+[node name="TitleLabel" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_oavl7")
+theme_override_colors/font_color = Color(0.682353, 0.462745, 0.443137, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 12
+theme_override_font_sizes/font_size = 64
+text = "Bear Game"
+
 [node name="StartButton" type="Button" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
 focus_mode = 0
+theme = ExtResource("2_oavl7")
 text = "START"
+
+[node name="SettingsButton" type="Button" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_oavl7")
+text = "SETTINGS"
+
+[node name="CreditsButton" type="Button" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_oavl7")
+text = "CREDITS"
 
 [connection signal="pressed" from="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
