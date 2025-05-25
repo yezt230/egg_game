@@ -1,13 +1,21 @@
-[gd_scene load_steps=2 format=3 uid="uid://c5yc82eaysjnu"]
+[gd_scene load_steps=3 format=3 uid="uid://c5yc82eaysjnu"]
 
 [ext_resource type="Script" path="res://scenes/score.gd" id="1_o37l8"]
+[ext_resource type="Theme" uid="uid://bpeo5ur86lfxi" path="res://theme/theme.tres" id="2_breck"]
 
 [node name="Score" type="CanvasLayer"]
 script = ExtResource("1_o37l8")
 
-[node name="EnemyCount" type="Label" parent="."]
-offset_right = 40.0
-offset_bottom = 23.0
+[node name="MarginContainer" type="MarginContainer" parent="."]
+offset_right = 100.0
+offset_bottom = 80.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="EnemyCount" type="Label" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("2_breck")
 theme_override_colors/font_color = Color(0.266667, 0, 0, 1)
-theme_override_font_sizes/font_size = 40
+theme_override_font_sizes/font_size = 64
 text = "0"

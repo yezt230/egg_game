@@ -1,8 +1,7 @@
 extends CanvasLayer
 
 @export var score: int = 0
-
-@onready var count_text = $EnemyCount
+@onready var count_text = $MarginContainer/EnemyCount
 var enemy_count = 0
 
 
