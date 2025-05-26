@@ -11,7 +11,7 @@ enemy_scene = ExtResource("2_u8rkr")
 wait_time = 0.75
 
 [node name="SpawnDelayTimer" type="Timer" parent="."]
-wait_time = 2.0
+wait_time = 3.0
 
 [node name="StartSpawnTimer" type="Timer" parent="."]
 one_shot = true
