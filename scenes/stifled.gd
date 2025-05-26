@@ -2,12 +2,19 @@ extends State
 
 @export var poised_up_state: State
 @export var poised_down_state: State
+@onready var score_scene = get_node("/root/Main/Score")
 
 func enter() -> void:
 	super()
+	print('stifled')
 	if not parent.player_animations.is_connected("animation_finished", Callable(self, "_on_animation_player_animation_finished")):
 		parent.player_animations.connect("animation_finished", Callable(self, "_on_animation_player_animation_finished"))
-	parent.player_animations.play('belch')
+	if score_scene.score <= 8:
+		print("score is: " + str(score_scene.score))
+		parent.player_animations.play('stifled_burp')
+	else:
+		print("score is: " + str(score_scene.score))
+		parent.player_animations.play('belch')
 
 
 func exit():

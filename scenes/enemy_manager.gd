@@ -17,37 +17,27 @@ var speed_increase_tick = 0
 var spawn_pause_trigger: int = 0
 
 func _ready():
-	var _enemy = enemy_scene.instantiate() as Node2D
-	
+	var _enemy = enemy_scene.instantiate() as Node2D	
 	spawn_time = timer.wait_time
-	#timer.timeout.connect(_on_timer_timeout)
 
 
 func _on_timer_timeout():
-	timer.start()
-	
+	timer.start()	
 	var enemy_instance = enemy_scene.instantiate()
-
 	enemy_instance.enemy_eaten.connect(_on_enemy_eaten)
 	if enemy_instance.has_method("set_speed_increase"):
-		enemy_instance.set_speed_increase(speed_increase)
-		
+		enemy_instance.set_speed_increase(speed_increase)		
 	add_child(enemy_instance)
-
 	var belch_initiator = enemy_instance.belch_initiator
-	#print(str(belch_initiator))
 	if belch_initiator:
 		timer.stop()
 		delay_timer.start()
-
-	
-	#var main_scene = get_tree().get_first_node_in_group("main")
 	enemy_instance.connect("enemy_eaten", Callable(Score, "increment_score"))
-
 	# Healh manager connection is here for now, but it'd be more
 	# ideal to move this to its own scene and figure out how to
 	# connect the signal there
 	enemy_instance.connect("enemy_escaped", Callable(HealthManager, "_on_enemy_escaped"))
+	
 
 func _on_enemy_eaten():
 	speed_increase_tick += 1
@@ -55,9 +45,6 @@ func _on_enemy_eaten():
 		if speed_increase < max_speed:
 			speed_increase += speed_increase_increment
 			speed_increase_tick = 0
-	
-	#if is_belch_initiator:
-		#print('eated')
 
 
 func _on_spawn_delay_timer_timeout():

@@ -1,8 +1,7 @@
 extends CanvasLayer
 
-@export var score: int = 0
 @onready var count_text = $MarginContainer/EnemyCount
-var enemy_count = 0
+var score = 0
 
 
 func _ready():
@@ -10,9 +9,9 @@ func _ready():
 
 
 func increment_score():
-	enemy_count += 1
+	score += 1
 	update_score()
 
 
 func update_score():
-	count_text.text = str(enemy_count)
+	count_text.text = str(score)

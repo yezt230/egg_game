@@ -19,7 +19,6 @@ var burp_queued
 
 func enter() -> void:
 	super()
-	#burp_counter += 1
 	collision = parent.collision
 	player_sprite = parent.player_sprite
 	sprite_scale = parent.sprite_scale

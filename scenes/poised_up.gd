@@ -5,6 +5,7 @@ extends State
 @export var swallow_up_state: State
 @export var stifled_state: State
 
+
 var idle_timer
 var collision
 var player_sprite
