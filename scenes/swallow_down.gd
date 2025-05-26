@@ -34,11 +34,9 @@ func exit() -> void:
 
 func process_input(_event: InputEvent) -> State:
 	if Input.is_action_just_pressed('up'):
-		#idle_timer.restart()
 		return swallow_up_state
 	if Input.is_action_just_pressed('left'):
 		collision.global_position.x = collision_coords.right
-		#idle_timer.restart()
 		player_sprite.scale.x = sprite_scale * 1
 	elif Input.is_action_just_pressed('right'):
 		collision.global_position.x = collision_coords.left

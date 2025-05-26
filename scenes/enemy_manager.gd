@@ -14,7 +14,6 @@ var max_speed = 30000
 var speed_increase_increment = 10000
 var speed_increase_amt = 2
 var speed_increase_tick = 0
-var spawn_pause_trigger: int = 0
 
 func _ready():
 	var _enemy = enemy_scene.instantiate() as Node2D	

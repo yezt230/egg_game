@@ -5,8 +5,6 @@ extends Node2D
 @onready var HealthManager = $HealthManager
 @onready var Score = $Score
 
-#pine cones for "bomb" hazard?
-
 func _ready():
 	$%HealthManager.no_health.connect(on_no_health)
 

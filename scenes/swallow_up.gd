@@ -4,12 +4,6 @@ extends State
 @export var swallow_down_state: State
 @export var stifled_state: State
 
-#initializing and keeping track of burp_counter means it can only increment in the swallow_up state,
-#will have to move to a parent (Player) or something to make it increase
-#in the swallow_down state as well
-@onready var burp_counter = 0
-#@onready var burp_limit = 5
-
 var collision
 var player_sprite
 var sprite_scale
@@ -35,7 +29,6 @@ func enter() -> void:
 func exit() -> void:
 	if parent.player_animations.is_connected("animation_finished", Callable(self, "_on_animation_player_animation_finished")):
 		parent.player_animations.disconnect("animation_finished", Callable(self, "_on_animation_player_animation_finished"))
-	#print("name is " + str(parent.player_animations.current_animation) + " and time is " + str(parent.player_animations.current_animation_position))
 	if parent.player_animations.current_animation == "swallow_up":
 		parent.current_swallow_progress = parent.player_animations.current_animation_position
 	else:
@@ -72,9 +65,6 @@ func _on_animation_player_animation_finished(anim_name):
 	if burp_queued:
 		parent.burp_queued = false
 		parent.state_machine.change_state(stifled_state)
-	#elif burp_counter >= burp_limit:
-		#burp_counter = 0
-		#parent.state_machine.change_state(stifled_state)
 	else:
 		if anim_name == 'swallow_up':
 			parent.state_machine.change_state(poised_up_state)

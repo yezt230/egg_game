@@ -8,7 +8,6 @@ class_name Player extends CharacterBody2D
 @onready var state_machine = $StateMachine
 
 @onready var sprite_scale = 1.0
-@onready var burp_counter = 0
 @onready var burp_queued = false
 
 # reserved_state is only used for recording up/down
@@ -51,8 +50,6 @@ func _process(_delta):
 	
 
 func input_movement(coord, state_boolean):
-		#collision.disabled = false
-		#idling = false
 		return [coord, state_boolean]
 
 
