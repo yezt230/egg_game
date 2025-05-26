@@ -8,6 +8,10 @@ signal enemy_escaped
 @onready var enemy_sprite = $Sprite2D
 @onready var enemy_animations = $AnimationPlayer
 @onready var belch_initiator: bool = false
+@onready var spawn_top_left = get_node("/root/Main/Platforms/MarkerTopLeft")
+@onready var spawn_top_right = get_node("/root/Main/Platforms/MarkerTopRight")
+@onready var spawn_bottom_left = get_node("/root/Main/Platforms/MarkerBottomLeft")
+@onready var spawn_bottom_right = get_node("/root/Main/Platforms/MarkerBottomRight")
 
 const GRAVITY = 25000
 const FLOOR_NORMAL = Vector2.UP
@@ -25,7 +29,6 @@ var regex = RegEx.new()
 
 func _ready():
 	determine_spot()
-	
 #	Probably going to replace this, make
 #	it dependent on the score later on
 #	1/3 chance of causing a belch
@@ -95,24 +98,14 @@ func _on_lifespan_timer_timeout():
 	queue_free()
 
 
-func determine_spot():	
-	var h_position = 0
-	var v_position = 0
-	var h_rand = randi() % 2
-	var v_rand = randi() % 2
-	var enemy_scale = 1
-	if h_rand == 0:
-		h_position = -50
-	else:
-		h_position = 850
-		enemy_scale = -1
-		
-	if v_rand == 0:
-		v_position = 30
-	else:
-		v_position = 300
-		
-	self.global_position = Vector2(h_position , v_position)
+func determine_spot():
+	var enemy_scale = 1		
+	var spawn_position_picker = randi() % 4
+	var possible_positions = [spawn_top_left, spawn_top_right, spawn_bottom_left, spawn_bottom_right]
+	var spawn_position = possible_positions[spawn_position_picker]	
+	if spawn_position_picker == 1 or spawn_position_picker == 3:
+		enemy_scale = -1		
+	self.global_position = spawn_position.global_position	
 	self.scale.x = enemy_scale
 
 

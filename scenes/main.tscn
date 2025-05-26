@@ -78,4 +78,16 @@ texture = ExtResource("15_7xcqo")
 position = Vector2(671, 447)
 texture = ExtResource("16_j0cin")
 
+[node name="MarkerTopLeft" type="Marker2D" parent="Platforms"]
+position = Vector2(-80, 105)
+
+[node name="MarkerTopRight" type="Marker2D" parent="Platforms"]
+position = Vector2(880, 105)
+
+[node name="MarkerBottomLeft" type="Marker2D" parent="Platforms"]
+position = Vector2(-80, 282)
+
+[node name="MarkerBottomRight" type="Marker2D" parent="Platforms"]
+position = Vector2(880, 282)
+
 [connection signal="timeout" from="EnemySpawnTimer" to="." method="_on_enemy_spawn_timer_timeout"]

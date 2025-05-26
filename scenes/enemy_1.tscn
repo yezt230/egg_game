@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://bs6pkaaaew764"]
 
 [ext_resource type="Script" path="res://scenes/enemy_1.gd" id="1_2bm8w"]
-[ext_resource type="Texture2D" uid="uid://cvthfyf61gglj" path="res://assets/prey_spritesheet.png" id="2_qn2s0"]
+[ext_resource type="Texture2D" uid="uid://car6lgd4nbvrx" path="res://assets/prey_spritesheet.png" id="2_qn2s0"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3luyp"]
 radius = 19.0
