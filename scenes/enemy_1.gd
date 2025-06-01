@@ -114,6 +114,5 @@ func set_animal():
 
 
 func set_speed_increase(speed_increase):
-	#return speed_increase
 	move_speed = GRAVITY + speed_increase
 	
