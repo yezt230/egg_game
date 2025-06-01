@@ -50,7 +50,7 @@ func _process(_delta):
 	
 
 func input_movement(coord, state_boolean):
-		return [coord, state_boolean]
+	return [coord, state_boolean]
 
 
 func connect_enemy_signal(enemy):
