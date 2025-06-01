@@ -24,4 +24,5 @@ func on_enemy_eaten():
 
 
 func _on_animation_player_animation_finished(_anim_name):
+	parent.burp_queued = false
 	parent.state_machine.change_state(poised_up_state)

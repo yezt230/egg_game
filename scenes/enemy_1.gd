@@ -28,7 +28,7 @@ var has_escaped = false
 var move_speed = 0
 var regex = RegEx.new()
 var score_array = [2,4,6,8]
-var will_generate_belch_initiator = false
+#var will_generate_belch_initiator = false
 
 func _ready():
 	determine_spot()

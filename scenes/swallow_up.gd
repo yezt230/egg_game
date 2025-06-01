@@ -9,7 +9,6 @@ var player_sprite
 var sprite_scale
 var collision_coords
 var reserved_state
-var burp_queued
 
 func enter() -> void:
 	super()
@@ -18,7 +17,6 @@ func enter() -> void:
 	sprite_scale = parent.sprite_scale
 	collision_coords = parent.collision_coords
 	reserved_state = parent.reserved_state
-	burp_queued = parent.burp_queued
 	collision.global_position.y = collision_coords.top
 	if not parent.player_animations.is_connected("animation_finished", Callable(self, "_on_animation_player_animation_finished")):
 		parent.player_animations.connect("animation_finished", Callable(self, "_on_animation_player_animation_finished"))
@@ -61,9 +59,9 @@ func on_enemy_eaten():
 	parent.player_animations.play('swallow_up')
 
 
-func _on_animation_player_animation_finished(anim_name):	
-	if burp_queued:
-		parent.burp_queued = false
+func _on_animation_player_animation_finished(anim_name):
+	print("swallow_up animation finished")	
+	if parent.burp_queued:
 		parent.state_machine.change_state(stifled_state)
 	else:
 		if anim_name == 'swallow_up':

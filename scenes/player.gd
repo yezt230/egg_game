@@ -6,6 +6,7 @@ class_name Player extends CharacterBody2D
 @onready var idle_timer = $IdleTimer
 @onready var state_label = $StateLabel
 @onready var state_machine = $StateMachine
+@onready var belch_label = $BelchLabel
 
 @onready var sprite_scale = 1.0
 @onready var burp_queued = false
@@ -47,7 +48,7 @@ func _on_node_added(new_node):
 func _process(_delta):
 	var current_state_name = state_machine.get_current_state()
 	state_label.text = current_state_name
-	
+	belch_label.text = str(burp_queued)
 
 func input_movement(coord, state_boolean):
 	return [coord, state_boolean]
@@ -60,8 +61,8 @@ func connect_enemy_signal(enemy):
 func _on_enemy_eaten(enemy):
 	if enemy.belch_initiator:
 		burp_queued = true
-	else:
-		burp_queued = false
+	#else:
+		#burp_queued = false		
 	state_machine.on_enemy_eaten()
 
 
