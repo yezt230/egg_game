@@ -1,7 +1,9 @@
-[gd_scene load_steps=24 format=3 uid="uid://cvrce6qnwe3es"]
+[gd_scene load_steps=26 format=3 uid="uid://cvrce6qnwe3es"]
 
 [ext_resource type="Script" path="res://scenes/player.gd" id="1_t8jxh"]
 [ext_resource type="Texture2D" uid="uid://dj6pkgpgissah" path="res://assets/bear_animations/bear_sprite_fin.png" id="2_dod2n"]
+[ext_resource type="AudioStream" uid="uid://bgfthrbblo1n2" path="res://assets/sound/belch2.mp3" id="2_jvwwt"]
+[ext_resource type="Script" path="res://scenes/stream_player_2d.gd" id="3_dy8li"]
 [ext_resource type="Script" path="res://scenes/animation_player.gd" id="3_ysu14"]
 [ext_resource type="PackedScene" uid="uid://d3ihool0kv7lt" path="res://scenes/state_machine.tscn" id="4_8bwfl"]
 [ext_resource type="Script" path="res://scenes/idle.gd" id="6_d0aum"]
@@ -69,6 +71,20 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [30, 31, 34, 35, 36, 37, 38, 39, 38, 39, 38, 39, 38]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../StreamPlayer2D")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.6),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"play_belch"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_0b5yd"]
@@ -250,6 +266,11 @@ script = ExtResource("1_t8jxh")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-133, -268)
 shape = SubResource("CircleShape2D_2dlim")
+
+[node name="StreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_jvwwt")
+bus = &"sfx"
+script = ExtResource("3_dy8li")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(-1, 156.853)

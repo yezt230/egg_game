@@ -32,8 +32,8 @@ func _ready():
 #	Probably going to replace this, make
 #	it dependent on the score later on
 #	1/3 chance of causing a belch
-	var belch_probability = randi() % 3
-	#var belch_probability = 2	
+	#var belch_probability = randi() % 3
+	var belch_probability = 2	
 	if belch_probability == 2:
 		belch_initiator = true
 		print("this enemy generates a belch")
