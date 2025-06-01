@@ -12,6 +12,7 @@ signal enemy_escaped
 @onready var spawn_top_right = get_node("/root/Main/Platforms/MarkerTopRight")
 @onready var spawn_bottom_left = get_node("/root/Main/Platforms/MarkerBottomLeft")
 @onready var spawn_bottom_right = get_node("/root/Main/Platforms/MarkerBottomRight")
+#@onready var score_scene = get_node("/root/Main/Score")
 
 const GRAVITY = 25000
 const FLOOR_NORMAL = Vector2.UP
@@ -26,17 +27,22 @@ var has_been_eaten = false
 var has_escaped = false
 var move_speed = 0
 var regex = RegEx.new()
+var score_array = [2,4,6,8]
+var will_generate_belch_initiator = false
 
 func _ready():
 	determine_spot()
 #	Probably going to replace this, make
 #	it dependent on the score later on
 #	1/3 chance of causing a belch
-	#var belch_probability = randi() % 3
-	var belch_probability = 2	
-	if belch_probability == 2:
-		belch_initiator = true
-		print("this enemy generates a belch")
+	#var belch_probability = randi() % 3	
+	#var belch_probability = 2	
+	#if belch_probability == 2:
+	#if score_array.has(score_scene.score):
+		#
+		#belch_initiator = true
+		#print("the array has a score of " + str(score_scene.score))
+		#print("this enemy generates a belch")
 	
 	regex.compile(".*Platform.*")
 	
