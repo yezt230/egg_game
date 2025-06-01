@@ -85,20 +85,32 @@ theme_override_font_sizes/font_size = 64
 text = "Bear Game"
 
 [node name="StartButton" type="Button" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 focus_mode = 0
 theme = ExtResource("2_oavl7")
 text = "START"
 
 [node name="SettingsButton" type="Button" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 theme = ExtResource("2_oavl7")
 text = "SETTINGS"
 
 [node name="CreditsButton" type="Button" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 theme = ExtResource("2_oavl7")
 text = "CREDITS"
 
+[node name="MainButton" type="Button" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+focus_mode = 0
+theme = ExtResource("2_oavl7")
+text = "MAIN MENU"
+
 [connection signal="pressed" from="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/SettingsButton" to="." method="_on_settings_button_pressed"]
+[connection signal="pressed" from="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/CreditsButton" to="." method="_on_credits_button_pressed"]
+[connection signal="pressed" from="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/MainButton" to="." method="_on_main_button_pressed"]
