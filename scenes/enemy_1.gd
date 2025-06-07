@@ -62,6 +62,17 @@ func _physics_process(delta):
 		falling_label.text = "falling"
 		falling_speed = GRAVITY * delta
 		enemy_animations.play("falling")
+		match animal_type:
+			0:
+				enemy_sprite.frame = 12
+				#animal_type = 0
+			1:
+				enemy_sprite.frame = 13
+				#animal_type = 1
+			2:
+				enemy_sprite.frame = 14
+				#animal_type = 2
+		
 	for i in range(get_slide_collision_count()):
 		var collider_name = get_slide_collision(i).get_collider().name
 		if collider_name == "Player" and not has_been_eaten:
