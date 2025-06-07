@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://c2jmckdmcktuo"]
+[gd_scene load_steps=17 format=3 uid="uid://c2jmckdmcktuo"]
 
 [ext_resource type="PackedScene" uid="uid://cvrce6qnwe3es" path="res://scenes/player.tscn" id="1_2ilp2"]
 [ext_resource type="Script" path="res://scenes/main.gd" id="1_uaobc"]
@@ -10,6 +10,8 @@
 [ext_resource type="PackedScene" uid="uid://c5yc82eaysjnu" path="res://scenes/score.tscn" id="5_4pema"]
 [ext_resource type="Texture2D" uid="uid://cqhmntvajk46s" path="res://assets/bg2.png" id="5_q7hw8"]
 [ext_resource type="PackedScene" uid="uid://4ejv4j4clxhv" path="res://scenes/enemy_manager.tscn" id="9_2q4br"]
+[ext_resource type="Texture2D" uid="uid://dob8rwla4itea" path="res://assets/bg_branch1.png" id="10_t54l6"]
+[ext_resource type="Texture2D" uid="uid://cyhkj2mrgsfl7" path="res://assets/bg_branch2.png" id="11_hptes"]
 [ext_resource type="Texture2D" uid="uid://c4fe7krb5eii0" path="res://assets/branch_top_left.png" id="13_sr16d"]
 [ext_resource type="Texture2D" uid="uid://y7ud3ej4r0ir" path="res://assets/branch_top_right.png" id="14_k1phw"]
 [ext_resource type="Texture2D" uid="uid://wlg7rkr6tyjk" path="res://assets/branch_bottom_left.png" id="15_7xcqo"]
@@ -25,6 +27,14 @@ modulate = Color(1, 1, 1, 0.75)
 position = Vector2(400, 301)
 scale = Vector2(1, 1)
 texture = ExtResource("5_q7hw8")
+
+[node name="BgBranch1" type="Sprite2D" parent="."]
+position = Vector2(134, 315)
+texture = ExtResource("10_t54l6")
+
+[node name="BgBranch2" type="Sprite2D" parent="."]
+position = Vector2(644, 347)
+texture = ExtResource("11_hptes")
 
 [node name="HealthManager" parent="." instance=ExtResource("3_wyg4o")]
 unique_name_in_owner = true
@@ -89,5 +99,7 @@ position = Vector2(-80, 282)
 
 [node name="MarkerBottomRight" type="Marker2D" parent="Platforms"]
 position = Vector2(880, 282)
+
+[node name="Node" type="Node" parent="."]
 
 [connection signal="timeout" from="EnemySpawnTimer" to="." method="_on_enemy_spawn_timer_timeout"]

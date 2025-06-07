@@ -14,7 +14,6 @@ class_name Player extends CharacterBody2D
 # reserved_state is only used for recording up/down
 # state for reverted to after belching
 # 0 = standing, 1 = crouching
-
 var reserved_state: int = 0
 
 var collision_coords = {
@@ -44,7 +43,6 @@ func _on_node_added(new_node):
 
 
 #More optimal way to assign multiple values at once?
-#TODO: top-level collision is misaligned until player presses a lower button
 func _process(_delta):
 	var current_state_name = state_machine.get_current_state()
 	state_label.text = current_state_name
@@ -61,8 +59,6 @@ func connect_enemy_signal(enemy):
 func _on_enemy_eaten(enemy):
 	if enemy.belch_initiator:
 		burp_queued = true
-	#else:
-		#burp_queued = false		
 	state_machine.on_enemy_eaten()
 
 

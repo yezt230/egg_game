@@ -1,7 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://bs6pkaaaew764"]
+[gd_scene load_steps=11 format=3 uid="uid://bs6pkaaaew764"]
 
 [ext_resource type="Script" path="res://scenes/enemy_1.gd" id="1_2bm8w"]
-[ext_resource type="Texture2D" uid="uid://car6lgd4nbvrx" path="res://assets/prey_spritesheet.png" id="2_qn2s0"]
+[ext_resource type="Texture2D" uid="uid://dr2fm4hg3ynbj" path="res://assets/prey_spritesheet.png" id="2_qn2s0"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3luyp"]
 radius = 19.0
@@ -104,10 +104,27 @@ tracks/1/keys = {
 "values": [Vector2(0.4, 0.4), Vector2(0.4, 0.5), Vector2(0.4, 0.4)]
 }
 
+[sub_resource type="Animation" id="Animation_nb0rp"]
+resource_name = "falling"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [12]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_pwj2n"]
 _data = {
 "RESET": SubResource("Animation_78dky"),
 "beaver_run": SubResource("Animation_v2a12"),
+"falling": SubResource("Animation_nb0rp"),
 "rabbit_run": SubResource("Animation_r38mt"),
 "raccoon_run": SubResource("Animation_6t1bg"),
 "sliding": SubResource("Animation_6rin5")
@@ -124,7 +141,7 @@ position = Vector2(-12, -26)
 scale = Vector2(0.4, 0.4)
 texture = ExtResource("2_qn2s0")
 hframes = 3
-vframes = 4
+vframes = 5
 region_rect = Rect2(0, 0, 351.5, 355)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -139,6 +156,5 @@ autostart = true
 libraries = {
 "": SubResource("AnimationLibrary_pwj2n")
 }
-autoplay = "rabbit_run"
 
 [connection signal="timeout" from="LifespanTimer" to="." method="_on_lifespan_timer_timeout"]

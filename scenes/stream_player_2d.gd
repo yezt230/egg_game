@@ -7,6 +7,7 @@ func play_belch():
 		return
 	
 	stream = SoundArray.pick_random()
+	#stream = SoundArray[0]
 	play()
 
 	
