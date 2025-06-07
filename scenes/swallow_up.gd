@@ -60,7 +60,6 @@ func on_enemy_eaten():
 
 
 func _on_animation_player_animation_finished(anim_name):
-	print("swallow_up animation finished")	
 	if parent.burp_queued:
 		parent.state_machine.change_state(stifled_state)
 	else:
