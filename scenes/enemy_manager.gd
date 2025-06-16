@@ -17,9 +17,10 @@ var speed_increase_increment = 10000
 #var speed_increase_increment = 0
 var speed_increase_amt = 2
 var speed_increase_tick = 0
-#var score_array = [2,4,6,8,10,12,14,16,18,20]
-#var score_array = [10,20,30,40,50]
-var score_array = [4,8,12,16,20]
+var score_array = [4,8,12,14,16,18,20]
+
+#var stifled_array = [10,20,30,40,50]
+#var score_array = [4,8,12,16,20]
 var already_generated_belch_initiators_scores = []
 var will_generate_belch_initiator = false
 
@@ -73,6 +74,6 @@ func _on_start_spawn_timer_timeout():
 	
 	
 func determine_belch_initiator():
-	if score_array.has(Score.score) and not already_generated_belch_initiators_scores.has(Score.score):
+	if score_array.has(Score.score) and not already_generated_belch_initiators_scores.has(Score.score):		
 		already_generated_belch_initiators_scores.append(Score.score)
 		will_generate_belch_initiator = true

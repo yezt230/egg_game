@@ -38,7 +38,6 @@ func _ready():
 	#var belch_probability = 2	
 	#if belch_probability == 2:
 	#if score_array.has(score_scene.score):
-		#
 		#belch_initiator = true
 		#print("the array has a score of " + str(score_scene.score))
 		#print("this enemy generates a belch")
