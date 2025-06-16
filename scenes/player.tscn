@@ -321,10 +321,11 @@ poised_up_state = NodePath("../PoisedUp")
 swallow_down_state = NodePath("../SwallowDown")
 stifled_state = NodePath("../Stifled")
 
-[node name="SwallowDown" type="Node" parent="StateMachine" node_paths=PackedStringArray("poised_down_state", "swallow_up_state")]
+[node name="SwallowDown" type="Node" parent="StateMachine" node_paths=PackedStringArray("poised_down_state", "swallow_up_state", "stifled_state")]
 script = ExtResource("10_ntv6y")
 poised_down_state = NodePath("../PoisedDown")
 swallow_up_state = NodePath("../SwallowUp")
+stifled_state = NodePath("../Stifled")
 
 [node name="StateLabel" type="Label" parent="."]
 offset_left = -180.0

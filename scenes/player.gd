@@ -15,7 +15,7 @@ class_name Player extends CharacterBody2D
 # reserved_state is only used for recording up/down
 # state for reverted to after belching
 # 0 = standing, 1 = crouching
-var reserved_state: int = 0
+var reserved_state: String = "idle"
 var burp_counter: int = 0
 
 var collision_coords = {
@@ -49,7 +49,8 @@ func _process(_delta):
 	var current_state_name = state_machine.get_current_state()
 	state_label.text = current_state_name
 	belch_label.text = str(burp_queued)
-	burp_label.text = str(burp_counter)
+	#burp_label.text = str(burp_counter)
+	burp_label.text = str(reserved_state)
 
 func input_movement(coord, state_boolean):
 	return [coord, state_boolean]

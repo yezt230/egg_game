@@ -25,6 +25,7 @@ func enter() -> void:
 
 
 func exit() -> void:
+	parent.reserved_state = "swallow_up"
 	if parent.player_animations.is_connected("animation_finished", Callable(self, "_on_animation_player_animation_finished")):
 		parent.player_animations.disconnect("animation_finished", Callable(self, "_on_animation_player_animation_finished"))
 	if parent.player_animations.current_animation == "swallow_up":

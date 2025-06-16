@@ -2,6 +2,7 @@ extends State
 
 @export var poised_down_state: State
 @export var swallow_up_state: State
+@export var stifled_state: State
 
 var collision
 var player_sprite
@@ -24,6 +25,7 @@ func enter() -> void:
 
 
 func exit() -> void:
+	parent.reserved_state = "swallow_down"
 	if parent.player_animations.is_connected("animation_finished", Callable(self, "_on_animation_player_animation_finished")):
 		parent.player_animations.disconnect("animation_finished", Callable(self, "_on_animation_player_animation_finished"))
 	#print("name is " + str(parent.player_animations.current_animation) + " and time is " + str(parent.player_animations.current_animation_position))
@@ -59,5 +61,11 @@ func on_enemy_eaten():
 	parent.player_animations.play('swallow_down')
 	
 
-func _on_animation_player_animation_finished(_anim_name):
-	parent.state_machine.change_state(poised_down_state)
+func _on_animation_player_animation_finished(anim_name):
+	#parent.state_machine.change_state(poised_down_state)
+
+	if parent.burp_queued:
+		parent.state_machine.change_state(stifled_state)
+	else:
+		if anim_name == 'swallow_down':
+			parent.state_machine.change_state(poised_down_state)

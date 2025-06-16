@@ -17,7 +17,7 @@ var speed_increase_increment = 10000
 #var speed_increase_increment = 0
 var speed_increase_amt = 2
 var speed_increase_tick = 0
-var score_array = [4,8,12,14,16,18,20]
+var score_array = [4,8,12,16,20,24,28]
 
 #var stifled_array = [10,20,30,40,50]
 #var score_array = [4,8,12,16,20]
