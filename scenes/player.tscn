@@ -349,6 +349,15 @@ text = "test
 "
 metadata/_edit_use_anchors_ = true
 
+[node name="BurpLabel" type="Label" parent="."]
+offset_left = -182.0
+offset_top = -255.0
+offset_right = -142.0
+offset_bottom = -227.0
+theme_override_colors/font_color = Color(0.276588, 0.201779, 0.375518, 1)
+theme_override_font_sizes/font_size = 40
+text = "test"
+
 [node name="IdleTimer" type="Timer" parent="."]
 wait_time = 8.0
 one_shot = true
