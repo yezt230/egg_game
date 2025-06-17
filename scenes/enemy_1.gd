@@ -66,17 +66,17 @@ func _physics_process(delta):
 	else:
 		is_on_branch = false
 		falling_speed = GRAVITY * delta
-		enemy_animations.play("falling")
-		match animal_type:
-			0:
-				enemy_sprite.frame = 12
-				#animal_type = 0
-			1:
-				enemy_sprite.frame = 13
-				#animal_type = 1
-			2:
-				enemy_sprite.frame = 14
-				#animal_type = 2
+		if not has_escaped:
+			match animal_type:
+				0:
+					enemy_sprite.frame = 12
+					#animal_type = 0
+				1:
+					enemy_sprite.frame = 13
+					#animal_type = 1
+				2:
+					enemy_sprite.frame = 14
+					#animal_type = 2
 		
 	if is_on_branch:
 		falling_label.text = "on branch"
@@ -99,14 +99,14 @@ func _physics_process(delta):
 	if self.global_position.y > 550:		
 		if not has_escaped:
 			emit_signal("enemy_escaped")
+			match animal_type:
+				0:
+					enemy_animations.play("rabbit_run")
+				1:
+					enemy_animations.play("raccoon_run")
+				2:
+					enemy_animations.play("beaver_run")
 			has_escaped = true		
-		match animal_type:
-			0:
-				enemy_animations.play("rabbit_run")
-			1:
-				enemy_animations.play("raccoon_run")
-			2:
-				enemy_animations.play("beaver_run")
 		velocity.y = falling_speed/4
 		#@TODO: get better way of determining run direction, for
 		#now they pause horizontally after hitting the halfway point
