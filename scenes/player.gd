@@ -48,9 +48,9 @@ func _on_node_added(new_node):
 func _process(_delta):
 	var current_state_name = state_machine.get_current_state()
 	state_label.text = current_state_name
-	belch_label.text = str(burp_queued)
+	belch_label.text = "Will belch: " + str(burp_queued)
 	#burp_label.text = str(burp_counter)
-	burp_label.text = str(reserved_state)
+	#burp_label.text = str(reserved_state)
 
 func input_movement(coord, state_boolean):
 	return [coord, state_boolean]

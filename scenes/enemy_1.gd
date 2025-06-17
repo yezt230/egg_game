@@ -14,6 +14,7 @@ signal enemy_escaped
 @onready var spawn_bottom_right = get_node("/root/Main/Platforms/MarkerBottomRight")
 #@onready var score_scene = get_node("/root/Main/Score")
 @onready var falling_label = $FallingLabel
+@onready var collision_shape = $CollisionShape2D
 
 const GRAVITY = 25000
 const FLOOR_NORMAL = Vector2.UP
@@ -27,6 +28,7 @@ var animal_type = 0
 var has_been_eaten = false
 var has_escaped = false
 var move_speed = 0
+var is_on_branch = false
 var regex = RegEx.new()
 
 func _ready():
@@ -51,13 +53,18 @@ func _ready():
 func _physics_process(delta):		
 	#falling_speed is really the overall movement speed
 	var falling_speed = GRAVITY * delta
+	if not is_on_branch and get_global_position().y > 375:
+		collision_shape.disabled = true
 	move_and_slide()
 	if get_slide_collision_count() > 0:
-		falling_label.text = "on branch"
+		for i in range(get_slide_collision_count()):
+			var collider_name = get_slide_collision(i).get_collider().name
+			if regex.search(collider_name):
+				is_on_branch = true
 		set_animal(animal_type)
 		enemy_animations.play("sliding")
 	else:
-		falling_label.text = "falling"
+		is_on_branch = false
 		falling_speed = GRAVITY * delta
 		enemy_animations.play("falling")
 		match animal_type:
@@ -71,14 +78,22 @@ func _physics_process(delta):
 				enemy_sprite.frame = 14
 				#animal_type = 2
 		
+	if is_on_branch:
+		falling_label.text = "on branch"
+	else:
+		falling_label.text = "falling"
+		
 	for i in range(get_slide_collision_count()):
 		var collider_name = get_slide_collision(i).get_collider().name
 		if collider_name == "Player" and not has_been_eaten:
 			has_been_eaten = true
 			emit_signal("enemy_eaten")
 			queue_free()			
-		if regex.search(collider_name):
-			falling_speed = move_speed * delta			
+			#The line below searches for collision names matching
+			#the string in regex ("Platform") perhaps? 
+		if regex.search(collider_name):			
+			falling_speed = move_speed * delta		
+
 
 			
 	if self.global_position.y > 550:		
