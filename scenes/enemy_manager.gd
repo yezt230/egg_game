@@ -32,6 +32,8 @@ func _ready():
 func _on_timer_timeout():
 	#print("new prey spawned and belch is set to " + str(will_generate_belch_initiator))
 	var enemy_instance = enemy_scene.instantiate()
+	enemy_instance.z_index = 0
+	enemy_instance.z_as_relative = false
 	enemy_instance.enemy_eaten.connect(_on_enemy_eaten)
 	if enemy_instance.has_method("set_speed_increase"):
 		enemy_instance.set_speed_increase(speed_increase)		

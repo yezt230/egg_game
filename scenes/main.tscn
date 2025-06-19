@@ -45,10 +45,10 @@ unique_name_in_owner = true
 unique_name_in_owner = true
 position = Vector2(376, 367)
 
-[node name="EnemyManager" parent="." instance=ExtResource("9_2q4br")]
-
 [node name="EnemySpawnTimer" type="Timer" parent="."]
 wait_time = 1.5
+
+[node name="EnemyManager" parent="." instance=ExtResource("9_2q4br")]
 
 [node name="Platforms" type="Node2D" parent="."]
 

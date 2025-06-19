@@ -3,11 +3,13 @@ extends Node2D
 @export var EnemyScene: PackedScene
 @export var end_screen_scene: PackedScene
 @onready var HealthManager = $HealthManager
+@onready var platforms = $Platforms
 @onready var Score = $Score
 
 func _ready():
 	$%HealthManager.no_health.connect(on_no_health)
-
+	platforms.z_index = 100
+	
 
 func on_no_health():
 	var end_screen_instance = end_screen_scene.instantiate()
