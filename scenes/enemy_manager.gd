@@ -17,7 +17,8 @@ var speed_increase_increment = 10000
 #var speed_increase_increment = 0
 var speed_increase_amt = 2
 var speed_increase_tick = 0
-var score_array = [4,8,12,16,20,24,28]
+var burp_score_array = []
+#var burp_score_array = [4,8,12,16,20,24,28]
 
 #var stifled_array = [10,20,30,40,50]
 #var score_array = [4,8,12,16,20]
@@ -25,6 +26,8 @@ var already_generated_belch_initiators_scores = []
 var will_generate_belch_initiator = false
 
 func _ready():
+	for i in 50:
+		burp_score_array.append(i*4)
 	var _enemy = enemy_scene.instantiate() as Node2D	
 	spawn_time = timer.wait_time
 
@@ -76,6 +79,6 @@ func _on_start_spawn_timer_timeout():
 	
 	
 func determine_belch_initiator():
-	if score_array.has(Score.score) and not already_generated_belch_initiators_scores.has(Score.score):		
+	if burp_score_array.has(Score.score) and not already_generated_belch_initiators_scores.has(Score.score):		
 		already_generated_belch_initiators_scores.append(Score.score)
 		will_generate_belch_initiator = true
