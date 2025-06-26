@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://c4da3i5j3vq0s"]
+
+[ext_resource type="PackedScene" uid="uid://giyfet1x83i0" path="res://scenes/end_screen.tscn" id="1_2m2ey"]
+[ext_resource type="Texture2D" uid="uid://cn07j724q2y0g" path="res://assets/sprawled.png" id="1_f24n8"]
+
+[node name="EndScreenDisplay" type="Node2D"]
+
+[node name="Sprawled" type="Sprite2D" parent="."]
+position = Vector2(619, 477)
+scale = Vector2(0.410394, 0.410394)
+texture = ExtResource("1_f24n8")
+
+[node name="EndScreen" parent="." instance=ExtResource("1_2m2ey")]
