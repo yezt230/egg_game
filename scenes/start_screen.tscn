@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://dr02ai40hl4bm"]
+[gd_scene load_steps=8 format=3 uid="uid://dr02ai40hl4bm"]
 
 [ext_resource type="Script" path="res://scenes/start_screen.gd" id="1_ol6y2"]
 [ext_resource type="Theme" uid="uid://bpeo5ur86lfxi" path="res://theme/theme.tres" id="2_oavl7"]
 [ext_resource type="Texture2D" uid="uid://btjb3l4v3cdhi" path="res://assets/title_bg_bigger.png" id="2_owtun"]
+[ext_resource type="Texture2D" uid="uid://bxx0gj0lifslu" path="res://assets/start_screen.png" id="3_ri10u"]
 
 [sub_resource type="Animation" id="Animation_5j4e1"]
 length = 0.001
@@ -55,6 +56,11 @@ libraries = {
 "": SubResource("AnimationLibrary_kfksh")
 }
 autoplay = "scroll"
+
+[node name="StartScreen" type="Sprite2D" parent="."]
+position = Vector2(650, 428)
+scale = Vector2(0.722656, 0.722656)
+texture = ExtResource("3_ri10u")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 offset_right = 800.0
