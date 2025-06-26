@@ -11,11 +11,15 @@ config_version=5
 [application]
 
 config/name="egg_catch"
-run/main_scene="res://scenes/start_screen.tscn"
+run/main_scene="res://scenes/end_screen_display.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 run/flush_stdout_on_print.debug=false
 run/max_fps=60
 config/icon="res://icon.svg"
+
+[autoload]
+
+GameState="*res://scripts/GameState.gd"
 
 [display]
 

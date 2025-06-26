@@ -79,6 +79,7 @@ func _on_start_spawn_timer_timeout():
 	
 	
 func determine_belch_initiator():
-	if burp_score_array.has(Score.score) and not already_generated_belch_initiators_scores.has(Score.score):		
-		already_generated_belch_initiators_scores.append(Score.score)
+	var score = GameState.global_score
+	if burp_score_array.has(score) and not already_generated_belch_initiators_scores.has(score):		
+		already_generated_belch_initiators_scores.append(score)
 		will_generate_belch_initiator = true
