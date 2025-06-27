@@ -57,7 +57,7 @@ libraries = {
 }
 autoplay = "scroll"
 
-[node name="StartScreen" type="Sprite2D" parent="."]
+[node name="Bear" type="Sprite2D" parent="."]
 position = Vector2(650, 428)
 scale = Vector2(0.722656, 0.722656)
 texture = ExtResource("3_ri10u")
