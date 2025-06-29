@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://c4da3i5j3vq0s"]
+[gd_scene load_steps=11 format=3 uid="uid://c4da3i5j3vq0s"]
 
 [ext_resource type="PackedScene" uid="uid://giyfet1x83i0" path="res://scenes/end_screen.tscn" id="1_2m2ey"]
 [ext_resource type="Script" path="res://scenes/end_screen_display.gd" id="1_ar4pa"]
 [ext_resource type="Texture2D" uid="uid://cn07j724q2y0g" path="res://assets/sprawled.png" id="1_f24n8"]
+[ext_resource type="Texture2D" uid="uid://m2kr61n6jsuu" path="res://assets/squirrel_sitting_victory.png" id="3_o0f6c"]
 
 [sub_resource type="Animation" id="Animation_ib1b7"]
 length = 0.001
@@ -43,6 +44,45 @@ _data = {
 "breathing": SubResource("Animation_6jl44")
 }
 
+[sub_resource type="Animation" id="Animation_eegr5"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(589.75, 382.178)]
+}
+
+[sub_resource type="Animation" id="Animation_ecvxs"]
+resource_name = "rising_falling"
+length = 1.8
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.9, 1.8),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(590, 360), Vector2(590, 383), Vector2(590, 360)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ohden"]
+_data = {
+"RESET": SubResource("Animation_eegr5"),
+"rising_falling": SubResource("Animation_ecvxs")
+}
+
 [node name="EndScreenDisplay" type="Node2D"]
 script = ExtResource("1_ar4pa")
 
@@ -57,5 +97,16 @@ libraries = {
 "": SubResource("AnimationLibrary_cglnf")
 }
 autoplay = "breathing"
+
+[node name="SquirrelSittingVictory" type="Sprite2D" parent="."]
+position = Vector2(589.75, 382.178)
+scale = Vector2(0.37171, 0.37171)
+texture = ExtResource("3_o0f6c")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="SquirrelSittingVictory"]
+libraries = {
+"": SubResource("AnimationLibrary_ohden")
+}
+autoplay = "rising_falling"
 
 [node name="EndScreen" parent="." instance=ExtResource("1_2m2ey")]
