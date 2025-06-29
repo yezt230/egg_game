@@ -51,15 +51,16 @@ wait_time = 1.5
 [node name="EnemyManager" parent="." instance=ExtResource("9_2q4br")]
 
 [node name="Platforms" type="Node2D" parent="."]
+position = Vector2(0, 6)
 
 [node name="TopLeftPlatform" parent="Platforms" instance=ExtResource("2_phroa")]
 visible = false
-position = Vector2(25, 261)
+position = Vector2(25, 267)
 rotation = 0.43376
 
 [node name="TopRightPlatform" parent="Platforms" instance=ExtResource("2_phroa")]
 visible = false
-position = Vector2(726, 272)
+position = Vector2(726, 278)
 rotation = -0.436332
 
 [node name="BottomLeftPlatform" parent="Platforms" instance=ExtResource("2_phroa")]
@@ -73,11 +74,11 @@ position = Vector2(725, 437)
 rotation = -0.436332
 
 [node name="BranchTopLeft" type="Sprite2D" parent="Platforms"]
-position = Vector2(105, 288)
+position = Vector2(105, 291)
 texture = ExtResource("13_sr16d")
 
 [node name="BranchTopRight" type="Sprite2D" parent="Platforms"]
-position = Vector2(672, 286)
+position = Vector2(672, 289)
 texture = ExtResource("14_k1phw")
 
 [node name="BranchBottomLeft" type="Sprite2D" parent="Platforms"]
