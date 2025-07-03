@@ -45,7 +45,7 @@ horizontal_alignment = 1
 unique_name_in_owner = true
 layout_mode = 2
 theme = ExtResource("2_hlef6")
-text = "RESTART"
+text = "RESTART (R)"
 
 [node name="MainMenuButton" type="Button" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2

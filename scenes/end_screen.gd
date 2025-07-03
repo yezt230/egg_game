@@ -12,6 +12,11 @@ func _ready():
 	score_label.text = "Your score: " + str(score)
 	
 	
+func _process(delta):
+		if Input.is_action_just_pressed('restart'):
+			get_tree().change_scene_to_file("res://scenes/main.tscn")
+			
+	
 func _on_restart_button_pressed():
 	get_tree().change_scene_to_file("res://scenes/main.tscn")
 
