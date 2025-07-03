@@ -12,7 +12,12 @@ var state = states[0]
 
 func _ready():	
 	main_menu_button.visible = false
-	
+
+
+func _process(delta):
+		if Input.is_action_just_pressed('start'):
+			get_tree().change_scene_to_file("res://scenes/main.tscn")
+
 	
 func _on_start_button_pressed():
 	get_tree().change_scene_to_file("res://scenes/main.tscn")
