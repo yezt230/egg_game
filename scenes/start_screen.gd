@@ -6,6 +6,7 @@ $MarginContainer/PanelContainer/MarginContainer/VBoxContainer/CreditsButton]
 @onready var title_label = $MarginContainer/PanelContainer/MarginContainer/VBoxContainer/TitleLabel
 @onready var main_menu_button = %MainButton
 @onready var burp_toggle = $MarginContainer/PanelContainer/MarginContainer/VBoxContainer/BurpToggle
+@onready var music_toggle = $MarginContainer/PanelContainer/MarginContainer/VBoxContainer/MusicToggle
 
 var game_title = "Bear Game"
 var states = ["main", "settings", "credits"]
@@ -66,8 +67,10 @@ func _on_main_button_pressed():
 func toggle_settings_buttons():
 	if state == "settings":
 		burp_toggle.visible = true
+		music_toggle.visible = true
 	else:
 		burp_toggle.visible = false
+		music_toggle.visible = false
 	
 		
 func start_game():
