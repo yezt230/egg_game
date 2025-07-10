@@ -1,8 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://c4da3i5j3vq0s"]
+[gd_scene load_steps=12 format=3 uid="uid://c4da3i5j3vq0s"]
 
 [ext_resource type="PackedScene" uid="uid://giyfet1x83i0" path="res://scenes/end_screen.tscn" id="1_2m2ey"]
 [ext_resource type="Script" path="res://scenes/end_screen_display.gd" id="1_ar4pa"]
 [ext_resource type="Texture2D" uid="uid://cn07j724q2y0g" path="res://assets/sprawled.png" id="1_f24n8"]
+[ext_resource type="Texture2D" uid="uid://xxe376uhm50c" path="res://assets/end_bg.png" id="2_utafk"]
 [ext_resource type="Texture2D" uid="uid://m2kr61n6jsuu" path="res://assets/squirrel_sitting_victory.png" id="3_o0f6c"]
 
 [sub_resource type="Animation" id="Animation_ib1b7"]
@@ -85,6 +86,11 @@ _data = {
 
 [node name="EndScreenDisplay" type="Node2D"]
 script = ExtResource("1_ar4pa")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(405.751, 304.313)
+scale = Vector2(0.851858, 0.851858)
+texture = ExtResource("2_utafk")
 
 [node name="Sprawled" type="Sprite2D" parent="."]
 position = Vector2(619, 488.025)

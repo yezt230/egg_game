@@ -8,11 +8,12 @@ $MarginContainer/PanelContainer/MarginContainer/VBoxContainer/CreditsButton]
 @onready var burp_toggle = $MarginContainer/PanelContainer/MarginContainer/VBoxContainer/BurpToggle
 @onready var music_toggle = $MarginContainer/PanelContainer/MarginContainer/VBoxContainer/MusicToggle
 
-var game_title = "Bear Game"
+var game_title = GameState.game_title
 var states = ["main", "settings", "credits"]
 var state = states[0]
 
 func _ready():	
+	title_label.text = game_title
 	main_menu_button.visible = false
 
 
@@ -30,9 +31,11 @@ func _on_settings_button_pressed():
 	change_display(1, "Settings")
 	toggle_settings_buttons()
 	
+	
 func _on_credits_button_pressed():
 	change_display(2, "Credits")
 	toggle_settings_buttons()
+
 
 func hide_main_buttons():
 	for main_button in main_buttons:
