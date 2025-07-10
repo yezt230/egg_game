@@ -5,3 +5,4 @@ extends Node2D
 func _ready():
 	print(animation_player)
 	animation_player.play("breathing")
+	MusicPlayer.pitch_scale = 0.65

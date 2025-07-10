@@ -13,8 +13,8 @@ func _ready():
 	print("burp enabled: " + str(GameState.burp_enabled))
 	Score.count_text.text = str(GameState.global_score)
 	$%HealthManager.no_health.connect(on_no_health)
-	platforms.z_index = 100
-	
+	platforms.z_index = 100	
+	MusicPlayer.pitch_scale = 0.85
 
 func on_no_health():
 	main_score = GameState.global_score

@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://bxgqj6d1dgbs3"]
+
+[ext_resource type="AudioStream" uid="uid://bn4xi3p47l76r" path="res://assets/music/Funshine.mp3" id="1_wslq2"]
+[ext_resource type="Script" path="res://scenes/music_player.gd" id="2_ravlg"]
+
+[node name="MusicPlayer" type="AudioStreamPlayer"]
+stream = ExtResource("1_wslq2")
+volume_db = -15.0
+autoplay = true
+bus = &"music"
+script = ExtResource("2_ravlg")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
