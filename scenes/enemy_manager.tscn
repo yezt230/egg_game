@@ -8,7 +8,7 @@ script = ExtResource("1_0781e")
 enemy_scene = ExtResource("2_u8rkr")
 
 [node name="SpawnTimer" type="Timer" parent="."]
-wait_time = 0.75
+wait_time = 0.4
 
 [node name="SpawnDelayTimer" type="Timer" parent="."]
 wait_time = 3.0

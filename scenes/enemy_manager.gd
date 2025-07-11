@@ -8,9 +8,11 @@ extends Node
 @onready var HealthManager = get_parent().get_node("HealthManager")
 @onready var Score = get_parent().get_node("Score")
 
-var spawn_time = 0
 var speed_increase = 0
 var max_speed = 30000
+
+var spawn_queue = 0
+var spawn_prey_handler = 0
 
 #DEBUG: un/comment speed_increase_increment
 var speed_increase_increment = 10000
@@ -32,32 +34,32 @@ func _ready():
 		burp_score_array.append(16 + (j*8))
 	for k in 8:
 		burp_score_array.append(48 + (k*16))
-	print("burp score array: " + str(burp_score_array))
+	#print("burp score array: " + str(burp_score_array))
 	var _enemy = enemy_scene.instantiate() as Node2D	
-	spawn_time = timer.wait_time
 
 
 func _on_timer_timeout():
-	#print("new prey spawned and belch is set to " + str(will_generate_belch_initiator))
-	var enemy_instance = enemy_scene.instantiate()
-	enemy_instance.z_index = 0
-	enemy_instance.z_as_relative = false
-	enemy_instance.enemy_eaten.connect(_on_enemy_eaten)
-	if enemy_instance.has_method("set_speed_increase"):
-		enemy_instance.set_speed_increase(speed_increase)		
-	add_child(enemy_instance)
-	if will_generate_belch_initiator:
-		enemy_instance.belch_initiator = true
-		will_generate_belch_initiator = false
-		timer.stop()
-		delay_timer.start()
+	if determine_will_spawn():
+		#print("new prey spawned and belch is set to " + str(will_generate_belch_initiator))
+		var enemy_instance = enemy_scene.instantiate()
+		enemy_instance.z_index = 0
+		enemy_instance.z_as_relative = false
+		enemy_instance.enemy_eaten.connect(_on_enemy_eaten)
+		if enemy_instance.has_method("set_speed_increase"):
+			enemy_instance.set_speed_increase(speed_increase)		
+		add_child(enemy_instance)
+		if will_generate_belch_initiator:
+			enemy_instance.belch_initiator = true
+			will_generate_belch_initiator = false
+			timer.stop()
+			delay_timer.start()
+			
 		
-	
-	enemy_instance.connect("enemy_eaten", Callable(Score, "increment_score"))
-	# Healh manager connection is here for now, but it'd be more
-	# ideal to move this to its own scene and figure out how to
-	# connect the signal there
-	enemy_instance.connect("enemy_escaped", Callable(HealthManager, "_on_enemy_escaped"))
+		enemy_instance.connect("enemy_eaten", Callable(Score, "increment_score"))
+		# Healh manager connection is here for now, but it'd be more
+		# ideal to move this to its own scene and figure out how to
+		# connect the signal there
+		enemy_instance.connect("enemy_escaped", Callable(HealthManager, "_on_enemy_escaped"))
 	
 
 func _process(_delta):
@@ -88,3 +90,26 @@ func determine_belch_initiator():
 	if burp_score_array.has(score) and not already_generated_belch_initiators_scores.has(score):		
 		already_generated_belch_initiators_scores.append(score)
 		will_generate_belch_initiator = true
+
+
+func determine_will_spawn():
+	print("spawn_prey_handler: " + str(spawn_prey_handler))
+	var score = GameState.global_score
+	if score < 4:
+		if spawn_prey_handler < 2:
+			spawn_prey_handler += 1
+			return false
+		else:
+			spawn_prey_handler = 0
+			print("prey spawned")
+			return true
+	else:
+		var random_spawn = randi() % spawn_prey_handler
+	#for i in spawn_prey_handler:
+		#if i == spawn_prey_handler:
+			#spawn_prey_handler = 0
+			#print("prey spawned")
+			#return true
+		#else:
+			#spawn_prey_handler += 1
+			#return false

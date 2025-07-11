@@ -77,7 +77,7 @@ func _physics_process(delta):
 				2:
 					enemy_sprite.frame = 14
 					#animal_type = 2
-	falling_label.text = str(velocity.x)
+	falling_label.text = str(move_speed)
 	#if is_on_branch:
 		#falling_label.text = falling_speed
 	#else:
