@@ -5,6 +5,8 @@ extends Node2D
 @onready var HealthManager = $HealthManager
 @onready var platforms = $Platforms
 @onready var Score = $Score
+@onready var speed_label = $SpeedLabel
+@onready var enemy_manager = $EnemyManager
 
 @onready var main_score: int = 0
 
@@ -16,6 +18,10 @@ func _ready():
 	$%HealthManager.no_health.connect(on_no_health)
 	platforms.z_index = 100
 	
+
+func _process(delta):
+	speed_label.text = str(enemy_manager.max_speed)
+
 
 func on_no_health():
 	main_score = GameState.global_score

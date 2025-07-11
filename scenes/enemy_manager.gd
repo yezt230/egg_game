@@ -26,8 +26,13 @@ var already_generated_belch_initiators_scores = []
 var will_generate_belch_initiator = false
 
 func _ready():
-	for i in 50:
+	for i in 4:
 		burp_score_array.append(i*4)
+	for j in 4:
+		burp_score_array.append(16 + (j*8))
+	for k in 8:
+		burp_score_array.append(48 + (k*16))
+	print("burp score array: " + str(burp_score_array))
 	var _enemy = enemy_scene.instantiate() as Node2D	
 	spawn_time = timer.wait_time
 
