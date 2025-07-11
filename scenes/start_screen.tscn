@@ -62,6 +62,15 @@ position = Vector2(650, 428)
 scale = Vector2(0.722656, 0.722656)
 texture = ExtResource("3_ri10u")
 
+[node name="VersionLabel" type="Label" parent="."]
+offset_left = 6.0
+offset_top = 568.0
+offset_right = 96.0
+offset_bottom = 594.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "VER 1.0.0"
+
 [node name="MarginContainer" type="MarginContainer" parent="."]
 offset_right = 800.0
 offset_bottom = 600.0
@@ -89,6 +98,7 @@ theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 12
 theme_override_font_sizes/font_size = 64
 text = "Title"
+horizontal_alignment = 1
 
 [node name="StartButton" type="Button" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
@@ -127,6 +137,25 @@ visible = false
 layout_mode = 2
 button_pressed = true
 text = "MUSIC"
+
+[node name="CreditsLabel" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
+visible = false
+layout_mode = 2
+text = "ART & PROGRAMMING
+YEZT
+
+BURP SFX
+CUPRUMCOW
+
+MUSIC
+FUNSHINE
+by KEVIN MACLEOD
+
+FONT
+KENNY FONT PACK
+
+MADE IN GODOT 4"
+horizontal_alignment = 1
 
 [connection signal="pressed" from="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/SettingsButton" to="." method="_on_settings_button_pressed"]

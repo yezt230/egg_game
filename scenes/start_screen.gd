@@ -7,6 +7,7 @@ $MarginContainer/PanelContainer/MarginContainer/VBoxContainer/CreditsButton]
 @onready var main_menu_button = %MainButton
 @onready var burp_toggle = $MarginContainer/PanelContainer/MarginContainer/VBoxContainer/BurpToggle
 @onready var music_toggle = $MarginContainer/PanelContainer/MarginContainer/VBoxContainer/MusicToggle
+@onready var credits_label = $MarginContainer/PanelContainer/MarginContainer/VBoxContainer/CreditsLabel
 @onready var music_playing = false
 
 var game_title = GameState.game_title
@@ -37,7 +38,16 @@ func _on_settings_button_pressed():
 	
 func _on_credits_button_pressed():
 	change_display(2, "Credits")
+	show_credits()
 	toggle_settings_buttons()
+
+
+func hide_credits():
+	credits_label.visible = false
+	
+	
+func show_credits():
+	credits_label.visible = true
 
 
 func hide_main_buttons():
@@ -55,8 +65,9 @@ func show_main_buttons():
 func return_to_main():
 	state = states[0]
 	title_label.text = game_title
-	change_display(0, "Woods Food")
+	change_display(0, game_title)
 	toggle_settings_buttons()
+	hide_credits()
 	show_main_buttons()
 
 
