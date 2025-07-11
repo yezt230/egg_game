@@ -68,3 +68,7 @@ func _on_enemy_eaten(enemy):
 
 func _unhandled_input(event: InputEvent) -> void:
 	state_machine.process_input(event)
+
+
+func _on_gulp_sound_pause_timer_timeout():
+	pass # Replace with function body.

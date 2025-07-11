@@ -18,7 +18,7 @@ func _ready():
 	title_label.text = game_title
 	print(str(MusicPlayer.volume_db))
 	main_menu_button.visible = false
-	MusicPlayer.pitch_scale = 0.85
+	MusicPlayer.pitch_scale = GameState.music_pitch 
 
 
 func _process(delta):

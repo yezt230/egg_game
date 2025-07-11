@@ -77,11 +77,11 @@ func _physics_process(delta):
 				2:
 					enemy_sprite.frame = 14
 					#animal_type = 2
-		
-	if is_on_branch:
-		falling_label.text = "on branch"
-	else:
-		falling_label.text = "falling"
+	falling_label.text = str(velocity.x)
+	#if is_on_branch:
+		#falling_label.text = falling_speed
+	#else:
+		#falling_label.text = "falling"
 		
 	for i in range(get_slide_collision_count()):
 		var collider_name = get_slide_collision(i).get_collider().name
