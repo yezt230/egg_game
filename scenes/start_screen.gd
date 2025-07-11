@@ -7,22 +7,25 @@ $MarginContainer/PanelContainer/MarginContainer/VBoxContainer/CreditsButton]
 @onready var main_menu_button = %MainButton
 @onready var burp_toggle = $MarginContainer/PanelContainer/MarginContainer/VBoxContainer/BurpToggle
 @onready var music_toggle = $MarginContainer/PanelContainer/MarginContainer/VBoxContainer/MusicToggle
+@onready var music_playing = false
 
 var game_title = GameState.game_title
 var states = ["main", "settings", "credits"]
 var state = states[0]
 
+
 func _ready():	
 	title_label.text = game_title
+	print(str(MusicPlayer.volume_db))
 	main_menu_button.visible = false
+	MusicPlayer.pitch_scale = 0.85
 
 
 func _process(delta):
 	if Input.is_action_just_pressed('start'):
 		start_game()
-	#print("state: " + str(burp_toggle.button_pressed))
-
-	
+		
+		
 func _on_start_button_pressed():
 	start_game()
 
@@ -82,3 +85,12 @@ func start_game():
 	else:
 		GameState.burp_enabled = false
 	get_tree().change_scene_to_file("res://scenes/main.tscn")
+
+
+func _on_music_toggle_pressed():
+	if music_playing:
+		MusicPlayer.play()
+		music_playing = false
+	else:
+		MusicPlayer.stop()
+		music_playing = true
