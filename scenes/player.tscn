@@ -306,7 +306,8 @@ script = ExtResource("3_dy8li")
 SoundArray = Array[AudioStream]([ExtResource("3_2yoaa"), ExtResource("4_xj4l4")])
 
 [node name="GulpStreamPlayer" type="AudioStreamPlayer2D" parent="."]
-volume_db = -10.0
+volume_db = -12.0
+pitch_scale = 0.95
 bus = &"sfx"
 script = ExtResource("3_2fy8v")
 SoundArray = Array[AudioStream]([ExtResource("5_6ycl2"), ExtResource("6_anwyo"), ExtResource("7_c4pk5")])
