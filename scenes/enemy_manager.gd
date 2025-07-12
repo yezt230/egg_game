@@ -12,8 +12,8 @@ var speed_increase = 0
 var max_speed = 30000
 
 var spawn_queue = 0
-var spawn_prey_handler = 0
-
+var spawn_prey_handler = [0,1,2]
+var has_shuffled_array = false
 #DEBUG: un/comment speed_increase_increment
 var speed_increase_increment = 10000
 #var speed_increase_increment = 0
@@ -93,18 +93,34 @@ func determine_belch_initiator():
 
 
 func determine_will_spawn():
-	print("spawn_prey_handler: " + str(spawn_prey_handler))
-	var score = GameState.global_score
-	if score < 4:
-		if spawn_prey_handler < 2:
-			spawn_prey_handler += 1
-			return false
-		else:
-			spawn_prey_handler = 0
-			print("prey spawned")
-			return true
+	#if not has_shuffled_array:
+		#spawn_prey_handler.shuffle()
+		#has_shuffled_array = true
+	spawn_queue += 1
+	print(spawn_queue)
+	if spawn_queue <= spawn_prey_handler.size():
+		spawn_queue = 0
+		spawn_prey_handler.shuffle()
+		has_shuffled_array = false
+		
+	
+	#print("spawn_prey_handler: " + str(spawn_prey_handler))
+	#if score > 20:
+		#if spawn_queue <= spawn_prey_handler.size():
+			#spawn_queue += 1
+			#return false
+		#else:
+			#spawn_queue = 0
+			#print("prey spawned")
+			#return true
+	#else:
+
+	if spawn_prey_handler[spawn_queue] == 2:
+		print("prey spawned")
+		return true
 	else:
-		var random_spawn = randi() % spawn_prey_handler
+		return false
+
 	#for i in spawn_prey_handler:
 		#if i == spawn_prey_handler:
 			#spawn_prey_handler = 0
