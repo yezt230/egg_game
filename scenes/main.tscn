@@ -82,11 +82,11 @@ position = Vector2(672, 289)
 texture = ExtResource("14_k1phw")
 
 [node name="BranchBottomLeft" type="Sprite2D" parent="Platforms"]
-position = Vector2(100, 440)
+position = Vector2(100, 438)
 texture = ExtResource("15_7xcqo")
 
 [node name="BranchBottomRight" type="Sprite2D" parent="Platforms"]
-position = Vector2(671, 447)
+position = Vector2(671, 445)
 texture = ExtResource("16_j0cin")
 
 [node name="MarkerTopLeft" type="Marker2D" parent="Platforms"]
@@ -104,6 +104,7 @@ position = Vector2(880, 282)
 [node name="Node" type="Node" parent="."]
 
 [node name="SpeedLabel" type="Label" parent="."]
+visible = false
 offset_left = 12.0
 offset_top = 70.0
 offset_right = 56.0

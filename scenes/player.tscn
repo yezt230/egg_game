@@ -306,7 +306,7 @@ script = ExtResource("3_dy8li")
 SoundArray = Array[AudioStream]([ExtResource("3_2yoaa"), ExtResource("4_xj4l4")])
 
 [node name="GulpStreamPlayer" type="AudioStreamPlayer2D" parent="."]
-volume_db = -5.0
+volume_db = -10.0
 bus = &"sfx"
 script = ExtResource("3_2fy8v")
 SoundArray = Array[AudioStream]([ExtResource("5_6ycl2"), ExtResource("6_anwyo"), ExtResource("7_c4pk5")])
@@ -370,6 +370,7 @@ swallow_up_state = NodePath("../SwallowUp")
 stifled_state = NodePath("../Stifled")
 
 [node name="StateLabel" type="Label" parent="."]
+visible = false
 offset_left = -180.0
 offset_top = -193.0
 offset_right = 222.0
@@ -383,6 +384,7 @@ text = "The Velveteen Touch of a Dandy Fop
 "
 
 [node name="BelchLabel" type="Label" parent="."]
+visible = false
 offset_left = -181.0
 offset_top = -227.0
 offset_right = -141.0
@@ -393,6 +395,7 @@ text = "test
 metadata/_edit_use_anchors_ = true
 
 [node name="BurpLabel" type="Label" parent="."]
+visible = false
 offset_left = -182.0
 offset_top = -255.0
 offset_right = -142.0

@@ -278,6 +278,7 @@ libraries = {
 }
 
 [node name="FallingLabel" type="Label" parent="."]
+visible = false
 offset_left = -71.0
 offset_top = -132.0
 offset_right = -27.0
@@ -286,6 +287,7 @@ theme_override_colors/font_color = Color(0.632225, 1.40782e-06, 2.40654e-07, 1)
 text = "test"
 
 [node name="FallingLabel2" type="Label" parent="."]
+visible = false
 offset_left = -70.0
 offset_top = -108.0
 offset_right = -26.0
