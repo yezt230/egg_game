@@ -15,7 +15,6 @@ func play_gulp():
 	var will_play_gulp_sound = randi() % 1
 	if will_play_gulp_sound == 0 and can_play_gulp_sound_timer:
 	#if will_play_gulp_sound == 0:
-		print("gulped")
 		can_play_gulp_sound_timer = false
 		already_played_in_animation = true
 		gulp_timer.start()
@@ -24,6 +23,5 @@ func play_gulp():
 
 
 func _on_gulp_sound_pause_timer_timeout():
-	print("gulp timer timeout")
 	can_play_gulp_sound_timer = true
 	already_played_in_animation = false

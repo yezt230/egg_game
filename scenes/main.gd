@@ -20,7 +20,7 @@ func _ready():
 	
 
 func _process(delta):
-	speed_label.text = str(enemy_manager.max_speed)
+	speed_label.text = "enemy spawn timer: " + str(enemy_manager.timer.wait_time)
 
 
 func on_no_health():

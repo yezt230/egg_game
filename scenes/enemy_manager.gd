@@ -13,7 +13,7 @@ var max_speed = 30000
 
 var spawn_queue = 0
 var spawn_prey_handler = [0,1,2]
-var has_shuffled_array = false
+#var has_shuffled_array = false
 #DEBUG: un/comment speed_increase_increment
 var speed_increase_increment = 10000
 #var speed_increase_increment = 0
@@ -28,13 +28,20 @@ var already_generated_belch_initiators_scores = []
 var will_generate_belch_initiator = false
 
 func _ready():
+	# The number in the loop (eg. 4 in "for i in 4")
+	# shows many times the loop for that particular
+	# burp timing will generate, and the multiplier
+	# ("i*4") is how many points the player needs to
+	# trigger a burp
 	for i in 4:
 		burp_score_array.append(i*4)
 	for j in 4:
 		burp_score_array.append(16 + (j*8))
 	for k in 8:
 		burp_score_array.append(48 + (k*16))
-	#print("burp score array: " + str(burp_score_array))
+	for l in 8:
+		burp_score_array.append(176 + (l*24))
+	print("burp score array: " + str(burp_score_array))
 	var _enemy = enemy_scene.instantiate() as Node2D	
 
 
@@ -77,6 +84,15 @@ func _on_enemy_eaten():
 
 
 func _on_spawn_delay_timer_timeout():
+	print("spawn timer ended")
+	if GameState.global_score >= 7 and GameState.global_score < 13:
+		timer.wait_time = 0.30
+	elif GameState.global_score >= 13 and GameState.global_score < 20:
+		timer.wait_time = 0.25
+	elif GameState.global_score >= 20 and GameState.global_score < 33:
+		timer.wait_time = 0.20
+	elif GameState.global_score >= 33:
+		timer.wait_time = 0.17
 	timer.start()
 	delay_timer.stop()
 
@@ -93,39 +109,31 @@ func determine_belch_initiator():
 
 
 func determine_will_spawn():
-	#if not has_shuffled_array:
-		#spawn_prey_handler.shuffle()
-		#has_shuffled_array = true
+	print("spawn_queue: " + str(spawn_queue))
 	spawn_queue += 1
-	print(spawn_queue)
-	if spawn_queue <= spawn_prey_handler.size():
-		spawn_queue = 0
-		spawn_prey_handler.shuffle()
-		has_shuffled_array = false
-		
-	
-	#print("spawn_prey_handler: " + str(spawn_prey_handler))
-	#if score > 20:
-		#if spawn_queue <= spawn_prey_handler.size():
-			#spawn_queue += 1
-			#return false
-		#else:
-			#spawn_queue = 0
-			#print("prey spawned")
-			#return true
-	#else:
 
-	if spawn_prey_handler[spawn_queue] == 2:
-		print("prey spawned")
-		return true
+	# The idea is that after score 20 (or whatever),
+	# the spawn timer will cycle through 3 iterations before
+	# resetting. An enemy will spawn in one of those three iterations,
+	# and the cycle will continue. This randomizes the enemy spawn times
+	# after a period of time without going TOO fast
+
+	if GameState.global_score > 4:
+		if spawn_queue >= spawn_prey_handler.size():			
+			spawn_queue = 0
+			spawn_prey_handler.shuffle()
+			#print("spawn_prey_handler: " + str(spawn_prey_handler))
+
+		if spawn_prey_handler[spawn_queue] == 2:
+			#print("prey spawned")
+			return true
+		else:
+			return false
 	else:
-		return false
-
-	#for i in spawn_prey_handler:
-		#if i == spawn_prey_handler:
-			#spawn_prey_handler = 0
+		#print("spawn_prey_handler: " + str(spawn_prey_handler))
+		if spawn_prey_handler[spawn_queue] == 2:
 			#print("prey spawned")
-			#return true
-		#else:
-			#spawn_prey_handler += 1
-			#return false
+			spawn_queue = 0
+			return true
+		else:
+			return false
