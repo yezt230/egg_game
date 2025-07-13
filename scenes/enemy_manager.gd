@@ -46,6 +46,10 @@ func _ready():
 
 
 func _on_timer_timeout():
+	print("prev delay timer: " + str(delay_timer.wait_time))
+	if GameState.global_score >= 30 and not delay_timer.wait_time == 3.5:
+		delay_timer.wait_time = 3.5
+	print("new delay timer: " + str(delay_timer.wait_time))
 	if determine_will_spawn():
 		#print("new prey spawned and belch is set to " + str(will_generate_belch_initiator))
 		var enemy_instance = enemy_scene.instantiate()

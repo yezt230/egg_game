@@ -26,6 +26,7 @@ MusicPlayer="*res://scenes/music_player.tscn"
 
 window/size/viewport_width=800
 window/size/viewport_height=600
+window/stretch/mode="canvas_items"
 window/vsync/vsync_mode=0
 
 [gui]
