@@ -1,6 +1,7 @@
 extends CanvasLayer
 
 @onready var score_label = %ScoreLabel
+@onready var score_number_label = %ScoreNumberLabel
 @onready var main_scene = ResourceLoader.load("res://scenes/main.tscn")
 
 func _ready():
@@ -9,7 +10,7 @@ func _ready():
 	var main_instance = main_scene.instantiate()
 	var score_node = main_instance.get_node("Score")
 	var score = GameState.global_score
-	score_label.text = "Your score: " + str(score)
+	score_number_label.text = str(score)
 	
 	
 func _process(delta):
