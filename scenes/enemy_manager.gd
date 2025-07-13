@@ -12,7 +12,7 @@ var speed_increase = 0
 var max_speed = 30000
 
 var spawn_queue = 0
-var spawn_prey_handler = [0,1,2]
+var spawn_prey_handler_array = [0,1,2,3]
 #var has_shuffled_array = false
 #DEBUG: un/comment speed_increase_increment
 var speed_increase_increment = 10000
@@ -41,15 +41,16 @@ func _ready():
 		burp_score_array.append(48 + (k*16))
 	for l in 8:
 		burp_score_array.append(176 + (l*24))
-	print("burp score array: " + str(burp_score_array))
 	var _enemy = enemy_scene.instantiate() as Node2D	
 
 
 func _on_timer_timeout():
-	print("prev delay timer: " + str(delay_timer.wait_time))
-	if GameState.global_score >= 30 and not delay_timer.wait_time == 3.5:
-		delay_timer.wait_time = 3.5
-	print("new delay timer: " + str(delay_timer.wait_time))
+	if GameState.global_score >= 8 and GameState.global_score < 24 and not delay_timer.wait_time == 3.4:
+		delay_timer.wait_time = 3.4		
+	elif GameState.global_score >= 24 and not delay_timer.wait_time == 3.8:
+		spawn_prey_handler_array = [0,1,2]
+		delay_timer.wait_time = 3.8
+		print("increased difficulty")
 	if determine_will_spawn():
 		#print("new prey spawned and belch is set to " + str(will_generate_belch_initiator))
 		var enemy_instance = enemy_scene.instantiate()
@@ -88,7 +89,6 @@ func _on_enemy_eaten():
 
 
 func _on_spawn_delay_timer_timeout():
-	print("spawn timer ended")
 	if GameState.global_score >= 7 and GameState.global_score < 13:
 		timer.wait_time = 0.30
 	elif GameState.global_score >= 13 and GameState.global_score < 20:
@@ -113,7 +113,6 @@ func determine_belch_initiator():
 
 
 func determine_will_spawn():
-	print("spawn_queue: " + str(spawn_queue))
 	spawn_queue += 1
 
 	# The idea is that after score 20 (or whatever),
@@ -122,21 +121,17 @@ func determine_will_spawn():
 	# and the cycle will continue. This randomizes the enemy spawn times
 	# after a period of time without going TOO fast
 
-	if GameState.global_score > 4:
-		if spawn_queue >= spawn_prey_handler.size():			
+	if GameState.global_score > 8:
+		if spawn_queue >= spawn_prey_handler_array.size():			
 			spawn_queue = 0
-			spawn_prey_handler.shuffle()
-			#print("spawn_prey_handler: " + str(spawn_prey_handler))
+			spawn_prey_handler_array.shuffle()
 
-		if spawn_prey_handler[spawn_queue] == 2:
-			#print("prey spawned")
+		if spawn_prey_handler_array[spawn_queue] == spawn_prey_handler_array.size() - 1:
 			return true
 		else:
 			return false
 	else:
-		#print("spawn_prey_handler: " + str(spawn_prey_handler))
-		if spawn_prey_handler[spawn_queue] == 2:
-			#print("prey spawned")
+		if spawn_prey_handler_array[spawn_queue] == spawn_prey_handler_array.size() - 1:
 			spawn_queue = 0
 			return true
 		else:

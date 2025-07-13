@@ -17,7 +17,6 @@ var state = states[0]
 
 func _ready():	
 	title_label.text = game_title
-	print(str(MusicPlayer.volume_db))
 	main_menu_button.visible = false
 	MusicPlayer.pitch_scale = GameState.music_pitch 
 

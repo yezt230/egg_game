@@ -13,7 +13,6 @@ extends Node2D
 func _ready():
 	GameState.global_score = 0
 	MusicPlayer.pitch_scale = GameState.music_pitch 
-	print("burp enabled: " + str(GameState.burp_enabled))
 	Score.count_text.text = str(GameState.global_score)
 	$%HealthManager.no_health.connect(on_no_health)
 	platforms.z_index = 100

@@ -5,8 +5,6 @@ extends CanvasLayer
 @onready var main_scene = ResourceLoader.load("res://scenes/main.tscn")
 
 func _ready():
-	#get_tree().paused = true
-	print("printed")
 	var main_instance = main_scene.instantiate()
 	var score_node = main_instance.get_node("Score")
 	var score = GameState.global_score
