@@ -16,16 +16,8 @@ func _ready():
 	Score.count_text.text = str(GameState.global_score)
 	$%HealthManager.no_health.connect(on_no_health)
 	platforms.z_index = 100
-	
-
-func _process(_delta):
-	speed_label.text = "enemy spawn timer: " + str(enemy_manager.timer.wait_time)
 
 
 func on_no_health():
 	main_score = GameState.global_score
 	get_tree().change_scene_to_file("res://scenes/end_screen_display.tscn")
-
-	#var end_screen_instance = end_screen_scene.instantiate()
-	#add_child(end_screen_instance)
-	#end_screen_instance.set_defeat(Score.count_text.text)
