@@ -8,6 +8,7 @@ $MarginContainer/PanelContainer/MarginContainer/VBoxContainer/CreditsButton]
 @onready var burp_toggle = $MarginContainer/PanelContainer/MarginContainer/VBoxContainer/BurpToggle
 @onready var music_toggle = $MarginContainer/PanelContainer/MarginContainer/VBoxContainer/MusicToggle
 @onready var credits_label = $MarginContainer/PanelContainer/MarginContainer/VBoxContainer/CreditsLabel
+@onready var controls_label = %ControlsLabel
 @onready var music_playing = false
 
 var game_title = GameState.game_title
@@ -82,9 +83,11 @@ func _on_main_button_pressed():
 
 func toggle_settings_buttons():
 	if state == "settings":
+		#controls_label.visible = true
 		burp_toggle.visible = true
 		music_toggle.visible = true
 	else:
+		controls_label.visible = false
 		burp_toggle.visible = false
 		music_toggle.visible = false
 	

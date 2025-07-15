@@ -9,6 +9,7 @@ func _ready():
 
 
 func _on_finished():
+	MusicPlayer.pitch_scale = 0.85
 	$Timer.start()
 	
 

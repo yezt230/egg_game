@@ -126,6 +126,13 @@ focus_mode = 0
 theme = ExtResource("2_oavl7")
 text = "MAIN MENU"
 
+[node name="ControlsLabel" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+text = "ARROW KEYS TO MOVE
+Z TO MOVE DIAGONALLY"
+
 [node name="BurpToggle" type="CheckButton" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
 visible = false
 layout_mode = 2
