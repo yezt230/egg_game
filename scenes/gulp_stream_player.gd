@@ -12,7 +12,8 @@ func play_gulp():
 	if SoundArray == null || SoundArray.size() == 0:
 		return
 	
-	var will_play_gulp_sound = randi() % 1
+	var will_play_gulp_sound = randi() % 2
+	#var will_play_gulp_sound = 0
 	if will_play_gulp_sound == 0 and can_play_gulp_sound_timer:
 	#if will_play_gulp_sound == 0:
 		can_play_gulp_sound_timer = false

@@ -8,12 +8,12 @@
 [ext_resource type="Script" path="res://scenes/animation_player.gd" id="3_ysu14"]
 [ext_resource type="PackedScene" uid="uid://d3ihool0kv7lt" path="res://scenes/state_machine.tscn" id="4_8bwfl"]
 [ext_resource type="AudioStream" uid="uid://xjynpi3wnbud" path="res://assets/sound/belch2_final.mp3" id="4_xj4l4"]
-[ext_resource type="AudioStream" uid="uid://c818kxy6roon2" path="res://assets/sound/gulp3-sharp.wav" id="5_6ycl2"]
-[ext_resource type="AudioStream" uid="uid://dch8dglwvoqao" path="res://assets/sound/gulp7-hard.wav" id="6_anwyo"]
 [ext_resource type="Script" path="res://scenes/idle.gd" id="6_d0aum"]
+[ext_resource type="AudioStream" uid="uid://bo5ytr88guae5" path="res://assets/sound/gulp1.mp3" id="6_ef84n"]
 [ext_resource type="Script" path="res://scenes/poised_down.gd" id="7_12wen"]
-[ext_resource type="AudioStream" uid="uid://b0hca22obqvbt" path="res://assets/sound/gulp11-weirddeep.wav" id="7_c4pk5"]
+[ext_resource type="AudioStream" uid="uid://cmgp5h61jtdle" path="res://assets/sound/gulp2.mp3" id="7_k65eu"]
 [ext_resource type="Script" path="res://scenes/poised_up.gd" id="7_yw2x7"]
+[ext_resource type="AudioStream" uid="uid://dk0f1iy3sdyna" path="res://assets/sound/gulp3.mp3" id="8_ireih"]
 [ext_resource type="Script" path="res://scenes/stifled.gd" id="8_iy5rn"]
 [ext_resource type="Script" path="res://scenes/swallow_up.gd" id="9_m6tvp"]
 [ext_resource type="Script" path="res://scenes/swallow_down.gd" id="10_ntv6y"]
@@ -306,11 +306,10 @@ script = ExtResource("3_dy8li")
 SoundArray = Array[AudioStream]([ExtResource("3_2yoaa"), ExtResource("4_xj4l4")])
 
 [node name="GulpStreamPlayer" type="AudioStreamPlayer2D" parent="."]
-volume_db = -12.0
-pitch_scale = 0.95
+pitch_scale = 0.85
 bus = &"sfx"
 script = ExtResource("3_2fy8v")
-SoundArray = Array[AudioStream]([ExtResource("5_6ycl2"), ExtResource("6_anwyo"), ExtResource("7_c4pk5")])
+SoundArray = Array[AudioStream]([ExtResource("6_ef84n"), ExtResource("7_k65eu"), ExtResource("8_ireih")])
 
 [node name="GulpSoundPauseTimer" type="Timer" parent="GulpStreamPlayer"]
 wait_time = 1.75
