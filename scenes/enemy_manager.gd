@@ -17,7 +17,9 @@ var spawn_prey_handler_array = [0,1,2,3]
 #DEBUG: un/comment speed_increase_increment
 var speed_increase_increment = 10000
 #var speed_increase_increment = 0
-var speed_increase_amt = 2
+# the amount of enemies that are eaten before
+# their speed increases
+var speed_increase_amt = 6
 var speed_increase_tick = 0
 var burp_score_array = []
 var already_generated_belch_initiators_scores = []
@@ -30,14 +32,15 @@ func _ready():
 	# ("i*4") is how many points the player needs to
 	# trigger a burp
 	for i in 4:
-		burp_score_array.append(1 + (i*4))
+		if i > 0:
+			burp_score_array.append(1 + (i*4))
 	for j in 4:
 		burp_score_array.append(17 + (j*8))
 	for k in 8:
 		burp_score_array.append(49 + (k*16))
 	for l in 8:
 		burp_score_array.append(177 + (l*24))
-	var _enemy = enemy_scene.instantiate() as Node2D	
+	var _enemy = enemy_scene.instantiate() as Node2D
 
 
 func _on_timer_timeout():
@@ -46,7 +49,6 @@ func _on_timer_timeout():
 	elif GameState.global_score >= 24 and not delay_timer.wait_time == 3.8:
 		spawn_prey_handler_array = [0,1,2]
 		delay_timer.wait_time = 3.8
-		print("increased difficulty")
 	if determine_will_spawn():
 		#print("new prey spawned and belch is set to " + str(will_generate_belch_initiator))
 		var enemy_instance = enemy_scene.instantiate()
@@ -91,8 +93,10 @@ func _on_spawn_delay_timer_timeout():
 		timer.wait_time = 0.25
 	elif GameState.global_score >= 20 and GameState.global_score < 33:
 		timer.wait_time = 0.20
-	elif GameState.global_score >= 33:
+	elif GameState.global_score >= 33 and GameState.global_score < 120:
 		timer.wait_time = 0.17
+	elif GameState.global_score >= 120:
+		timer.wait_time = 0.14
 	timer.start()
 	delay_timer.stop()
 
