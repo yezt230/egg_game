@@ -13,17 +13,13 @@ var max_speed = 30000
 
 var spawn_queue = 0
 var spawn_prey_handler_array = [0,1,2,3]
-#var has_shuffled_array = false
+
 #DEBUG: un/comment speed_increase_increment
 var speed_increase_increment = 10000
 #var speed_increase_increment = 0
 var speed_increase_amt = 2
 var speed_increase_tick = 0
 var burp_score_array = []
-#var burp_score_array = [4,8,12,16,20,24,28]
-
-#var stifled_array = [10,20,30,40,50]
-#var score_array = [4,8,12,16,20]
 var already_generated_belch_initiators_scores = []
 var will_generate_belch_initiator = false
 
@@ -34,13 +30,13 @@ func _ready():
 	# ("i*4") is how many points the player needs to
 	# trigger a burp
 	for i in 4:
-		burp_score_array.append(i*4)
+		burp_score_array.append(1 + (i*4))
 	for j in 4:
-		burp_score_array.append(16 + (j*8))
+		burp_score_array.append(17 + (j*8))
 	for k in 8:
-		burp_score_array.append(48 + (k*16))
+		burp_score_array.append(49 + (k*16))
 	for l in 8:
-		burp_score_array.append(176 + (l*24))
+		burp_score_array.append(177 + (l*24))
 	var _enemy = enemy_scene.instantiate() as Node2D	
 
 

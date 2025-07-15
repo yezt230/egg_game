@@ -6,12 +6,11 @@ extends CanvasLayer
 
 func _ready():
 	var main_instance = main_scene.instantiate()
-	var score_node = main_instance.get_node("Score")
 	var score = GameState.global_score
 	score_number_label.text = str(score)
 	
 	
-func _process(delta):
+func _process(_delta):
 		if Input.is_action_just_pressed('restart'):
 			get_tree().change_scene_to_file("res://scenes/main.tscn")
 			

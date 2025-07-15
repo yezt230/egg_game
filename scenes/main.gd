@@ -18,7 +18,7 @@ func _ready():
 	platforms.z_index = 100
 	
 
-func _process(delta):
+func _process(_delta):
 	speed_label.text = "enemy spawn timer: " + str(enemy_manager.timer.wait_time)
 
 
