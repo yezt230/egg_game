@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://c2jmckdmcktuo"]
+[gd_scene load_steps=18 format=3 uid="uid://c2jmckdmcktuo"]
 
 [ext_resource type="PackedScene" uid="uid://cvrce6qnwe3es" path="res://scenes/player.tscn" id="1_2ilp2"]
 [ext_resource type="Script" path="res://scenes/main.gd" id="1_uaobc"]
@@ -16,6 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://y7ud3ej4r0ir" path="res://assets/branch_top_right.png" id="14_k1phw"]
 [ext_resource type="Texture2D" uid="uid://wlg7rkr6tyjk" path="res://assets/branch_bottom_left.png" id="15_7xcqo"]
 [ext_resource type="Texture2D" uid="uid://brvtvke4up1x" path="res://assets/branch_bottom_right.png" id="16_j0cin"]
+[ext_resource type="Script" path="res://scenes/touch_buttons.gd" id="17_3vti7"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_uaobc")
@@ -101,6 +102,34 @@ position = Vector2(-80, 282)
 [node name="MarkerBottomRight" type="Marker2D" parent="Platforms"]
 position = Vector2(880, 282)
 
+[node name="TouchButtons" type="Node" parent="."]
+script = ExtResource("17_3vti7")
+
+[node name="TopLeftButton" type="Button" parent="TouchButtons"]
+modulate = Color(1, 1, 1, 0)
+offset_right = 400.0
+offset_bottom = 300.0
+
+[node name="TopRightButton" type="Button" parent="TouchButtons"]
+modulate = Color(1, 1, 1, 0)
+offset_left = 400.0
+offset_right = 800.0
+offset_bottom = 300.0
+focus_mode = 0
+
+[node name="BottomLeftButton" type="Button" parent="TouchButtons"]
+modulate = Color(1, 1, 1, 0)
+offset_top = 300.0
+offset_right = 400.0
+offset_bottom = 600.0
+
+[node name="BottomRightButton" type="Button" parent="TouchButtons"]
+modulate = Color(1, 1, 1, 0)
+offset_left = 400.0
+offset_top = 300.0
+offset_right = 800.0
+offset_bottom = 600.0
+
 [node name="Node" type="Node" parent="."]
 
 [node name="SpeedLabel" type="Label" parent="."]
@@ -113,3 +142,11 @@ theme_override_font_sizes/font_size = 44
 text = "test"
 
 [connection signal="timeout" from="EnemySpawnTimer" to="." method="_on_enemy_spawn_timer_timeout"]
+[connection signal="pressed" from="TouchButtons/TopLeftButton" to="TouchButtons" method="_on_top_left_button_pressed"]
+[connection signal="button_down" from="TouchButtons/TopRightButton" to="TouchButtons" method="_on_top_right_button_button_down"]
+[connection signal="button_up" from="TouchButtons/TopRightButton" to="TouchButtons" method="_on_top_right_button_button_up"]
+[connection signal="focus_entered" from="TouchButtons/TopRightButton" to="TouchButtons" method="_on_top_right_button_focus_entered"]
+[connection signal="pressed" from="TouchButtons/TopRightButton" to="Player" method="_on_top_right_button_pressed"]
+[connection signal="pressed" from="TouchButtons/TopRightButton" to="TouchButtons" method="_on_top_right_button_pressed"]
+[connection signal="pressed" from="TouchButtons/BottomLeftButton" to="TouchButtons" method="_on_bottom_left_button_pressed"]
+[connection signal="pressed" from="TouchButtons/BottomRightButton" to="TouchButtons" method="_on_bottom_right_button_pressed"]
