@@ -26,14 +26,18 @@ func _on_bottom_right_button_pressed():
 	
 
 func map_directions(dir1, dir2):
-	var direction_event = InputEventAction.new() 
-	var direction_event2 = InputEventAction.new() 
-	direction_event.action = dir1
-	direction_event.pressed = true
-	Input.parse_input_event(direction_event)
-	direction_event2.action = dir2
-	direction_event2.pressed = true
-	Input.parse_input_event(direction_event2)
+	for dir in [dir1, dir2]:
+		var press_event = InputEventAction.new()
+		press_event.action = dir
+		press_event.pressed = true
+		Input.parse_input_event(press_event)
+		
+	await get_tree().create_timer(0.1).timeout
+	for dir in [dir1, dir2]:
+		var release_event = InputEventAction.new()
+		release_event.action = dir
+		release_event.pressed = false
+		Input.parse_input_event(release_event)
 
 
 func _on_button_spawn_timer_timeout():

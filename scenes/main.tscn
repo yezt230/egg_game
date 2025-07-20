@@ -106,13 +106,12 @@ position = Vector2(880, 282)
 script = ExtResource("17_3vti7")
 
 [node name="TopLeftButton" type="Button" parent="TouchButtons"]
-visible = false
 modulate = Color(1, 1, 1, 0)
 offset_right = 400.0
 offset_bottom = 300.0
+focus_mode = 0
 
 [node name="TopRightButton" type="Button" parent="TouchButtons"]
-visible = false
 modulate = Color(1, 1, 1, 0)
 offset_left = 400.0
 offset_right = 800.0
@@ -120,19 +119,19 @@ offset_bottom = 300.0
 focus_mode = 0
 
 [node name="BottomLeftButton" type="Button" parent="TouchButtons"]
-visible = false
 modulate = Color(1, 1, 1, 0)
 offset_top = 300.0
 offset_right = 400.0
 offset_bottom = 600.0
+focus_mode = 0
 
 [node name="BottomRightButton" type="Button" parent="TouchButtons"]
-visible = false
 modulate = Color(1, 1, 1, 0)
 offset_left = 400.0
 offset_top = 300.0
 offset_right = 800.0
 offset_bottom = 600.0
+focus_mode = 0
 
 [node name="ButtonSpawnTimer" type="Timer" parent="."]
 wait_time = 1.7
