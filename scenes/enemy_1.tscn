@@ -1,10 +1,13 @@
-[gd_scene load_steps=11 format=3 uid="uid://bs6pkaaaew764"]
+[gd_scene load_steps=12 format=3 uid="uid://bs6pkaaaew764"]
 
 [ext_resource type="Script" path="res://scenes/enemy_1.gd" id="1_2bm8w"]
 [ext_resource type="Texture2D" uid="uid://dr2fm4hg3ynbj" path="res://assets/prey_spritesheet.png" id="2_qn2s0"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3luyp"]
 radius = 19.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_608wo"]
+height = 66.0
 
 [sub_resource type="Animation" id="Animation_78dky"]
 length = 0.001
@@ -252,7 +255,6 @@ _data = {
 
 [node name="Enemy1" type="CharacterBody2D" groups=["Enemies"]]
 collision_layer = 0
-collision_mask = 3
 floor_max_angle = 0.261799
 script = ExtResource("1_2bm8w")
 
@@ -266,6 +268,16 @@ region_rect = Rect2(0, 0, 351.5, 355)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_3luyp")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-12, -8)
+rotation = -0.957097
+shape = SubResource("CapsuleShape2D_608wo")
+debug_color = Color(0.309315, 0.620769, 0.254891, 0.42)
 
 [node name="LifespanTimer" type="Timer" parent="."]
 wait_time = 6.0
@@ -295,4 +307,5 @@ offset_bottom = -80.0
 theme_override_colors/font_color = Color(0.632225, 1.40782e-06, 2.40654e-07, 1)
 text = "test"
 
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="timeout" from="LifespanTimer" to="." method="_on_lifespan_timer_timeout"]

@@ -45,6 +45,7 @@ unique_name_in_owner = true
 [node name="Player" parent="." instance=ExtResource("1_2ilp2")]
 unique_name_in_owner = true
 position = Vector2(376, 367)
+collision_layer = 1
 
 [node name="EnemySpawnTimer" type="Timer" parent="."]
 wait_time = 1.5
@@ -58,21 +59,25 @@ position = Vector2(0, 6)
 visible = false
 position = Vector2(25, 267)
 rotation = 0.43376
+collision_mask = 1
 
 [node name="TopRightPlatform" parent="Platforms" instance=ExtResource("2_phroa")]
 visible = false
 position = Vector2(726, 278)
 rotation = -0.436332
+collision_mask = 1
 
 [node name="BottomLeftPlatform" parent="Platforms" instance=ExtResource("2_phroa")]
 visible = false
 position = Vector2(24, 426)
 rotation = 0.43376
+collision_mask = 1
 
 [node name="BottomRightPlatform" parent="Platforms" instance=ExtResource("2_phroa")]
 visible = false
 position = Vector2(725, 437)
 rotation = -0.436332
+collision_mask = 1
 
 [node name="BranchTopLeft" type="Sprite2D" parent="Platforms"]
 position = Vector2(105, 291)

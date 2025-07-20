@@ -144,3 +144,7 @@ func set_animal(animal):
 func set_speed_increase(speed_increase):
 	move_speed = GRAVITY + speed_increase
 	
+
+
+func _on_area_2d_area_entered(area):
+	print("hit enemy")
