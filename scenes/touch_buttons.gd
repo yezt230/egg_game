@@ -38,11 +38,3 @@ func map_directions(dir1, dir2):
 		release_event.action = dir
 		release_event.pressed = false
 		Input.parse_input_event(release_event)
-
-
-func _on_button_spawn_timer_timeout():
-	print("buttons visible)")
-	top_left_button.visible = true
-	top_right_button.visible = true
-	bottom_left_button.visible = true
-	bottom_right_button .visible = true

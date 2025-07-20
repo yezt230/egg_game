@@ -133,11 +133,6 @@ offset_right = 800.0
 offset_bottom = 600.0
 focus_mode = 0
 
-[node name="ButtonSpawnTimer" type="Timer" parent="."]
-wait_time = 1.7
-one_shot = true
-autostart = true
-
 [node name="Node" type="Node" parent="."]
 
 [node name="SpeedLabel" type="Label" parent="."]
@@ -158,4 +153,3 @@ text = "test"
 [connection signal="pressed" from="TouchButtons/TopRightButton" to="TouchButtons" method="_on_top_right_button_pressed"]
 [connection signal="pressed" from="TouchButtons/BottomLeftButton" to="TouchButtons" method="_on_bottom_left_button_pressed"]
 [connection signal="pressed" from="TouchButtons/BottomRightButton" to="TouchButtons" method="_on_bottom_right_button_pressed"]
-[connection signal="timeout" from="ButtonSpawnTimer" to="TouchButtons" method="_on_button_spawn_timer_timeout"]
