@@ -77,18 +77,8 @@ func _physics_process(delta):
 				2:
 					enemy_sprite.frame = 14
 					#animal_type = 2
-		
-	#for i in range(get_slide_collision_count()):
-		#var collider_name = get_slide_collision(i).get_collider().name
-		#if collider_name == "Player" and not has_been_eaten:
-			#has_been_eaten = true
-			#emit_signal("enemy_eaten")
-			#queue_free()			
-			##The line below searches for collision names matching
-			##the string in regex ("Platform") perhaps? 
-		#if regex.search(collider_name):			
-			#falling_speed = move_speed * delta		
-
+	if is_on_branch:
+		falling_speed = move_speed * delta
 
 			
 	if self.global_position.y > 550:		
