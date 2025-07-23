@@ -14,7 +14,7 @@ signal enemy_escaped
 @onready var spawn_bottom_right = get_node("/root/Main/Platforms/MarkerBottomRight")
 #@onready var score_scene = get_node("/root/Main/Score")
 @onready var falling_label = $FallingLabel
-@onready var collision_shape = $CollisionShape2D
+@onready var collision_shape_2d = $Area2D/CollisionShape2D
 
 const GRAVITY = 25000
 const FLOOR_NORMAL = Vector2.UP
@@ -54,7 +54,7 @@ func _physics_process(delta):
 	#falling_speed is really the overall movement speed
 	var falling_speed = GRAVITY * delta
 	if not is_on_branch and get_global_position().y > 375:
-		collision_shape.disabled = true
+		collision_shape_2d.disabled = true
 	move_and_slide()
 	if get_slide_collision_count() > 0:
 		for i in range(get_slide_collision_count()):
