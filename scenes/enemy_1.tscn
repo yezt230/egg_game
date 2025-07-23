@@ -1,15 +1,14 @@
-[gd_scene load_steps=13 format=3 uid="uid://bs6pkaaaew764"]
+[gd_scene load_steps=12 format=3 uid="uid://bs6pkaaaew764"]
 
 [ext_resource type="Script" path="res://scenes/enemy_1.gd" id="1_2bm8w"]
 [ext_resource type="Texture2D" uid="uid://dr2fm4hg3ynbj" path="res://assets/prey_spritesheet.png" id="2_qn2s0"]
-[ext_resource type="Script" path="res://scenes/area_2d.gd" id="3_mcklo"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3luyp"]
 radius = 2.82843
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_608wo"]
 radius = 17.2043
-height = 66.0
+height = 94.8652
 
 [sub_resource type="Animation" id="Animation_78dky"]
 length = 0.001
@@ -276,10 +275,9 @@ shape = SubResource("CircleShape2D_3luyp")
 position = Vector2(11, 8)
 collision_layer = 3
 collision_mask = 3
-script = ExtResource("3_mcklo")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(1, -13)
+position = Vector2(-27, -27)
 rotation = -0.957097
 shape = SubResource("CapsuleShape2D_608wo")
 debug_color = Color(0.309315, 0.620769, 0.254891, 0.42)

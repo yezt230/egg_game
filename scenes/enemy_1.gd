@@ -53,8 +53,8 @@ func _ready():
 func _physics_process(delta):		
 	#falling_speed is really the overall movement speed
 	var falling_speed = GRAVITY * delta
-	#if not is_on_branch and get_global_position().y > 375:
-		#collision_shape.disabled = true
+	if not is_on_branch and get_global_position().y > 375:
+		collision_shape.disabled = true
 	move_and_slide()
 	if get_slide_collision_count() > 0:
 		for i in range(get_slide_collision_count()):
@@ -147,7 +147,6 @@ func set_speed_increase(speed_increase):
 
 func _on_area_2d_body_entered(body):
 	if body.name == "Player":
-		print("hit enemy")
 		has_been_eaten = true
 		emit_signal("enemy_eaten")
 		queue_free()	
