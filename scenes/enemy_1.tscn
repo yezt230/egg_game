@@ -268,7 +268,7 @@ vframes = 5
 region_rect = Rect2(0, 0, 351.5, 355)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-11, 15)
+position = Vector2(-11, 12)
 shape = SubResource("CircleShape2D_3luyp")
 
 [node name="Area2D" type="Area2D" parent="." groups=["Enemies"]]
